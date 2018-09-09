@@ -1,0 +1,212 @@
+{extend name="public:base"/}
+{block name="main"}
+<style type="text/css">
+  .width-250{width:250px !important; }
+</style>
+<link href="__Com__/uedit/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" charset="utf-8" src="__Com__/uedit/umeditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="__Com__/uedit/umeditor.js"></script>
+
+<form class="layui-form" action="" method="POST">
+        <div class="layui-form-item">
+          <label class="layui-form-label">文章标题</label>
+          <div class="layui-input-block width-350">
+          	<input type="hidden" name="newsid" value="{$info['newsid']}">
+            <input type="hidden" name="cateid" value="{:input('cateid')}">
+            <input type="text" name="title" required="" lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input" value="{$info['title']}">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">文章关键字</label>
+          <div class="layui-input-block width-350">
+            <input type="text" name="keyword"  placeholder="请输入文章关键字" autocomplete="off" class="layui-input"  value="{$info['keyword']}">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">文章描述</label>
+          <div class="layui-input-block width-350">
+            <input type="text" name="description"  placeholder="请输入文章描述" autocomplete="off" class="layui-input"  value="{$info['description']}">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">封面图片</label>
+          <div class="layui-input-inline" style="width:350px;">
+            <input type="text" name="thumb"  placeholder="图片地址" autocomplete="off" class="layui-input"  value="{$info['thumb']}">
+          </div>
+          <div class="layui-form-mid layui-word-aux" style="padding-top: 0px !important; ">
+            <button type="button" class="layui-btn layui-btn-small layui-btn-normal fileupload" lay-data="{data:{type:'image'},accept:'images'}" data-name="thumb">
+              <i class="layui-icon">&#xe64a;</i>上传图片
+            </button>
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">状态</label>
+          <div class="layui-input-block width-350">
+            <input type="checkbox" name="status" lay-skin="switch" lay-text="启用|禁用" lay-filter="switchTest" value="1" {if condition="($info['status'] eq '1') OR ($info['status'] eq '')"}checked=''{/if}>
+            <div class="layui-unselect layui-form-switch" lay-skin="_switch">
+            	<em>OFF</em><i></i>
+            </div>
+          </div>
+        </div>
+       
+        <div class="layui-form-item layui-form-text">
+    		    <label class="layui-form-label">文章内容</label>
+    		    <div class="layui-input-block">
+            <script type="text/plain" id="myEditors" name="content" style="height:240px;width:100%;">{$info['content']|htmlspecialchars_decode}</script>
+
+    		      <!-- <textarea class="layui-textarea layui-hide" name="content" lay-verify="content" id="content"></textarea> -->
+    		    </div>
+    		</div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">相册</label>
+          <div class="layui-form-mid layui-word-aux" style="padding-top: 0px !important; ">
+            <button type="button" class="layui-btn layui-btn-small layui-btn-normal photosload" lay-data="{data:{type:'image'},accept:'images'}" data-name="photos">
+              <i class="layui-icon">&#xe60d;</i>上传相册
+            </button>
+          </div>
+
+        </div>
+        <div class="layui-form-item" id="PhotosDom">
+        {notempty name="info['photos']"}
+            {foreach $info['photos']['name'] as $k=>$v}
+
+              <div class="layui-inline">
+                  <label class="layui-form-label"></label>
+                  <div class="layui-input-inline" style="width: 100px;">
+                  <input type="text" name="photos[name][]" lay-verify="required" placeholder="图片名称" autocomplete="off" class="layui-input" placeholder="文件名称" value="{$info['photos']['name'][$k]}">
+                  <input type="hidden" name="photos[path][]" placeholder="图片地址"></div>
+                  <img src="{$info['photos']['path'][$k]}" class="content-photos" value="{$info['photos']['path'][$k]}">
+                  <button type="button" class="layui-btn layui-btn-danger layui-btn-xs" onclick="delimg(this)">删除</button>
+              </div><br/>
+
+            {/foreach}
+        {/notempty}
+           
+        </div>
+        <div class="layui-form-item">
+          <div class="layui-input-block">
+            <button class="layui-btn" lay-submit="" lay-filter="formDemo">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+          </div>
+        </div>
+</form>
+
+<script type="text/javascript">
+	layui.use(['form','layedit','upload'], function(){
+	  var form = layui.form
+	  ,layedit = layui.layedit
+    ,upload  = layui.upload;
+
+	  //var editIndex = layedit.build('content');
+
+    /*缩略图上传*/
+    upload.render({
+      elem: '.fileupload' //绑定元素
+      ,url: '{:Url('common/fileupload')}' //上传接口
+      ,before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
+
+        layer.load(); //上传loading
+      }
+      ,done: function(res,index){ 
+
+          layer.closeAll('loading');
+
+          if(res.status=='1'){ 
+
+            alert("上传成功~"); 
+
+              var item = this.item;
+
+              var dom=item.attr('data-name');
+              layui.$("input[name='"+dom+"']").val(res.path);
+
+          }else{
+            alert("上传失败,请重试！");
+          }
+      }
+      ,error: function(){
+          layer.closeAll('loading');
+          alert("上传失败,请重试！");
+        //请求异常回调
+      }
+      ,field:'file' //字段名
+
+    });
+    /*相册*/
+    upload.render({
+      elem: '.photosload' //绑定元素
+      ,url: '{:Url('common/fileupload')}' //上传接口
+      ,multiple: true  //多文件上传
+      ,before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
+        //console.log(obj);
+        layer.load(); //上传loading
+      }
+      ,done: function(res,index){ 
+
+          layer.closeAll('loading');
+
+          if(res.status=='1'){
+            
+              var item = this.item;
+
+             /* var html="<div class='layui-inline'><label class='layui-form-label'></label><div class='layui-input-inline' style='width: 100px;'><input type='text' name='photos[name][]' lay-verify='required' placeholder='图片名称' autocomplete='off' class='layui-input' placeholder='文件名称' value="'+res.filename+'"><input type='hidden' name='photos[file][]' value="'+res.path+'" placeholder='图片地址'></div><img src="'+res.path+'" class='content-photos'><button type='button' class='layui-btn layui-btn-danger layui-btn-xs' onclick='delimg(this)'>删除</button></div><br/>";*/
+
+              var html='<div class="layui-inline"><label class="layui-form-label"></label><div class="layui-input-inline" style="width: 100px;"><input type="text" name="photos[name][]" lay-verify="required" placeholder="图片名称" autocomplete="off" class="layui-input" placeholder="文件名称" value="'+res.filename+'"><input type="hidden" name="photos[path][]" value="'+res.path+'" placeholder="图片地址"></div><img src="'+res.path+'" class="content-photos"><button type="button" class="layui-btn layui-btn-danger layui-btn-xs" onclick="delimg(this)">删除</button></div><br/>';
+
+              $("#PhotosDom").append(html);
+
+              /*var dom=item.attr('data-name');
+              layui.$("input[name='"+dom+"']").val(res.path);*/
+
+          }else{
+            alert("上传失败,请重试！");
+          }
+      }
+      ,error: function(){
+          layer.closeAll('loading');
+          alert("上传失败,请重试！");
+        //请求异常回调
+      }
+      ,field:'file' //字段名
+
+    });
+
+
+    {notempty name="info"}
+    
+     layui.$("select[name='cateid']").val({$info['cateid']});
+  
+     
+     layui.form.render('select')
+    {/notempty}
+
+	  form.verify({
+	    title: function(value){
+	      if(value.length < 5){
+	        return '标题至少得50个字符啊';
+	      }
+	    }
+	  });
+    layer.photos({
+      photos: 'div'
+      ,anim: 5 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
+    }); 
+    
+
+	});
+
+  function delimg($this){
+      layer.confirm('确定清除这个图片吗？', function(index){
+
+        //清除img dom
+        $($this).parent(".layui-inline").remove();
+        
+        layer.close(index);
+      });  
+     
+  }
+</script>
+
+
+<script type="text/javascript">var um = UM.getEditor('myEditors');</script>
+{/block}

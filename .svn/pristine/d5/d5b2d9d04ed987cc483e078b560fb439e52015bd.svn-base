@@ -1,0 +1,48 @@
+{extend name="public:base"/}
+{block name="main"}
+
+<form class="layui-form form" action="" method="POST" >
+ 
+        <div class="layui-form-item">
+          <label class="layui-form-label">新密码</label>
+          <div class="layui-input-inline" >
+            <input type="password" name="pass1" required lay-verify="required" placeholder="请输入新的密码" autocomplete="off" class="layui-input"> 
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">再次输入</label>
+          <div class="layui-input-inline" >
+            <input type="password" name="pass2" required lay-verify="required|pass" placeholder="再次输入密码" autocomplete="off" class="layui-input"> 
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <div class="layui-input-block">
+            <button class="layui-btn" lay-submit="" lay-filter="form">立即提交</button>
+          </div>
+        </div>
+
+</form>
+
+<script type="text/javascript">
+  layui.use('form', function(){
+    var form = layui.form;
+
+      form.verify({
+        pass: function(){ 
+          var pass1=$("input[name='pass1']").val();
+          var pass2=$("input[name='pass2']").val();
+          if(pass1!=pass2){
+            return "两次密码不一致，请重新输入！";
+          }
+        }
+        
+       
+      });      
+      
+  });
+</script>
+
+
+
+
+{/block}

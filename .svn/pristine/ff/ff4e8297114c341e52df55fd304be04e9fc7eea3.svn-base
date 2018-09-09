@@ -1,0 +1,167 @@
+{extend name="public:base"/}
+{block name="style"}
+
+{/block}
+{block name="main"}
+
+<form class="layui-form" action="" method="POST" >
+  <div class="layui-form-item">
+    <label class="layui-form-label"><span class="form-required">*</span>模型名称</label>
+    <div class="layui-input-inline ">
+      <input type="hidden" name="modelid" value="{$info['modelid']}">
+      <input type="text" name="name" lay-verify="required"  placeholder="请输入模型名称" autocomplete="off" class="layui-input" value="{$info['name']}">
+    </div>
+  </div>
+  <div class="layui-form-item">
+      <label class="layui-form-label"><span class="form-required">*</span>类型</label>
+      <div class="layui-input-inline" >
+        <select name="type" lay-verify="required"  lay-filter="type" id="type" >
+          <option value="">请选择类型</option>
+          <option value="列表类型" {if condition="$info['type'] eq '列表类型'"}selected {/if}>列表类型</option>
+          <option value="单页类型" {if condition="$info['type'] eq '单页类型'"}selected {/if}>单页类型</option>
+            
+        </select>   
+      </div>
+  </div>
+
+
+  
+  <!-- 单页模板列表 -->
+  <div class="layui-form-item selectlist" id="templatepage" style="display:none;{if condition="$info['type'] eq '单页类型'"}display:block;{/if}">
+      <label class="layui-form-label">单页模板</label>
+      <div class="layui-input-inline" >
+        <select name="page" lay-verify="template">
+          <option value="">请选择单页模板</option>
+          {foreach $templates['page'] as $v}
+              <option value="{$v}" {if condition="$v eq $info['page']"}selected{/if}>{$v}.html</option>
+          {/foreach}
+        </select>   
+      </div>
+  </div>
+
+  <div class="layui-form-item selectlist"  id="templatelist" style="display:none;{if condition="$info['type'] eq '列表类型'"}display:block;{/if}">
+      <!-- <label class="layui-form-label">栏目页模板</label>
+      <div class="layui-input-inline" >
+        <select name="category" >
+          <option value="">请选择栏目页模板</option>
+          {foreach $templates['category'] as $v}
+              <option value="{$v}" {if condition="$v eq $info['category']"}selected{/if}>{$v}.html</option>
+          {/foreach}
+        </select>   
+      </div> -->
+      <label class="layui-form-label">列表页模板</label>
+      <div class="layui-input-inline" >
+        <select name="list" lay-verify="template">
+          <option value="">请选择列表页模板</option>
+          {foreach $templates['list'] as $v}
+              <option value="{$v}" {if condition="$v eq $info['list']"}selected{/if}>{$v}.html</option>
+          {/foreach}
+        </select>   
+      </div>
+      <label class="layui-form-label">内容页模板</label>
+      <div class="layui-input-inline" >
+        <select name="content" lay-verify="template">
+          <option value="">请选择内容页模板</option>
+          {foreach $templates['content'] as $v}
+              <option value="{$v}" {if condition="$v eq $info['content']"}selected{/if}>{$v}.html</option>
+          {/foreach}
+        </select>   
+      </div>
+  </div>
+  <div class="layui-form-item">
+      <label class="layui-form-label">作者</label>
+      <div class="layui-input-inline" >
+        <select name="authorid">
+          <option value="">请选择默认作者</option>
+          {foreach $authorlist as $v}
+            <option value="{$v['authorid']}" {if condition="$v['authorid'] eq $info['authorid']"}selected{/if}>{$v['name']}</option>
+          {/foreach}
+        </select>   
+      </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">排序</label>
+    <div class="layui-input-inline">
+      <input type="number" name="px"  placeholder="请输入数字排序" autocomplete="off" class="layui-input" value="{$info['px']}">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">评论</label>
+    <div class="layui-input-block">
+      <input type="radio" name="iscomment" value="1" title="开启" {neq name="info['iscomment']" value="0"}checked{/neq}>
+      <input type="radio" name="iscomment" value="0" title="关闭" {eq name="info['iscomment']" value="0"}checked{/eq}>
+    </div>
+  </div>
+  {notempty name="info['modelid']"}
+  <div class="layui-form-item">
+    <label class="layui-form-label">更新</label>
+    <div class="layui-input-inline">
+      <input type="checkbox" name="up" title="同时更新所有页面模板" lay-skin="primary" checked value="1">
+    </div>
+  </div>
+  {/notempty}
+  <!-- <div class="layui-form-item">
+    <label class="layui-form-label">状态</label>
+    <div class="layui-input-block">
+      <input type="checkbox" name="status" lay-skin="switch" lay-text="启用|禁用" lay-filter="switchTest" value="1" {if condition="($info['status'] eq '1') OR ($info['status'] neq '0')"}checked=''{/if}>
+      <div class="layui-unselect layui-form-switch" lay-skin="_switch">
+        <em>OFF</em><i></i>
+      </div>
+    </div>
+  </div> -->
+
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+    </div>
+  </div>
+</form>
+
+<script type="text/javascript">
+	layui.use(['form'], function(){
+	  var form = layui.form;
+
+    form.on('select(type)', function(data){
+
+      $(".selectlist").hide();
+      if(data.value=='单页类型'){
+        $("#templatepage").show();  
+      }else if(data.value=='列表类型'){
+        $("#templatelist").show();
+      }
+     
+    });  
+
+    layer.photos({
+      photos: 'div'
+      ,anim: 5 
+    }); 
+
+	  form.verify({
+	    template: function(value,item){
+        var type=$("select[name='type']").val();  
+        if(type=='单页类型'){
+          
+          if($("select[name='page']").val()==''){
+            return "请选择单页模板！";
+          }
+        }else if(type=='列表类型'){
+          
+          /*if($("select[name='category']").val()==''){
+            return "请选择栏目页模板";
+          }*/
+          if($("select[name='list']").val()==''){
+            return "请选择列表页模板";
+          }
+          if($("select[name='content']").val()==''){
+            return "请选择内容页模板";
+          }
+        }
+	      
+	    }
+	  });
+	});
+</script>
+
+{/block}

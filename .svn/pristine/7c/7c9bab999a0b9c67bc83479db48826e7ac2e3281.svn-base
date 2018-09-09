@@ -1,0 +1,80 @@
+{extend name="public:base"/}
+{block name="main"}
+
+<form class="layui-form" action="" method="POST">
+        <div class="layui-form-item">
+          <label class="layui-form-label">储存方式</label>
+          <div class="layui-input-inline" style="width:350px;">
+            <input type="radio" name="type" value="本地" title="本地" {if condition="($info['type'] eq '本地') OR ($info['type'] eq '')" }checked{/if}>
+            <input type="radio" name="type" value="OSS" title="OSS" {if condition="$info['type'] eq 'OSS'" }checked{/if}>
+            <input type="radio" name="type" value="七牛" title="七牛" {if condition="$info['type'] eq '七牛'" }checked{/if}>
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">OSS配置</label>
+          <div class="layui-input-inline">
+            <input type="text" name="OSS[key]" lay-verify="OSS" placeholder="请输入标题" autocomplete="off" class="layui-input">   
+          </div>
+          <div class="layui-input-inline">
+            <input type="text" name="OSS[server]" lay-verify="OSS" placeholder="请输入标题" autocomplete="off" class="layui-input">   
+          </div>
+          <div class="layui-input-inline">
+            <input type="text" name="OSS[put]" lay-verify="OSS" placeholder="请输入标题" autocomplete="off" class="layui-input">   
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">七牛配置</label>
+          <div class="layui-input-inline">
+            <input type="text" name="qiniu[key]" lay-verify="qiniu" placeholder="请输入标题" autocomplete="off" class="layui-input">   
+          </div>
+          <div class="layui-input-inline">
+            <input type="text" name="qiniu[server]" lay-verify="qiniu" placeholder="请输入标题" autocomplete="off" class="layui-input">   
+          </div>
+          <div class="layui-input-inline">
+            <input type="text" name="qiniu[put]" lay-verify="qiniu" placeholder="请输入标题" autocomplete="off" class="layui-input">   
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">文件删除</label>
+          <div class="layui-input-inline" style="width:350px;">
+            <input type="radio" name="delete" value="保存" title="保存文件" {if condition="($info['delete'] eq '保存') OR ($info['delete'] eq '')" }checked{/if}>
+            <input type="radio" name="delete" value="删除" title="同时删除文件" {if condition="$info['delete'] eq '删除' " }checked{/if}>
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">允许上传格式</label>
+          <div class="layui-input-block">
+            <input type="text" name="file"  placeholder="请输入允许上传的文件格式，用，分割" autocomplete="off" class="layui-input" value="{$info['file']}">   
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <div class="layui-input-block">
+            <button class="layui-btn" lay-submit="" lay-filter="formDemo">立即提交</button>
+          </div>
+        </div>
+</form>
+
+<script type="text/javascript">
+	layui.use('form', function(){
+	 
+    var form = layui.form;
+
+    form.verify({
+        OSS: function(value, item){ //value：表单的值、item：表单的DOM对象
+          var type=$("input[name='type']:checked").val();
+          if(type=='OSS' && value ==''){
+            return "请完整填写OSS配置！";
+          }
+        },
+        qiniu: function(value, item){ //value：表单的值、item：表单的DOM对象
+          var type=$("input[name='type']:checked").val();
+          if(type=='七牛' && value ==''){
+            return "请完整填写七牛配置！";
+          }
+        }, 
+    });      
+     
+	});
+</script>
+
+{/block}

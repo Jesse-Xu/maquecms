@@ -1,0 +1,299 @@
+{extend name="public:base"/}
+
+{block name="main"}
+
+
+
+<form class="layui-form" action="" method="POST">
+
+        
+
+        <div class="layui-form-item">
+
+          <label class="layui-form-label">角色名称</label>
+
+          <div class="layui-input-inline" style="width:350px;">
+
+            <input type="hidden" name="roleid" value="{$info['roleid']}">
+
+            <input type="text" placeholder="角色名称" autocomplete="off" class="layui-input"  value="{$info['name']} " disabled>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="layui-form-item" id="menulist">
+
+          <label class="layui-form-label" style="width:165px"><b>菜单列表</b><small>（上下移动位置）</small></label>
+
+        </div>
+
+        <div class="menus">
+
+            {foreach $actinoinfo as $v}
+
+            <div class="layui-form-item" >
+
+              <label class="layui-form-label" style="width:105px;">
+
+              <span class="layui-table-sort layui-inline" style="float:left;"><i class="layui-edge layui-table-sort-asc"></i><i class="layui-edge layui-table-sort-desc"></i></span> <span title="删除菜单"><i class="layui-icon layui-icon-close"></i></span>
+
+                {$v['name']}
+
+                
+
+              </label>
+
+              <div class="layui-input-block">
+
+                {foreach $v['list'] as $vo}
+      
+                {if condition=" (is_array($auto[strtolower($v['controller'])]) )  and (in_array($vo['action'],$auto[strtolower($v['controller'])]) )"}
+
+                <input type="checkbox" name="auto[{$v['controller']}][]" title="{$vo['name']}" lay-skin="primary"   value="{$vo['action']}" <?php if(stripos($info['menu'],'"'.$vo['action'].'"'))  echo "checked" ; ?> >
+
+                {/if}
+
+                {/foreach}
+
+              </div>
+
+            </div>
+
+            {/foreach}
+
+
+
+            <!-- 自定义菜单 -->
+
+            {notempty name="other"}
+
+            {foreach $other as $v}
+
+            {if condition="$v['controller'] eq '自定义'"}
+
+            <div class="layui-form-item" >
+
+              <label class="layui-form-label" >
+
+              <span class="layui-table-sort layui-inline" style="float:left;"><i class="layui-edge layui-table-sort-asc"></i><i class="layui-edge layui-table-sort-desc"></i></span> <span title="删除菜单"><i class="layui-icon layui-icon-close"></i></span>
+
+                {if condition="count($v['list']) > 1"}
+
+                {$v['name']}
+
+                {/if}
+
+                
+
+              </label>
+
+              <div class="layui-input-block">
+
+                {if condition="count($v['list']) > 1"}
+
+                {foreach $v['list'] as $vo}
+
+                <input type="checkbox" name="auto[{$v['controller']}][]" title="{$vo['name']}" lay-skin="primary"   value="{$vo['action']}" checked >
+
+                {/foreach}
+
+                {else/}
+
+                  <input type="checkbox" name="auto[{$v['controller']}][]" title="{$v['name']}" lay-skin="primary"   value="{$v['list']}" checked >
+
+                {/if}
+
+              </div>
+
+            </div>
+
+            {/if}
+
+            {/foreach}
+
+            {/notempty}
+
+
+
+        </div>
+
+        <div class="layui-form-item">
+
+          <div class="layui-input-block">
+
+            <button class="layui-btn" lay-submit="" lay-filter="formDemo">立即提交</button>
+
+            <!-- <button type="reset" class="layui-btn layui-btn-primary">重置</button> -->
+
+            <div class="layui-btn layui-btn-normal"  onclick="add();">插入自定义菜单</div>
+
+          </div>
+
+        </div>
+
+</form>
+
+
+
+<script type="text/javascript">
+
+var num="1";
+
+  layui.use(['form'], function(){
+
+    var form = layui.form;
+
+    
+
+
+
+    $(".menus").on("click",".layui-table-sort-asc",function(){
+
+      var now = $(this).parents(".layui-form-item");    
+
+      var next = now.prev();
+
+      now.insertBefore(next);   
+
+
+
+    });
+
+
+
+    $(".menus").on("click",".layui-table-sort-desc",function(){
+
+      var now = $(this).parents(".layui-form-item").next();    
+
+      var next = now.prev();
+
+      now.insertBefore(next);   
+
+
+
+    });
+
+
+
+    form.on('submit(addline)', function(data){
+
+      layer.close(layer.index);
+
+      var html='<div class="layui-form layui-form-item"  lay-filter="addmenu"><label class="layui-form-label" ><span class="layui-table-sort layui-inline" style="float:left;"><i class="layui-edge layui-table-sort-asc"></i><i class="layui-edge layui-table-sort-desc"></i></span> <span title="删除菜单"><i class="layui-icon layui-icon-close"></i></span></label><div class="layui-input-block">';
+
+
+
+      var j=0;
+
+      var timestamp = Date.parse(new Date());
+
+      $.each(data.field,function(n,v) {
+
+
+
+        if(j%2 == 0){
+
+          html+='<input type="checkbox" name="auto['+timestamp+']['+v+']" title="'+v+'" lay-skin="primary"';
+
+        }else{
+
+          html+='value="'+v+'" checked >';
+
+        }
+
+         
+
+        j++;
+
+
+
+      });
+
+
+
+      $(".menus").append(html+"</div></div>");
+
+      form.render(null, 'addmenu');
+
+
+
+     // console.log();
+
+      return false;
+
+  });
+
+    
+
+  });
+
+  function addline(){
+
+    var html='<div class="layui-form-item"><label class="layui-form-label">子菜单'+num+'</label><div class="layui-input-block"><input type="text" name="name[]" required  lay-verify="required" placeholder="请输入菜单名称" class="layui-input"></div><div class="layui-input-block"><input type="text" name="link[]" required  lay-verify="required" placeholder="请输入菜单链接" class="layui-input"></div></div>';
+
+    $("#menuform").before(html);
+
+    num++;
+
+    return false;
+
+  }
+
+  function add(){
+
+      layer.open({
+
+        type: 1,
+
+        skin: 'layui-layer-rim', //加上边框
+
+        area: ['60%','50%'], //宽高
+
+        content: '<form class="layui-form" action=""><div class="layui-form-item"><label class="layui-form-label">父菜单</label><div class="layui-input-block"><input type="text" name="name[]" required  lay-verify="required" placeholder="请输入菜单名称" class="layui-input"></div><div class="layui-input-block"><input type="text" name="link[]" required  lay-verify="required" placeholder="请输入菜单链接" class="layui-input"></div></div><div class="layui-form-item" id="menuform"><div class="layui-input-block"><div class="layui-btn" lay-submit lay-filter="addline">立即添加</div><div class="layui-btn layui-btn-normal" onclick="addline();">添加一行</div></div></div></form>',
+
+        cancel: function(index, layero){ 
+
+          num="1";
+
+        }    
+
+    
+
+
+
+      });
+
+    }
+
+
+
+  $(".menus").on("click",".layui-icon-close",function(){
+
+    var $this=$(this);
+
+
+
+    layer.confirm('是否删除当前菜单?', {icon: 3, title:'提示'}, function(index){
+
+
+
+      $($this).parents(".layui-form-item").remove();
+
+      layer.close(index);
+
+    });
+
+  });
+
+  
+
+  
+
+</script>
+
+
+
+{/block}

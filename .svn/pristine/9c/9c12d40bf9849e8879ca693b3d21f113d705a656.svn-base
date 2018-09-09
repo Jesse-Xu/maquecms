@@ -1,0 +1,128 @@
+{include file='public/head' /}
+  <div class="layui-side layui-bg-black left-menu">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+
+      
+        {if condition="($Think.session.admin.adminid eq '1') or (administrator eq '麻雀cms')"}
+        <li class="layui-nav-item {if condition="$controller eq 'index'"}layui-nav-itemed{/if}">
+
+          <a class="" href="{:Url('index/index')}">
+            <i class="layui-icon">&#xe68e;</i>  数据统计
+          </a>
+        </li>
+        
+        <li class="layui-nav-item {if condition="$controller eq 'banner'"}layui-nav-itemed{/if}">
+          <a class="" href="javascript:;">
+            <i class="layui-icon">&#xe634;</i>  轮播管理
+          </a>
+          <dl class="layui-nav-child">
+            <dd><a href="{:Url('banner/lists')}">轮播列表</a></dd>
+            <dd><a href="{:Url('banner/info')}">轮播添加</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item {if condition="$controller eq 'news'"}layui-nav-itemed{/if}">
+          <a class="" href="javascript:;">
+            <i class="layui-icon">&#xe62a;</i>  新闻管理
+          </a>
+          <dl class="layui-nav-child">
+            <dd><a href="{:Url('news/newslist')}">新闻列表</a></dd>
+            <dd><a href="{:Url('news/newsinfo')}">添加新闻</a></dd>
+            <dd><a href="{:Url('news/catelist')}">分类管理</a></dd>
+            <dd><a href="{:Url('news/cateinfo')}">添加分类</a></dd>
+            <dd><a href="{:Url('news/modellist')}">模型管理</a></dd>
+            <dd><a href="{:Url('news/modelinfo')}">添加模型</a></dd>
+            <dd><a href="{:Url('news/authorlist')}">作者管理</a></dd>
+            <dd><a href="{:Url('news/authorinfo')}">添加作者</a></dd>
+            <dd><a href="{:Url('news/comment')}">评论管理</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item {if condition="$controller eq 'user'"}layui-nav-itemed{/if}">
+          <a class="" href="javascript:;">
+            <i class="layui-icon">&#xe770;</i>  用户管理
+          </a>
+          <dl class="layui-nav-child">
+            <dd><a class="" href="{:Url('user/lists')}">用户列表</a></dd>
+            <!-- <dd><a href="{:Url('news/newsinfo')}">添加新闻</a></dd> -->
+          </dl>
+        </li>
+        <li class="layui-nav-item {if condition="$controller eq 'msg'"}layui-nav-itemed{/if}">
+          <a class="" href="{:url('msg/lists')}">
+            <i class="layui-icon">&#xe63c;</i>  留言管理
+          </a>
+        </li>
+        <li class="layui-nav-item {if condition="$controller eq 'link'"}layui-nav-itemed{/if}">
+          <a class="" href="javascript:;">
+            <i class="layui-icon">&#xe64c;</i>  友情链接
+          </a>
+          <dl class="layui-nav-child">
+            <dd><a href="{:Url('link/lists')}">链接列表</a></dd>
+            <dd><a href="{:Url('link/info')}">链接添加</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item {if condition="$controller eq 'site'"}layui-nav-itemed{/if}">
+          <a class="" href="javascript:;">
+            <i class="layui-icon">&#xe716;</i>  站点管理
+          </a>
+          <dl class="layui-nav-child">
+            <dd><a href="{:Url('site/index')}">网站信息</a></dd>
+            <dd><a href="{:Url('site/water')}">水印设置</a></dd>
+            <dd><a href="{:Url('site/upload')}">上传设置</a></dd>
+            <dd><a href="{:Url('site/template')}">模板选择</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item {if condition="$controller eq 'auto'"}layui-nav-itemed{/if}">
+          <a class="" href="javascript:;">
+            <i class="layui-icon">&#xe613;</i>  权限管理
+          </a>
+          <dl class="layui-nav-child">
+            <dd><a href="{:Url('auto/adminlist')}">管理员列表</a></dd>
+            <dd><a href="{:Url('auto/admininfo')}">添加管理员</a></dd>
+            <dd><a href="{:Url('auto/rolelist')}">角色列表</a></dd>
+            <dd><a href="{:Url('auto/roleinfo')}">添加角色</a></dd>
+            <dd><a href="{:Url('auto/actionlist')}">权限列表</a></dd>
+            <dd><a href="{:Url('auto/actioninfo')}">添加权限</a></dd>
+            <dd><a href="{:Url('auto/loglist')}">操作日志</a></dd>
+            <dd><a href="{:Url('auto/modifypd')}">修改密码</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item ">
+          <a class="" href="{:url('index/delcache')}">
+            <i class="layui-icon">&#xe60b;</i>  清空缓存
+          </a>
+        </li>
+        <li class="layui-nav-item ">
+          <a class="" href="{:url('index/serverinfo')}">
+            <i class="layui-icon">&#xe631;</i>  服务器信息
+          </a>
+        </li>
+      {else/}
+      {:RoleMenu()}
+      {/if}
+        <li class="layui-nav-item ">
+          <a class="" href="{:url('login/loginout')}">
+            <i class="layui-icon">&#xe60f;</i>  退出登录
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="layui-body">
+   <!-- 内容主体区域 -->
+  <div id="main">
+
+      <blockquote class="layui-elem-quote">
+        {$title}  
+
+        {block name="right"}{/block}
+      </blockquote>
+   
+      {block name="main"}{/block}
+       
+  </div>
+  
+  <!-- 引入底部 -->
+  {include file='public/foot' /}

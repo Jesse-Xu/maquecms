@@ -1,0 +1,85 @@
+<?php
+namespace app\admin\model;
+
+use think\Model;
+use think\Db;
+use think\facade\Session;
+use think\facade\Cookie;
+
+class LoginModel extends Model{
+
+	#管理员登陆#
+    public static function login($data){
+    
+		$map=array(
+			'username'=>$data['username'],
+			'password'=>md5($data['password']),
+			'status'=>'1'
+		);
+
+        $info= Db::name('admin_list')->where($map)->find();
+       	if($info){
+
+       		Session::set('admin',$info);
+
+       		if(isset($data['remember']) && $data['remember']=='on'){
+       			unset($data['remember']);
+       			Cookie::set('username',$data);
+       		}else{
+       			Cookie::delete('username');
+       		}
+
+          if($info['adminid']=='1'){
+            $url=url('index/index');
+          }else{
+            $map=array(
+              'status'=>'1',
+              'roleid'=>$info['roleid']
+            );
+            $roleinfo= Db::name('admin_role')->where($map)->field('roleid,menu')->find();
+          
+            if(empty($roleinfo)){
+              $arr = ['name' => '登录失败,当前角色已禁用!~', 'status' => '0'];
+              return json_encode($arr);
+            }else{
+              $menu=json_decode($roleinfo['menu'],true);
+
+              if(is_array($menu[0]['list'])){
+                if($menu[0]['controller']=="自定义"){
+                  $url=$menu[0]['list'][0]['action'];
+
+                }else{
+                  $url=url($menu[0]['controller']."/".$menu[0]['list'][0]['action']);
+
+                }
+              }else{
+                if($menu[0]['controller']=="自定义"){
+                  $url=$menu[0]['list'];
+                }else{
+                  $url=url($menu[0]['controller']."/".$menu[0]['list']);
+                }
+              }
+            }
+
+          }
+          
+       		$arr = ['name' => '登录成功~', 'status' => '1','url'=>$url];
+        	return json_encode($arr);
+
+       	}else{
+       		
+       		$arr = ['name' => '登录失败,账号密码错误~', 'status' => '0'];
+        	return json_encode($arr);
+
+       	}
+
+    }
+
+    #退出登录#
+    public static function loginout(){
+      Session::delete('admin');
+    }
+
+    
+    
+}

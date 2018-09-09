@@ -1,0 +1,38 @@
+{extend name="public:base"/}
+{block name="main"}
+
+<form class="layui-form" action="" method="POST">
+    <div class="layui-row">
+      {foreach $list as $v}
+      <div class="layui-col-md3" style="padding:15px;">
+        <img src="" style="max-width:100%;"><br/>
+        <center><input type="radio" name="template" value="{$v['template']}" title="{$v['template']}" lay-filter="template" {if condition="$v['set'] neq ''"}checked{/if}></center> 
+      </div>
+      {/foreach}
+    </div>
+</form>
+
+<script type="text/javascript">
+	layui.use('form', function(){
+	  var form = layui.form;
+
+    form.on('radio(template)', function(data){
+
+      $.post(location.href,{'template':data.value},function(res){
+        if(res=='0'){
+          alert("修改失败！");
+        }
+      },'json');
+      
+    }); 
+    
+    layer.photos({
+      photos: 'div'
+      ,anim: 5 
+    }); 
+
+
+	});
+</script>
+
+{/block}

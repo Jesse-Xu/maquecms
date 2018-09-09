@@ -1,0 +1,66 @@
+{extend name="public:base"/}
+{block name="main"}
+
+<link href="__ADMIN__/com/uedit/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" charset="utf-8" src="__ADMIN__/com/uedit/umeditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="__ADMIN__/com/uedit/umeditor.js"></script>
+<script type="text/javascript">var um = UM.getEditor('content');</script>
+<form class="layui-form form" action="" method="POST" >
+        <input type="hidden" name="bookid" value="{$info['bookid']}">
+        
+        
+        <div class="layui-form-item">
+          <label class="layui-form-label">标题</label>
+          <div class="layui-input-block" >
+            <input type="text" name="title" required lay-verify="required" placeholder="课程标题" autocomplete="off" class="layui-input"  value="{$info['title']}">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">描述</label>
+          <div class="layui-input-block" >
+            <textarea name="describe" required lay-verify="required" placeholder="请输入描述内容" class="layui-textarea">{$info['describe']}</textarea>
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">内容</label>
+          <div class="layui-input-block" >
+            <script type="text/plain" id="content" name="content" style="height:240px;width:100%;">{$info['content']|htmlspecialchars_decode}</script>
+          </div>  
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">视频播放id</label>
+          <div class="layui-input-inline" >
+            <input type="text" name="playid" required lay-verify="required" placeholder="视频播放id" autocomplete="off" class="layui-input"  value="{$info['playid']}">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">状态</label>
+          <div class="layui-input-block">
+            <input type="checkbox" name="status" lay-skin="switch" lay-text="启用|禁用" lay-filter="switchTest" value="1" {if condition="($info['status'] eq '1') OR ($info['status'] neq '0')"}checked=''{/if}>
+            <div class="layui-unselect layui-form-switch" lay-skin="_switch">
+              <em>OFF</em><i></i>
+            </div>
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <div class="layui-input-block">
+            <button class="layui-btn" lay-submit="" lay-filter="form">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+          </div>
+        </div>
+</form>
+
+<script type="text/javascript">
+  layui.use(['form','upload'], function(){
+    var form = layui.form
+    ,upload  = layui.upload;
+    
+    
+
+  });
+</script>
+
+
+
+
+{/block}

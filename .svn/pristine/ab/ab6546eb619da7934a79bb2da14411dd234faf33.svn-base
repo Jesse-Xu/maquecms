@@ -1,0 +1,21 @@
+{
+    "name": "tsy/phpqrcode",
+    "description": "a php library to generate qrcode",
+    "keywords": ["qr", "qrcode", "two-dimensional", "library", "tool"],
+    "license": "GNU",
+    "authors": [
+        {
+            "name": "deltalab",
+            "homepage": "http://phpqrcode.sourceforge.net/"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "files": ["lib/full/qrlib.php"]
+    },
+    "extra": {
+         "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}

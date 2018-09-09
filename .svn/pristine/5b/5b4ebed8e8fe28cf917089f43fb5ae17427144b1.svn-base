@@ -1,0 +1,42 @@
+{extend name="public:base"/}
+{block name="style"}
+
+{/block}
+{block name="main"}
+
+
+<form class="layui-form" action="" method="POST" >
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">页面名称</label>
+    <div class="layui-input-block  width-350">
+      <input type="text" name="template" required  lay-verify="required" placeholder="页面名称" class="layui-input" value="{$template}" readonly = "readonly">
+    </div>
+  </div>
+  <div class="layui-form-item layui-form-text">
+    <label class="layui-form-label">页面内容</label>
+    <div class="layui-input-block">
+      <textarea name="pageinfo" required lay-verify="required" placeholder="页面内容" class="layui-textarea" style="height:700px;">{:file_get_contents($template)}</textarea>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+    </div>
+  </div>
+</form>
+
+<script type="text/javascript">
+	layui.use(['form','upload'], function(){
+	  var form = layui.form;
+
+    layer.photos({
+      photos: 'div'
+      ,anim: 5 
+    }); 
+
+	});
+</script>
+
+{/block}

@@ -1,0 +1,50 @@
+{extend name="public:base"}
+{block name="main"}
+
+<table class="layui-table" lay-data="{height:500,url:location.href, page:true, id:'table'}" lay-filter="table">
+  <thead>
+    <tr>
+      <th lay-data="{field:'template'}">模板名称</th>
+      <th lay-data="{field:'author'}">作者</th>
+      <th lay-data="{field:'describe'}">说明</th>
+      <th lay-data="{field:'status',templet:'#status'}">状态</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+layui.use(['table','form'], function(){
+  var table = layui.table;
+  var form = layui.form;
+
+  
+  //开关
+  form.on('switch(template)', function(data){
+
+    $.post(location.href,{'template':data.elem.value},function(res){
+      //form.render('checkbox', 'test2'); 
+      if(res=='0'){
+        alert("操作失败");
+      }else{
+        location.reload();
+      }
+    });
+   
+  });  
+
+});
+
+
+
+</script>
+
+
+<script type="text/html" id="status">
+  {{#  if(d.set == 1){ }}
+    <input type="checkbox" lay-skin="switch" lay-text="启用|禁用" lay-filter="template" value="{{d.template}}" checked>
+  {{#  } else { }}
+    <input type="checkbox" lay-skin="switch" lay-text="启用|禁用" lay-filter="template"  value="{{d.template}}">
+  {{#  } }}
+</script>
+
+{/block}

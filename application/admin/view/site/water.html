@@ -1,0 +1,187 @@
+{extend name="public:base"/}
+{block name="main"}
+
+<form class="layui-form" action="" method="POST">
+        <div class="layui-form-item">
+          <label class="layui-form-label">水印类型</label>
+          <div class="layui-input-inline" style="width:350px;">
+            <input type="radio" name="water" value="0" title="禁用" {if condition="($info['water'] eq '0') OR ($info['water'] eq '')" }checked{/if}>
+            <input type="radio" name="water" value="img" title="图片" {if condition="$info['water'] eq 'img'" }checked{/if}>
+            <input type="radio" name="water" value="text" title="文本" {if condition="$info['water'] eq 'text'" }checked{/if}>
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">水印位置</label>
+          <div class="layui-input-inline" style="width:350px;">
+            <input type="radio" name="wate_position" value="1" title="左上角" {if condition="$info['wate_position'] eq '1'" }checked{/if}>
+            <input type="radio" name="wate_position" value="2" title="上居中" {if condition="$info['wate_position'] eq '2'" }checked{/if}>
+            <input type="radio" name="wate_position" value="3" title="右上角" {if condition="$info['wate_position'] eq '3'" }checked{/if}>
+            <br/>
+            <input type="radio" name="wate_position" value="4" title="左居中" {if condition="$info['wate_position'] eq '4'" }checked{/if} >
+            <input type="radio" name="wate_position" value="5" title="正居中" {if condition="$info['water'] eq '5'" }checked{/if} >
+            <input type="radio" name="wate_position" value="6" title="右居中" {if condition="$info['wate_position'] eq '6'" }checked{/if} >
+            <br/>
+            <input type="radio" name="wate_position" value="7" title="左下角" {if condition="$info['wate_position'] eq '7'" }checked{/if} >
+            <input type="radio" name="wate_position" value="8" title="下居中" {if condition="$info['water'] eq '8'" }checked{/if} >
+            <input type="radio" name="wate_position" value="9" title="右下角" {if condition="($info['wate_position'] eq '9') OR ($info['wate_position'] eq '')" }checked{/if} >
+            <br/>
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">水印图片</label>
+          <div class="layui-input-inline" style="width:350px;">
+            <input type="text" name="wate_path"  lay-verify="wate_path" placeholder="水印图片地址" autocomplete="off" class="layui-input"  value="{$info['wate_path']}">
+          </div>
+          <div class="layui-word-aux">
+            <img src="{$info['wate_path']}" id="wate_path" style="width:35px;{if condition="$info['wate_path'] eq ''"}display:none;{/if}">
+            <button type="button" class="layui-btn layui-btn-small fileupload" lay-data="{data:{type:'image'},accept:'images'}" data-name="src">
+              <i class="layui-icon">&#xe64a;</i>上传图片
+            </button>
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">水印透明度</label>
+          <div class="layui-input-inline" style="width:350px;margin-top: 17px;">
+            <!-- <input type="text" name="wate_transparent"  placeholder="水印透明度" autocomplete="off" class="layui-input"  value="{$info['px']}"> -->
+              <div id="wate_transparent" ></div>
+              <input type="hidden" name="wate_transparent"  value="{$info['wate_transparent']}" />
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">水印文字</label>
+          <div class="layui-input-inline" style="width:350px;">
+            <input type="text" name="wate_text" lay-verify="wate_text" placeholder="请输入水印文字" autocomplete="off" class="layui-input"  value="{$info['wate_text']}">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">水印字体</label>
+          <div class="layui-input-inline" style="width:350px;">
+            <input type="text" name="text_font"  placeholder="请输入水印字体" autocomplete="off" class="layui-input"  value="{$info['text_font']}">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">字体颜色</label>
+          <div class="layui-input-inline" style="width:350px;">
+
+              <div class="layui-input-inline" style="width: 120px;">
+                <input type="text" name="text_color" lay-verify="text_color"  placeholder="请输入字体颜色" class="layui-input" id="text_color" value="{$info['text_color']}" >
+              </div>
+              <div class="layui-inline" style="left: -11px;">
+                <div id="test-form"></div>
+              </div>
+          </div>
+          <!-- <div class="layui-word-aux layui-form-mid">
+             <input type="color"  onchange='$("#color").val($(this)[0].value);' value=value="{$info['text_color']}" >
+          </div> -->
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">字体大小</label>
+          <div class="layui-input-inline" style="width:350px;">
+            <input type="number" name="text_size" lay-verify="text_size"  placeholder="请输入字体大小" autocomplete="off" class="layui-input"  value="{$info['text_size']}">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <div class="layui-input-block">
+            <button class="layui-btn" lay-submit="" lay-filter="formDemo">立即提交</button>
+          </div>
+        </div>
+</form>
+
+<script type="text/javascript">
+	layui.use(['form','layedit','upload','slider','colorpicker'], function(){
+	  var form = layui.form
+    ,upload  = layui.upload,
+    slider = layui.slider,
+    colorpicker=layui.colorpicker;
+
+     //上传
+    upload.render({
+      elem: '.fileupload' //绑定元素
+      ,url: '{:Url('common/fileupload',array('notwater'=>'1'))}' //上传接口
+      ,before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
+
+        layer.load(); //上传loading
+      }
+      ,done: function(res,index){ 
+
+          layer.closeAll('loading');
+
+          if(res.status=='1'){ 
+            alert("上传成功~"); 
+
+              var item = this.item;
+              layui.$("input[name='wate_path']").val(res.path);
+              $("#wate_path").attr("src",res.path);
+              $("#wate_path").show();
+
+          }else{
+            alert("上传失败,请重试！");
+          }
+      }
+      ,error: function(){
+          layer.closeAll('loading');
+          alert("上传失败,请重试！");
+        //请求异常回调
+      }
+      ,field:'file' //字段名
+
+    });
+    
+  layer.photos({
+    photos: 'div'
+    ,anim: 5 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
+  }); 
+
+  slider.render({
+    elem: '#wate_transparent'
+    ,value: <?php echo empty($info['wate_transparent'])?"80":$info['wate_transparent']; ?> 
+    ,input: true //输入框
+    // ,setTips: function(value){ //自定义提示文本
+    // return  '透明度'+value + '%';
+    // }
+    ,change: function(value){
+      $("input[name='wate_transparent']").val(value);
+    }
+  });
+
+  colorpicker.render({
+    elem: '#test-form'
+    ,color: '{$info['text_color']}'
+    ,done: function(color){
+      $('#text_color').val(color);
+    }
+  });
+
+  form.verify({
+    wate_path: function(value, item){ //value：表单的值、item：表单的DOM对象
+      var type=$("input[name='water']:checked").val();
+      if(type=='img' && value ==''){
+        return "请上传水印图片";
+      }
+    },
+    wate_text: function(value, item){ //value：表单的值、item：表单的DOM对象
+      var type=$("input[name='water']:checked").val();
+      if(type=='text' && value ==''){
+        return "请输入水印文字";
+      }
+    },
+    text_color: function(value, item){ //value：表单的值、item：表单的DOM对象
+      var type=$("input[name='water']:checked").val();
+      if(type=='text' && value ==''){
+        return "请输入水印颜色";
+      }
+    },
+    text_size: function(value, item){ //value：表单的值、item：表单的DOM对象
+      var type=$("input[name='water']:checked").val();
+      if(type=='text' && value ==''){
+        return "请输入文字大小";
+      }
+    }
+
+  });      
+     
+
+	});
+</script>
+
+{/block}

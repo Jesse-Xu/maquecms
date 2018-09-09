@@ -1,0 +1,177 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="gb2312">
+<title>{$newsinfo['title']}</title>
+<meta name="keywords" content="{$newsinfo['keyword']}" />
+<meta name="description" content="{$newsinfo['description']}" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="__INDEX__/boke/css/base.css" rel="stylesheet">
+<link href="__INDEX__/boke/css/index.css" rel="stylesheet">
+<link href="__INDEX__/boke/css/m.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/jquery/2.0.1/jquery.js"></script>
+<!-- <script src="__INDEX__/bokejs/jquery-2.1.1.min.js"></script> -->
+<!--[if lt IE 9]>
+<script src="__INDEX__/bokejs/modernizr.js"></script>
+<![endif]-->
+
+</head>
+<body>
+<header>
+  <div class="tophead">
+    <div class="logo"><a href="/">{$site['title']}</a></div>
+    <div id="mnav">
+      <h2><span class="navicon"></span></h2>
+      <ul>
+        {cms:nav name="v" }
+          <li><a href="{$v['url']}">{$v['catename']}</a></li>
+        {/cms:nav}
+      </ul>
+    </div>
+    <nav class="topnav" id="topnav">
+      <ul>
+        {cms:nav name="v" }
+          <li><a href="{$v['url']}">{$v['catename']}</a></li>
+        {/cms:nav}
+      </ul>
+    </nav>
+  </div>
+</header>
+<article>
+  <h1 class="t_nav"><span>您现在的位置是：首页 > 
+  {cms:mianbaoxie laber="span"  fengefu=" > " /}
+
+  </span><a href="/" class="n1">网站首页</a><a href="{$cateinfo['url']}" class="n2">{$cateinfo['catename']}</a></h1>
+  <div class="infos">
+    <div class="newsview">
+      <h3 class="news_title">{$newsinfo['title']}</h3>
+      <div class="news_author"><span class="au01"><a href="mailto:dancesmiling@qq.com">{$newsinfo['authorname']}</a></span><span class="au02">{$newsinfo['pushtime']}</span><span class="au03">共<b>{$newsinfo['hits']}</b>人围观</span></div>
+      <div class="tags"></div>
+      <div class="news_about"><strong>简介</strong>{$newsinfo['abstract']}</div>
+      <div class="news_infos"> {$newsinfo['content']|htmlspecialchars_decode|raw} </div>
+    </div>
+    <div class="share"> </div>
+    <div class="nextinfo">
+      <p>上一篇：{cms:newsnode type="before" /}</p>
+      <p>下一篇：{cms:newsnode type="after" /}</p>
+    </div>
+    <div class="otherlink">
+      <h2>推荐文章</h2>
+      <ul>
+      {cms:news  limit="10" name="v" keyword="as"}
+        <li><a href="{$v['url']}" title="{$v['title']}">{$v['title']}</a></li>
+      {/cms:news}
+        
+      </ul>
+    </div>
+    <div class="news_pl" >
+      <h2>文章评论</h2>
+      <form action="{:url('comment')}" method="post" class="commen" style="text-align:center;padding-top:10px;">
+      <input type="hidden" name="newsid" value="{$data['newsid']}"> 
+      <input type="hidden" name="pid" value=""> 
+      <input type="hidden" name="floor" value=""> 
+        <textarea name="content" style="width:95%;padding:10px;margin:0 auto;" rows="5"></textarea>
+         <button type="submit">评论</button>
+      </form>
+      <ul>
+      {cms:comment name="v" }
+      
+        <li  class="gbko">
+          <img src="{$v['avatar']}" style="max-width:35px;">
+          <div>
+            {$v['nickname']}       {$v['addtime']}
+          </div>
+          <div>
+            {$v['content']} <span data-name="{$v['nickname']}" data-pid="{$v['id']}" data-floor="{$v['id']}" class="huifu" style="float:right;">回复</span>
+          </div>
+          <ul>
+            {cms:comment name="vs" newsid="17" floor="$v['id']"}
+            <li  class="gbko">
+              <img src="{$v['avatar']}" style="max-width:35px;">
+              <div>
+                {$vs['nickname']}  {$vs['addtime']}
+              </div>
+              <div>
+                {$vs['content']} <span data-name="{$v['nickname']}" data-pid="{$vs['id']}" data-floor="{$v['id']}" class="huifu" style="float:right;">回复</span>
+              </div>
+              
+            </li>
+            {/cms:comment}
+
+      </ul>
+        </li>
+      {/cms:comment}
+
+      </ul>
+    </div>
+    
+    <script type="text/javascript">
+        $('.huifu').click(function(){
+
+          $("input[name='pid']").val($(this).attr('data-pid'));
+          $("input[name='floor']").val($(this).attr('data-floor'));
+
+          $("textarea[name='content']").attr("placeholder","回复给"+$(this).attr('data-name')+"：");
+        });
+    </script>
+  </div>
+  <div class="sidebar">
+    <div class="search">
+      <form action="/list.html" method="post" name="searchform" id="searchform">
+        <input name="keyword" id="keyword" class="input_text" value="请输入关键字" style="color: rgb(153, 153, 153);" onfocus="if(value=='请输入关键字'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='请输入关键字'}" type="text">
+        <input name="show" value="title" type="hidden">
+
+        <input name="Submit" class="input_submit" value="搜索" type="submit">
+      </form>
+    </div>
+    <div class="lmnav">
+      <h2 class="hometitle">栏目导航</h2>
+      <ul class="navbor">
+        {cms:nav name="v" }
+          <li><a href="{$v['url']}">{$v['catename']}</a></li>
+        {/cms:nav}
+      </ul>
+    </div>
+    <div class="paihang">
+      <h2 class="hometitle">点击排行</h2>
+      <ul>
+       {cms:news  desc="hots desc" limit="10" name="v"}
+        <li><b><a href="{$v['url']}" target="_blank">{$v['title']}</a></b>
+          <p><i><img src="{$v['thumb']}"></i>{$v['abstract']}</p>
+        </li>
+        {/cms:news}
+      </ul>
+    </div>
+    <div class="cloud">
+      <h2 class="hometitle">标签云</h2>
+      <ul>
+        {cms:nav name="v" }
+          <a href="{$v['url']}">{$v['catename']}</a>
+        {/cms:nav}
+      </ul>
+    </div>
+    <div class="paihang">
+      <h2 class="hometitle">站长推荐</h2>
+      <ul>
+      {cms:news  top="1" limit="10" name="v"}
+        <li><b><a href="{$v['url']}" target="_blank">{$v['title']}</a></b>
+          <p><i><img src="{$v['thumb']}"></i>{$v['abstract']}</p>
+        </li>
+        {/cms:news}
+      </ul>
+    </div>
+    <div class="weixin">
+      <h2 class="hometitle">官方微信</h2>
+      <ul>
+        <img src="" title="官方微信">
+      </ul>
+    </div>
+    <div class="ad" id="left_flow2"> <img src="" title="官方微信">  </div>
+  </div>
+</article>
+<footer>
+  <p>Design by <a href="/">杨青个人博客</a> <a href="/">蜀ICP备11002373号-1</a></p>
+</footer>
+
+</body>
+</html>

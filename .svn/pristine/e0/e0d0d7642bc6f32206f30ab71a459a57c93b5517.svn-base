@@ -1,0 +1,69 @@
+
+//左边菜单栏目点击
+$(".layui-logo").click(function(){
+ 
+    if($(".left-menu").css("display")=='block'){
+      $(".left-menu").css("display","none");
+      $(".layui-body,.layui-footer").css("left","0px");
+    }else{
+      $(".left-menu").css("display","block");
+      $(".layui-body,.layui-footer").css("left","200px");
+    }
+  });
+
+//弹出框
+function alert(data='操作成功~',url=''){
+
+
+  //不作任何操作
+  if(url==''){
+      layer.open({
+        title: '提示',
+        content: data
+      }); 
+  //刷新
+  }else if(url=='1' || url=='reload'){
+    layer.open({
+        title: '提示',
+        content: data,
+        yes: function(){
+            location.reload();
+        },cancel: function(){ 
+            location.reload();
+        }
+    }); 
+  //跳转
+  }else{
+     layer.open({
+        title: '提示',
+        content: data,
+        yes: function(){
+            location.href=url;
+        },cancel: function(){ 
+            location.href=url;
+        }
+      });  
+  }
+ 
+}
+
+/*修改状态*/
+function setstatus(url,id,status,type){
+    if(type){
+
+      layer.confirm('是否确认当前操作?', {icon: 3, title:'提示'}, function(index){
+        $.post(url,{"id":id,"status":status},function(data){
+            alert(data.msg,1);
+        },'JSON');
+      
+      });
+    }else{
+      $.post(url,{"id":id,"status":status},function(data){
+        alert(data.msg,1);
+      },'JSON');
+    }    
+}
+
+
+
+

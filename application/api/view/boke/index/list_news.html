@@ -1,0 +1,132 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="gb2312">
+<title>{$site['title']}</title>
+<meta name="keywords" content="个人博客,杨青个人博客,个人博客模板,杨青" />
+<meta name="description" content="杨青个人博客，是一个站在web前端设计之路的女程序员个人网站，提供个人博客模板免费资源下载的个人原创网站。" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="__INDEX__/boke/css/base.css" rel="stylesheet">
+<link href="__INDEX__/boke/css/index.css" rel="stylesheet">
+<link href="__INDEX__/boke/css/m.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+<script src="js/modernizr.js"></script>
+<![endif]-->
+<script>
+window.onload = function ()
+{
+  var oH2 = document.getElementsByTagName("h2")[0];
+  var oUl = document.getElementsByTagName("ul")[0];
+  oH2.onclick = function ()
+  {
+    var style = oUl.style;
+    style.display = style.display == "block" ? "none" : "block";
+    oH2.className = style.display == "block" ? "open" : ""
+  }
+}
+</script>
+</head>
+<body>
+<header>
+  <div class="tophead">
+    <div class="logo"><a href="/">{$site['title']}</a></div>
+    <div id="mnav">
+      <h2><span class="navicon"></span></h2>
+      <ul>
+        {cms:nav name="v" }
+          <li><a href="{$v['url']}">{$v['catename']}</a></li>
+        {/cms:nav}
+      </ul>
+    </div>
+    <nav class="topnav" id="topnav">
+      <ul>
+        {cms:nav name="v" }
+          <li><a href="{$v['url']}">{$v['catename']}</a></li>
+        {/cms:nav}
+      </ul>
+    </nav>
+  </div>
+</header>
+<article>
+  <h1 class="t_nav"><span>不要轻易放弃。学习成长的路上，我们长路漫漫，只因学无止境。 </span><a href="/" class="n1">网站首页</a><a href="/" class="n2">学无止境</a></h1>
+  <div class="blogs">
+    <div class="mt20"></div>
+    
+    {foreach $newslist as $v}
+    <li> <span class="blogpic"><a href="{$v['url']}"></a></span>
+      <h3 class="blogtitle"><a href="{$v['url']}">{$v['title']}</a></h3>
+      <div class="bloginfo">
+        <p>{$v['abstract']}</p>
+      </div>
+      <div class="autor"><span class="lm"><a href="/" title="CSS3|Html5" target="_blank" class="classname">{$v['authorname']}</a></span><span class="dtime">{$v['pushtime']}</span><span class="viewnum">浏览（<a href="/">{$v['hits']}</a>）</span><span class="readmore"><a href="/">阅读原文</a></span></div>
+    </li>
+    {/foreach}
+      
+
+      <div class="pagelist">{$page|raw}</div>
+
+    <!-- <div class="pagelist"><a title="Total record">&nbsp;<b>45</b> </a>&nbsp;&nbsp;&nbsp;<b>1</b>&nbsp;<a href="/download/index_2.html">2</a>&nbsp;<a href="/download/index_2.html">下一页</a>&nbsp;<a href="/download/index_2.html">尾页</a></div> -->
+  </div>
+  <div class="sidebar">
+    <div class="search">
+      <form action="/e/search/index.php" method="post" name="searchform" id="searchform">
+        <input name="keyboard" id="keyboard" class="input_text" value="请输入关键字" style="color: rgb(153, 153, 153);" onfocus="if(value=='请输入关键字'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='请输入关键字'}" type="text">
+        <input name="show" value="title" type="hidden">
+        <input name="tempid" value="1" type="hidden">
+        <input name="tbname" value="news" type="hidden">
+        <input name="Submit" class="input_submit" value="搜索" type="submit">
+      </form>
+    </div>
+    <div class="lmnav">
+      <h2 class="hometitle">栏目导航</h2>
+      <ul class="navbor">
+        {cms:nav name="v" }
+          <li><a href="{$v['url']}">{$v['catename']}</a></li>
+        {/cms:nav}
+      </ul>
+    </div>
+    <div class="paihang">
+      <h2 class="hometitle">点击排行</h2>
+      <ul>
+        {cms:news  desc="hots desc" limit="10" name="v"}
+        <li><b><a href="{$v['url']}" target="_blank">{$v['title']}</a></b>
+          <p><i><img src="{$v['thumb']}"></i>{$v['abstract']}</p>
+        </li>
+        {/cms:news}
+        
+      </ul>
+    </div>
+    <div class="cloud">
+      <h2 class="hometitle">标签云</h2>
+      <ul>
+        {cms:nav name="v" }
+          <a href="{$v['url']}">{$v['catename']}</a>
+        {/cms:nav}
+      </ul>
+    </div>
+    <div class="paihang">
+      <h2 class="hometitle">站长推荐</h2>
+      <ul>
+        {cms:news  top="1" limit="10" name="v"}
+        <li><b><a href="{$v['url']}" target="_blank">{$v['title']}</a></b>
+          <p><i><img src="{$v['thumb']}"></i>{$v['abstract']}</p>
+        </li>
+        {/cms:news}
+      </ul>
+    </div>
+    <div class="weixin">
+      <h2 class="hometitle">官方微信</h2>
+      <ul>
+        <img src="images/wx.jpg">
+      </ul>
+    </div>
+  </div>
+</article>
+<footer>
+  <p>Design by <a href="/">杨青个人博客</a> <a href="/">蜀ICP备11002373号-1</a></p>
+</footer>
+<script src="__INDEX__/boke/js/nav.js"></script>
+</body>
+</html>

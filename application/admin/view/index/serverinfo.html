@@ -1,0 +1,22 @@
+{extend name="public:base"/}
+
+{block name="main"}
+
+<table class="layui-table">
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>参数</th>
+    </tr> 
+  </thead>
+  <tbody>
+    {foreach $info  as $key => $v}
+    <tr>
+      <td>{$key}</td>
+      <td>{$v}</td>
+    </tr>
+    {/foreach}
+  </tbody>
+</table>
+
+{/block}

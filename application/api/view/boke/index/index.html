@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="gb2312">
+<title>{$site.title}</title>
+<meta name="keywords" content="个人博客,杨青个人博客,个人博客模板,杨青" />
+<meta name="description" content="杨青个人博客，是一个站在web前端设计之路的女程序员个人网站，提供个人博客模板免费资源下载的个人原创网站。" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="__INDEX__/boke/css/base.css" rel="stylesheet">
+<link href="__INDEX__/boke/css/index.css" rel="stylesheet">
+<link href="__INDEX__/boke/css/m.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+<script src="js/modernizr.js"></script>
+<![endif]-->
+<script>
+window.onload = function ()
+{
+	var oH2 = document.getElementsByTagName("h2")[0];
+	var oUl = document.getElementsByTagName("ul")[0];
+	oH2.onclick = function ()
+	{
+		var style = oUl.style;
+		style.display = style.display == "block" ? "none" : "block";
+		oH2.className = style.display == "block" ? "open" : ""
+	}
+}
+</script>
+</head>
+<body>
+<header>
+  <div class="tophead">
+    <div class="logo"><a href="/">{$site.title}</a></div>
+    <div id="mnav">
+      <h2><span class="navicon"></span></h2>
+      <ul>
+        <li><a href="{$site['yuming']}">网站首页</a></li>
+        {foreach :catelists() as $v}
+        <li><a href="{$v['url']}">{$v['catename']}</a></li>
+        {/foreach}
+      </ul>
+    </div>
+    <nav class="topnav" id="topnav">
+      <ul>
+        <li><a href="{$site['yuming']}">网站首页</a></li>
+        {foreach :catelists() as $v}
+        <li><a href="{$v['url']}">{$v['catename']}</a></li>
+        {/foreach}
+      </ul>
+    </nav>
+  </div>
+</header>
+<div class="picshow">
+  <ul>
+    <li><a href="/"><i><img src="__INDEX__/boke/images/b01.jpg"></i>
+      <div class="font">
+        <h3>麻雀cms</h3>
+      </div>
+      </a></li>
+    <li><a href="/"><i><img src="__INDEX__/boke/images/b02.jpg"></i>
+      <div class="font">
+        <h3>永久免费</h3>
+      </div>
+      </a></li>
+    <li><a href="/"><i><img src="__INDEX__/boke/images/b03.jpg"></i>
+      <div class="font">
+        <h3>快速开发</h3>
+      </div>
+      </a></li>
+    <li><a href="/"><i><img src="__INDEX__/boke/images/b04.jpg"></i>
+      <div class="font">
+        <h3>个人博客模板《早安》</h3>
+      </div>
+      </a></li>
+    <li><a href="/"><i><img src="__INDEX__/boke/images/b05.jpg"></i>
+      <div class="font">
+        <h3>个人博客模板《早安》</h3>
+      </div>
+      </a></li>
+  </ul>
+</div>
+<article>
+  <div class="blogs">
+    {foreach :listpage() as $v}
+    <li> <span class="blogpic"><a href="{$v['url']}"><img src="{$v['thumb']}"></a></span>
+      <h3 class="blogtitle"><a href="{$v['url']}">{$v['title']}</a></h3>
+      <div class="bloginfo">
+        <p>{$v['abstract']}</p>
+      </div>
+      <div class="autor"><span class="lm"><a href="{$v['url']}" title="CSS3|Html5" target="_blank" class="classname">{$v['catename']}</a></span><span class="dtime">{$v['pushtime']}</span><span class="viewnum">浏览（<a href="{$v['url']}">{$v['hits']}</a>）</span><span class="readmore"><a href="{$v['url']}">阅读原文</a></span></div>
+    </li>
+    {/foreach}
+  </div>
+  <div class="sidebar">
+    <div class="about">
+      <div class="avatar"> <img src="__INDEX__/boke/images/avatar.jpg" alt=""> </div>
+      <p class="abname">dancesmile | 杨青</p>
+      <p class="abposition">Web前端设计师、网页设计</p>
+      <div class="abtext"> 一个80后草根女站长！09年入行。一直潜心研究web前端技术，一边工作一边积累经验，分享一些个人博客模板，以及SEO优化等心得。 </div>
+    </div>
+    <div class="search">
+      <form action="/e/search/index.php" method="post" name="searchform" id="searchform">
+        <input name="keyboard" id="keyboard" class="input_text" value="请输入关键字" style="color: rgb(153, 153, 153);" onfocus="if(value=='请输入关键字'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='请输入关键字'}" type="text">
+        <input name="show" value="title" type="hidden">
+        <input name="tempid" value="1" type="hidden">
+        <input name="tbname" value="news" type="hidden">
+        <input name="Submit" class="input_submit" value="搜索" type="submit">
+      </form>
+    </div>
+    <div class="cloud">
+      <h2 class="hometitle">标签云</h2>
+      <ul>
+      {foreach :CateList() as $v}
+        <a href="/">{$v['catename']}</a>
+      {/foreach}
+      </ul>
+    </div>
+    <div class="paihang">
+      <h2 class="hometitle">点击排行</h2>
+      <ul>
+      {foreach :newsrank() as $v}
+        <li><b><a href="{$v['url']}" target="_blank">{$v['title']}</a></b>
+          <p><i><img src="__INDEX__/boke/images/t02.jpg"></i>{$v['abstract']}</p>
+        </li>
+      {/foreach}  
+      </ul>
+    </div>
+    <div class="paihang">
+      <h2 class="hometitle">站长推荐</h2>
+      <ul>
+        {foreach :hotlist() as $v}
+        <li><b><a href="{$v['url']}" target="_blank">{$v['title']}</a></b>
+          <p><i><img src="__INDEX__/boke/images/t02.jpg"></i>{$v['abstract']}</p>
+        </li>
+        {/foreach} 
+      </ul>
+    </div>
+    <div class="links">
+      <h2 class="hometitle">友情链接</h2>
+      <ul>
+      {foreach :linklist() as $v}
+        <li><a href="{$v['link']}" title="{$v['name']}">{$v['name']}</a></li>
+        
+      {/foreach}
+      </ul>
+    </div>
+    <div class="weixin">
+      <h2 class="hometitle">官方微信</h2>
+      <ul>
+        <img src="__INDEX__/boke/images/wx.jpg">
+      </ul>
+    </div>
+  </div>
+</article>
+<div class="blank"></div>
+<footer>
+  <p>Design by <a href="/">杨青个人博客</a> <a href="/">{$site['beian']}</a></p>
+</footer>
+<script src="js/nav.js"></script>
+</body>
+</html>

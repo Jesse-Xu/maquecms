@@ -1,0 +1,70 @@
+{extend name="public:base"}
+
+{block name="main"}
+<div class="layui-form">
+  条件搜索：
+  <div class="layui-inline">
+    <input class="layui-input" name="keyword" id="keyword"  placeholder="请输入关键字">
+  </div>
+  <div class="layui-inline">
+    <input class="layui-input" name="start" id="start"  placeholder="请输入开始时间">
+  </div>
+  <div class="layui-inline">
+    <input class="layui-input" name="end" id="end"  placeholder="请输入结束时间">
+  </div>
+  
+  <button class="layui-btn" lay-filter="submit" lay-submit>搜索</button>
+  <button class="layui-btn layui-btn-primary"  lay-filter="submit" lay-submit>重置</button>
+
+
+</div>
+<table class="layui-table" lay-data="{height:500,url:'{:Url('loglist')}', page:true, id:'videolist'}" lay-filter="table">
+  <thead>
+    <tr>
+      <th lay-data="{field:'logid',sort: true}">ID</th>
+      <th lay-data="{field:'name'}">管理员名称</th>
+      <th lay-data="{field:'content'}">日志</th>
+      <th lay-data="{field:'addtime', sort: true}">操作时间</th>
+    </tr>
+  </thead>
+</table>
+
+
+<script>
+layui.use(['table','laydate','form'], function(){
+  
+  var table = layui.table;
+  var laydate = layui.laydate;
+  var form = layui.form;
+    laydate.render({
+      elem: '#start',
+      max: 0
+    });
+    laydate.render({
+      elem: '#end',
+      max: 1
+   });
+
+  //搜索
+  form.on('submit(submit)', function(data){
+   
+    var field=data.field;
+
+    if($(data.elem).html()=="重置"){
+
+        $("input").val("");
+        field="";
+    }
+
+    table.reload('table', {
+       where: field
+    });
+
+    return false; 
+  });
+
+
+});
+
+</script>
+{/block}
