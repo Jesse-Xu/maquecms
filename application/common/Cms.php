@@ -19,10 +19,12 @@ class Cms extends TagLib{
         'link'      =>  ['attr' => 'name,order,limit,field', 'close' => 1], //友链
         'news'      =>  ['attr' => 'cateid,newsid,keyword,order,limit,field,hot,top', 'close' => 1], //新闻列表
         'author'    =>  ['attr' => 'name,authorid,px,limit,field', 'close' => 1], //作者列表
-        'comment'  =>  ['attr' => 'name,limit,newsid,pid,floor,order,field', 'close' => 1], //评论
-        'newsnode'  =>  ['attr' => 'type,cateid,newsid,order,limit,field,hot,top,laber,class,id', 'close' => 0], //新闻节点，上一篇，，下一盘 
+        'comment'  =>   ['attr' => 'name,limit,newsid,pid,floor,order,field', 'close' => 1], //评论
+        'newsnode'  =>  ['attr' => 'type,cateid,newsid,order,limit,field,hot,top,laber,class,id', 'close' => 0], //新闻节点，上一篇，，下一篇
+        'newspage'  =>  ['attr' => 'class,id,text,start,end,laber', 'close' => 0], //翻页，上一页，下一页  
         'mianbaoxie'  =>  ['attr' => 'cateid,newsid,class,id,fengefu,start,end,laber', 'close' => 0], //面包屑 
         'sitemap'  =>  ['attr' => 'class,id,fengefu,start,end,laber', 'close' => 0], //面包屑 
+
     ];
 
     public $arr=array();
@@ -297,6 +299,45 @@ class Cms extends TagLib{
         $parse = '<?php ';
 
         $parse .= 'echo "<'.$laber.' href=\"'.$info["url"].'\" class=\"'.$class.'\" id=\"'.$id.'\">'.$info["title"].'</'.$laber.'>";';  
+
+        $parse .= ' ?>';
+        
+        return $parse;
+
+    }
+
+    #翻页 上一页befor，下一页after 模板缓存严重，暂不可用# 
+    public function tagNewsPage($tag, $content){
+
+        $param=input();
+        //echo $param['page']."<br/><br/>";exit;
+        if(isset($tag['newsid']) || isset($param['newsid'])){
+            $param['newsid']=!empty($tag['newsid'])?$tag['newsid']:$param['newsid'];
+        }
+
+        //上一页
+        if($tag['type']=='befor'){
+            if($param['page']>=2){
+               $param['page']=!empty($param['page'])?$param['page']-1:"1"; 
+            }else{
+                unset($param['page']);
+            }
+            
+        }else{ //下一页
+            $param['page']=!empty($param['page'])?$param['page']+1:"2";
+        }
+        
+        $url=url('',$param);
+   
+        $laber=isset($tag['laber'])?$tag['laber']:"a"; 
+
+        $class=isset($tag['class'])?$tag['class']:""; 
+
+        $id=isset($tag['id'])?$tag['id']:""; 
+        
+        $parse = '<?php ';
+
+        $parse .= 'echo "<'.$laber.' href=\"'.url("",$param).'\" class=\"'.$class.'\" id=\"'.$id.'\">'.$tag["text"].'</'.$laber.'>";';  
 
         $parse .= ' ?>';
         

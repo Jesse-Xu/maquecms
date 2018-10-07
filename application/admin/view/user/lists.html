@@ -11,11 +11,12 @@
   <div class="layui-inline">
     <input class="layui-input" name="keyword"  placeholder="请输入搜索关键字">
   </div>
-
-  <button class="layui-btn" lay-filter="submit" lay-submit>搜索</button>
-  <button class="layui-btn layui-btn-primary"  lay-filter="submit" lay-submit>重置</button>
-  <button class="layui-btn layui-btn-normal" onclick="ExportExcel();" >导出用户</button>
-  <button class="layui-btn layui-btn-normal" type="reset" data-type="reload" lay-filter="reset" lay-submit lay-event="ImportExcel">导入用户</button>
+  <div class="layui-inline">
+    <button class="layui-btn" lay-filter="submit" lay-submit>搜索</button>
+    <button class="layui-btn layui-btn-primary"  lay-filter="submit" lay-submit>重置</button>
+    <button class="layui-btn layui-btn-normal" onclick="ExportExcel();" >导出用户</button>
+    <button class="layui-btn layui-btn-normal" type="reset" data-type="reload" lay-filter="reset" lay-submit lay-event="ImportExcel">导入用户</button>
+  </div>
 
 </div>
 <table class="layui-table" lay-data="{height:500,url:location.href, page:true, id:'table'}" lay-filter="table">

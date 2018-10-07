@@ -11,10 +11,11 @@
   <div class="layui-inline">
     <input class="layui-input" name="keyword"  placeholder="请输入搜索关键字">
   </div>
-
-  <button class="layui-btn" data-type="reload" lay-filter="submit" lay-submit>搜索</button>
-  <button class="layui-btn layui-btn-primary"  lay-filter="submit" lay-submit>重置</button>
- 
+  <div class="layui-inline">
+    <button class="layui-btn" data-type="reload" lay-filter="submit" lay-submit>搜索</button>
+    <button class="layui-btn layui-btn-primary"  lay-filter="submit" lay-submit>重置</button>
+    <a href="{:url('auth/admininfo')}" class="layui-btn">添加管理员</a>
+  </div>
 
 </div>
 <table class="layui-table" lay-data="{height:500,url:location.href, page:true, id:'table'}" lay-filter="table">

@@ -10,7 +10,7 @@ class User extends Validate{
 
 		$rule = [
 			'username'  => 'require',
-			'password'   => 'require',
+			'password'   => 'require|',
 		];
 
 		$msg = [

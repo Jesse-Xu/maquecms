@@ -151,7 +151,8 @@ class Query
             // 调用扩展查询方法
             array_unshift($args, $this);
 
-            return Container::getInstance()->invoke(self::$extend[strtolower($method)], $args);
+            return Container::getInstance()
+                ->invoke(self::$extend[strtolower($method)], $args);
         } elseif (strtolower(substr($method, 0, 5)) == 'getby') {
             // 根据某个字段获取记录
             $field = Loader::parseName(substr($method, 5));
@@ -176,7 +177,7 @@ class Query
             call_user_func_array([$this->model, $method], $args);
             return $this;
         } else {
-            throw new Exception('method not exist:' . static::class . '->' . $method);
+            throw new Exception('method not exist:' . ($this->model ? get_class($this->model) : static::class) . '->' . $method);
         }
     }
 
@@ -304,14 +305,14 @@ class Query
      * @param  string      $sql    sql指令
      * @param  array       $bind   参数绑定
      * @param  boolean     $master 是否在主服务器读操作
-     * @param  bool|string $class  指定返回的数据集对象
+     * @param  bool        $pdo    是否返回PDO对象
      * @return mixed
      * @throws BindParamException
      * @throws PDOException
      */
-    public function query($sql, $bind = [], $master = false, $class = false)
+    public function query($sql, $bind = [], $master = false, $pdo = false)
     {
-        return $this->connection->query($sql, $bind, $master, $class);
+        return $this->connection->query($sql, $bind, $master, $pdo);
     }
 
     /**
@@ -641,7 +642,10 @@ class Query
         if (!empty($this->options['group'])) {
             // 支持GROUP
             $options = $this->getOptions();
-            $subSql  = $this->options($options)->field('count(' . $field . ') AS think_count')->bind($this->bind)->buildSql();
+            $subSql  = $this->options($options)
+                ->field('count(' . $field . ') AS think_count')
+                ->bind($this->bind)
+                ->buildSql();
 
             $query = $this->newQuery()->table([$subSql => '_group_count_']);
 
@@ -1020,16 +1024,11 @@ class Query
      * 表达式方式指定查询字段
      * @access public
      * @param  string $field    字段名
-     * @param  array  $bind     参数绑定
      * @return $this
      */
-    public function fieldRaw($field, array $bind = [])
+    public function fieldRaw($field)
     {
         $this->options['field'][] = $this->raw($field);
-
-        if ($bind) {
-            $this->bind($bind);
-        }
 
         return $this;
     }
@@ -1420,11 +1419,17 @@ class Query
      */
     public function whereExp($field, $condition, $bind = [], $logic = 'AND')
     {
+        if ($bind) {
+            foreach ($bind as $key => $value) {
+                if (!is_numeric($key)) {
+                    $where = str_replace(':' . $key, '?', $where);
+                }
+            }
+            $this->bind(array_values($bind));
+        }
+
         $this->options['where'][$logic][] = [$field, 'EXP', $this->raw($condition)];
 
-        if ($bind) {
-            $this->bind($bind);
-        }
         return $this;
     }
 
@@ -1438,11 +1443,17 @@ class Query
      */
     public function whereRaw($where, $bind = [], $logic = 'AND')
     {
-        $this->options['where'][$logic][] = $this->raw($where);
-
         if ($bind) {
-            $this->bind($bind);
+            foreach ($bind as $key => $value) {
+                if (!is_numeric($key)) {
+                    $where = str_replace(':' . $key, '?', $where);
+                }
+            }
+
+            $this->bind(array_values($bind));
         }
+
+        $this->options['where'][$logic][] = $this->raw($where);
 
         return $this;
     }
@@ -1750,6 +1761,9 @@ class Query
             $results = $this->page($page, $listRows)->select();
         }
 
+        $this->removeOption('limit');
+        $this->removeOption('page');
+
         return $class::make($results, $listRows, $page, $total, $simple, $config);
     }
 
@@ -1868,16 +1882,11 @@ class Query
      * 表达式方式指定Field排序
      * @access public
      * @param  string $field 排序字段
-     * @param  array  $bind  参数绑定
      * @return $this
      */
-    public function orderRaw($field, array $bind = [])
+    public function orderRaw($field)
     {
         $this->options['order'][] = $this->raw($field);
-
-        if ($bind) {
-            $this->bind($bind);
-        }
 
         return $this;
     }
@@ -2063,6 +2072,19 @@ class Query
     public function fetchPdo($pdo = true)
     {
         $this->options['fetch_pdo'] = $pdo;
+        return $this;
+    }
+
+    /**
+     * 设置是否返回数据集对象（支持设置数据集对象类名）
+     * @access public
+     * @param  bool|string  $collection  是否返回数据集对象
+     * @return $this
+     */
+    public function fetchCollection($collection = true)
+    {
+        $this->options['collection'] = $collection;
+
         return $this;
     }
 
@@ -2258,39 +2280,28 @@ class Query
     /**
      * 使用搜索器条件搜索字段
      * @access public
-     * @param  array $fields 搜索字段
-     * @param  array $data   搜索数据
-     * @param  bool  $join   是否JOIN搜索
+     * @param  array    $fields     搜索字段
+     * @param  array    $data       搜索数据
+     * @param  string   $prefix     字段前缀标识
      * @return $this
      */
-    public function withSearch(array $fields, array $data = [], $join = false)
+    public function withSearch(array $fields, array $data = [], $prefix = '')
     {
         foreach ($fields as $key => $field) {
             if ($field instanceof \Closure) {
-                $field($this, isset($data[$key]) ? $data[$key] : null, $data);
+                $field($this, isset($data[$key]) ? $data[$key] : null, $data, $prefix);
             } elseif ($this->model) {
                 // 检测搜索器
-                $method = ($join ? 'join' : '') . 'search' . Loader::parseName($field, 1) . 'Attr';
+                $fieldName = is_numeric($key) ? $field : $key;
+                $method    = 'search' . Loader::parseName($fieldName, 1) . 'Attr';
 
                 if (method_exists($this->model, $method)) {
-                    $this->model->$method($this, isset($data[$field]) ? $data[$field] : null, $data);
+                    $this->model->$method($this, isset($data[$field]) ? $data[$field] : null, $data, $prefix);
                 }
             }
         }
 
         return $this;
-    }
-
-    /**
-     * 使用搜索器条件搜索JOIN字段
-     * @access public
-     * @param  array $fields 搜索字段
-     * @param  array $data   搜索数据
-     * @return $this
-     */
-    public function withJoinSearch(array $fields, array $data)
-    {
-        return $this->withSearch($fields, $data, true);
     }
 
     /**
@@ -2415,17 +2426,16 @@ class Query
     /**
      * 参数绑定
      * @access public
-     * @param  mixed   $key   参数名
      * @param  mixed   $value 绑定变量值
      * @param  integer $type  绑定类型
      * @return $this
      */
-    public function bind($key, $value = false, $type = PDO::PARAM_STR)
+    public function bind($value = false, $type = PDO::PARAM_STR)
     {
-        if (is_array($key)) {
-            $this->bind = array_merge($this->bind, $key);
+        if (is_array($value)) {
+            $this->bind = array_merge($this->bind, $value);
         } else {
-            $this->bind[$key] = [$value, $type];
+            $this->bind[] = [$value, $type];
         }
 
         return $this;
@@ -2985,8 +2995,12 @@ class Query
      */
     protected function resultSetToModelCollection(array $resultSet)
     {
+        if (!empty($this->options['collection']) && is_string($this->options['collection'])) {
+            $collection = $this->options['collection'];
+        }
+
         if (empty($resultSet)) {
-            return $this->model->toCollection([]);
+            return $this->model->toCollection([], isset($collection) ? $collection : null);
         }
 
         // 检查动态获取器
@@ -3019,7 +3033,7 @@ class Query
         }
 
         // 模型数据集转换
-        return $result->toCollection($resultSet);
+        return $result->toCollection($resultSet, isset($collection) ? $collection : null);
     }
 
     /**
@@ -3042,7 +3056,7 @@ class Query
             }
         }
 
-        if ('collection' == $this->connection->getConfig('resultset_type')) {
+        if (!empty($this->options['collection']) || 'collection' == $this->connection->getConfig('resultset_type')) {
             // 返回Collection对象
             $resultSet = new Collection($resultSet);
         }
@@ -3081,8 +3095,6 @@ class Query
             return $result;
         }
 
-        $this->removeOption('limit');
-
         // 数据处理
         if (empty($result)) {
             return $this->resultToEmpty();
@@ -3112,8 +3124,6 @@ class Query
             return !empty($this->model) ? $this->model->newInstance([], $this->getModelUpdateCondition($this->options)) : [];
         } elseif (!empty($this->options['fail'])) {
             $this->throwNotFound($this->options);
-        } else {
-            return;
         }
     }
 
@@ -3188,7 +3198,7 @@ class Query
     {
         $result = $this->with($with)->cache($cache);
 
-        if (is_array($data) && key($data) !== 0) {
+        if ((is_array($data) && key($data) !== 0) || $data instanceof Where) {
             $result = $result->where($data);
             $data   = null;
         } elseif ($data instanceof \Closure) {

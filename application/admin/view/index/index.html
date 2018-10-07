@@ -10,7 +10,6 @@
 <div class="layui-row">
     <div class="layui-col-md6 layui-col-md-offset6 layui-btn-group-list">
    
-   
       <div class="layui-btn-group">
         <button class="layui-btn layui-btn-primary layui-btn-sm count-menu-set" data-day="0">
           今日
@@ -84,7 +83,7 @@
 </div>
 
 <div class="layui-row">
-    <div style="height:450px;" id="book">
+    <div style="height:450px;" id="money">
     </div>
 
 </div>
@@ -92,15 +91,31 @@
 
 <script type="text/javascript">
 $(function(){
-  $(".layui-btn-group button").eq(1).click();
+   $(".layui-btn-group button").eq(1).click();
 });
 
-
+//echarts3 load动画只有default,无默认动画
 $(".layui-btn-group button").click(function(){
+    let user = echarts.init(document.getElementById('user'));
+    user.showLoading({
+        text: '正在努力的读取数据中...'
+    });
+    let msg = echarts.init(document.getElementById('msg'));
+    msg.showLoading({
+        text: '正在努力的读取数据中...' 
+    });
+    let order = echarts.init(document.getElementById('order'));
+    order.showLoading({
+        text: '正在努力的读取数据中...'
+    });
+    let money = echarts.init(document.getElementById('money'));
+    money.showLoading({
+        text: '正在努力的读取数据中...'
+    });
+
 
     $(".layui-btn-group button").removeClass("count-menu-set");
     $(this).addClass("count-menu-set");
-
 
    $.post(location.href,{"type":$(this).attr('data-day')},function(data){
 
@@ -108,11 +123,14 @@ $(".layui-btn-group button").click(function(){
         $(this).text(data.sum[k]);
       }); 
 
-      SetChart('user','用户',data.user,data.day);
-      SetChart('msg','留言',data.order,data.day);
-      SetChart('order','订单',data.book,data.day);
-      SetChart('money','收入',data.money,data.day);
+      SetChart(user,'用户',data.user,data.day);
+      SetChart(msg,'留言',data.order,data.day);
+      SetChart(order,'订单',data.book,data.day);
+      SetChart(money,'收入',data.money,data.day);
+
    },'json');
+
+
    
 
 });
@@ -127,16 +145,34 @@ $("#time").click(function(){
 
       $(".layui-btn-group button").removeClass("count-menu-set");
       $(this).addClass("count-menu-set");
+
+      let user = echarts.init(document.getElementById('user'));
+      user.showLoading({
+          text: '正在努力的读取数据中...',
+      });
+      let msg = echarts.init(document.getElementById('msg'));
+      msg.showLoading({
+          text: '正在努力的读取数据中...', 
+      });
+      let order = echarts.init(document.getElementById('order'));
+      order.showLoading({
+          text: '正在努力的读取数据中...',
+      });
+      let money = echarts.init(document.getElementById('money'));
+      money.showLoading({
+          text: '正在努力的读取数据中...',
+      });
+
       $.post(location.href,{"start":start,"end":end},function(data){
         
         $(".table-count td b").each(function(k){
           $(this).text(data.sum[k]);
         }); 
         
-        SetChart('user','用户',data.user,data.day);
-        SetChart('msg','留言',data.order,data.day);
-        SetChart('order','订单',data.book,data.day);
-        SetChart('money','收入',data.money,data.day);
+        SetChart(user,'用户',data.user,data.day);
+        SetChart(msg,'留言',data.order,data.day);
+        SetChart(order,'订单',data.book,data.day);
+        SetChart(money,'收入',data.money,data.day);
 
      },'json');
    }
@@ -164,8 +200,9 @@ layui.use(['laydate', 'layer'], function(){
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
        
-    function SetChart(id,text,num,time){
-        var myChart = echarts.init(document.getElementById(id));
+
+    function SetChart(myChart,text,num,time){
+  
         option = {
             title : {
                 text: text+'增长统计',
@@ -209,9 +246,13 @@ layui.use(['laydate', 'layer'], function(){
                 }
             ]
         };
-                    
+        
+         myChart.hideLoading();
+        
         // 使用刚指定的配置项和数据显示图表。
         myChart.setOption(option);
+
+
     }
 </script>
 

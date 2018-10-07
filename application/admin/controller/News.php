@@ -2,10 +2,11 @@
 namespace app\admin\controller;
 use think\Db;
 use think\facade\Config;
-
 use app\admin\model\NewsModel;
 use app\admin\validate\NewsValidate;
+
 #@新闻管理@#
+#
 class News extends Common{
 
 	public $arr=array();
@@ -104,8 +105,7 @@ class News extends Common{
 						$data['url']="/cate-{$data['cateid']}-pid-{$data['pid']}.html";
 					}else{
 						$data['url']="/cate-{$data['cateid']}.html";
-					}
-					
+					}	
 				}
 
 				$data['uptime']=date('Y-m-d H:i:s');
@@ -177,7 +177,7 @@ class News extends Common{
 
 		if($this->request->ispost()){
 		
-			$cateid=$this->request->param('cateid');
+			$cateid=$this->request->post('cateid');
 
 			$message=NewsValidate::Del($cateid);
 			if(isset($message)){
@@ -284,6 +284,7 @@ class News extends Common{
 			return $this->fetch();
 		}
 	}
+	
 	#模型信息#
 	public function modelinfo(){
 		if($this->request->isGet()){
@@ -481,6 +482,7 @@ class News extends Common{
 
 	#分类分类#
 	public function newsinfo(){
+
 		if($this->request->isGet()){
 
 			//获取分类对应文件模板
@@ -985,12 +987,11 @@ class News extends Common{
 
 		if($this->request->ispost()){
 
-			$id=$this->request->param('id');
+			$id=$this->request->post('id');
 
-			$message=NewsValidate::Del($authorid);
-			if(isset($message)){
-				$this->error($message);
-			}
+			$message=NewsValidate::Del($id);
+
+			if(isset($message)) $this->error($message);
 
 			echo NewsModel::DataDel('comment_list',['id'=>$id]);
 		}

@@ -21,17 +21,7 @@ class Site extends Common{
             //print_r($data);exit;
             unset($data['file']);
             
-            $config="../config/site.php";
-                    
-            $info = include($config);
-
-            $info['site']=$data;
-
-            $text="<?php return ".var_export($info, true).";";
-
-            $file=Env::get('root_path') ."/config/site.php";
-           
-            $r=file_put_contents($file, $text);
+            $r=$this->WriteSite($data,'site');
 
             if($r){
                 $this->success("网站设置修改成功~");
@@ -46,14 +36,17 @@ class Site extends Common{
 
         if($this->request->isGet()){
            
-            $this->assign('info',Config::pull('water'));
+            $this->assign('info',Config::get('site.water'));
         	return $this->fetch();
 
         }else{
 
             $data=$this->request->param();
 
-            $text="<?php
+            $r=$this->WriteSite($data,'water');
+
+            //取消单个配置文件
+            /*$text="<?php
                 return [
                     
                     'water'        => '{$data['water']}', //是否开启水印，text,img
@@ -70,7 +63,7 @@ class Site extends Common{
                 
                 $file=Env::get('root_path') ."/config/water.php";
                
-                $r=file_put_contents($file, $text);
+                $r=file_put_contents($file, $text);*/
                 
                 if($r){
                     $this->success("水印设置修改成功~");
@@ -86,15 +79,18 @@ class Site extends Common{
     public function upload(){
 
         if($this->request->isGet()){
-           
-            $this->assign('info',Config::pull('upload'));
+             
+            $this->assign('info',Config::get('site.upload'));
             return $this->fetch();
 
         }else{
 
             $data=$this->request->post();
 
-            $text="<?php
+            $r=$this->WriteSite($data,'upload');
+
+            //取消单个配置文件
+            /*$text="<?php
                 return [
                     
                     'type'        => '{$data['type']}', //储存位置
@@ -116,7 +112,7 @@ class Site extends Common{
                 
                 $file=Env::get('root_path') ."/config/upload.php";
                
-                $r=file_put_contents($file, $text);
+                $r=file_put_contents($file, $text);*/
                 
                 if($r){
                     $this->success("网站设置修改成功~");
@@ -192,6 +188,23 @@ class Site extends Common{
             //$text="<?php return ".var_export($config, true).";";
 
         }
+    }
+
+    #写入配置文件#
+    protected function WriteSite($data,$field){
+
+        $site_file="../config/site.php";
+                    
+        $arr = include($site_file);
+
+        $arr[$field]=$data;
+
+        $text="<?php return ".var_export($arr, true).";";
+
+        //$file=Env::get('root_path') ."/config/site.php";
+       
+        return file_put_contents($site_file, $text);
+
     }
     
 }

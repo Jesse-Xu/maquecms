@@ -71,7 +71,7 @@ class Banner extends Common{
             }
             
             if($res==true){
-                $this->success("操作成功~",url('list'));
+                $this->success("操作成功~",url('lists'));
             } else {
                 $this->error("操作失败，请重试！");
             }  

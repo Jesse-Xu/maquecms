@@ -11,6 +11,7 @@ class Index extends Controller{
 
 	public $request;
 	public $template;
+    public $map_arr;
 
 	public function __construct(Request $request){
         
@@ -153,6 +154,21 @@ class Index extends Controller{
 
         $newsinfo=Db::name('news_list')->where($map)->find();
 
+        //判断用户是否点赞
+        if(!empty(session('user'))){
+            $map_user=array(
+                'newsid'=>$newsid,
+                'userid'=>session('user.userid')
+            );
+            $newsinfo['iszan']=Db::name('news_zan')->where($map_user)->count('id');
+        }
+        
+        $map=array(
+            'newsid'=>$newsid,
+            'status'=>'1'
+        );
+        $newsinfo['comment_num']=Db::name("comment_list")->where($map)->count('id');
+
         $map_cate=array(
             'cateid'=>$newsinfo['cateid'],
             'status'=>"1"
@@ -204,11 +220,13 @@ class Index extends Controller{
        return $list;
 
     }
+
     #评论#
     public function comment(){
+
         if($this->request->ispost()){
 
-            $post=$this->request->param();
+            $post=$this->request->post();
 
             $where=array(
                 'newsid'=>$post['newsid'],
@@ -216,19 +234,18 @@ class Index extends Controller{
                 'iscomment'=>'1'
             );
             $count=Db::name('news_list')->where($where)->count('newsid');
-            /*if($count=='0' or session('user')== '' ){
-                $this->error("评论失败！");
-            }*/
-
-            // $validate=User::comment($post);
             
-            // if(isset($validate)){
-            //     $this->error($validate);
-            // }
+            if($count=='0' ) $this->error("评论失败！");
+                
+            if(session('user')== '' ) $this->error("请先登录才可以评论");
+
+            $validate=User::comment($post);
+            
+            if(isset($validate)) $this->error($validate);
 
             if( isset($post['pid']) && $post['pid'] > 0 ){
-                $username="随即用户";
-                //$username=Db::name("comment_list")->where("id",$post['pid'])->value('username');
+                
+                $username=Db::name("comment_list")->where("id",$post['pid'])->value('username');
                 $post['content']="回复给 ".$username."：".$post['content'];
             }
 
@@ -238,50 +255,151 @@ class Index extends Controller{
                 'newsid'=>empty($post['newsid'])?"0":$post['newsid'],
                 'floor'=>empty($post['floor'])?"0":$post['floor'],
                 'pid'=>empty($post['pid'])?"0":$post['pid'],
-                'nickname'=>"昵称用户".rand(100,200),//$user['nickname'],
+                'nickname'=>$user['nickname'],
                 'userid'=>$user['userid'],
-                'avatar'=>"https://www.layui.com/template/xianyan/demo/res/static/images/info-img.png",//$user['headavatar'],
+                'avatar'=>$user['avatar'],
                 'content'=>$post['content'],
                 'status'=>"1",
                 'addtime'=>date('Y-m-d H:i:s')
             );
+
             $res=Db::name("comment_list")->insert($post);
+
             if($res!==false){
                 $this->success("评论成功~");
             }else{
                 $this->error("评论失败~");
             }
             
+        }else{
+            //评论列表
 
+            $newsid=input('newsid');
+
+            $page=input('page','1');
+            $num=input('num','10');
+
+            $map=array(
+                'newsid'=>$newsid,
+                'status'=>'1'
+            );
+
+            $list= Db::name("comment_list")->where($map)->page("$page,$num")->order('id desc')->select();
+            return json($list);exit;
         }
     }
-    #站点地图#
-    public function sitemap(){
-        $map=array(
-            'pid'=>'0',
-            'status'=>'1'
-        );
-        $list=Db::name('news_cate')->where($map)->order('cateid desc')->filed('cateid,catename,url')->select();
-        if(is_array($list)){
-            foreach ($list as $k => $v) {
-                $this->GetCateList($v['cateid']);
-            }
-        }
 
+    #点赞#
+    public function newszan(){
 
-    }
+        if($this->request->ispost()){
+
+            $post=$this->request->post();
+            
     
-    public function GetCateList($cateid,$arr=array()){
-        $map=array(
-            'pid'=>$cateid,
-            'status'=>'1'
-        );
-        $list=Db::name('news_cate')->where($map)->order('cateid desc')->filed('cateid,catename,url')->select();
-        if(is_array($list)){
-            foreach ($list as $k => $v) {
-               return $this->GetCateList($v['cateid'],$arr);
+            $count=Db::name('news_zan')->where('newsid',$post['newsid'])->count('id');
+            
+            if($count>0){
+                $this->error("不可以重复点赞");
             }
+
+            //点赞
+            /*if($status==''){
+
+            }else if($status =='1'){
+
+            }else if($status =='0'){
+
+            }*/  
+
+
+            /*$validate=User::comment($post);
+            
+            if(isset($validate)) $this->error($validate);*/
+
+            /*if( isset($post['pid']) && $post['pid'] > 0 ){
+                
+                $username=Db::name("comment_list")->where("id",$post['pid'])->value('username');
+                $post['content']="回复给 ".$username."：".$post['content'];
+            }*/
+
+            $user=session('user');
+
+            $map=array(
+                'status'=>'1',
+                'newsid'=>$post['newsid']
+            );
+
+            $news=Db::name('news_list')->where($map)->field('newsid,title,url')->find();
+
+            if(empty($news)){
+                $this->error("新闻不存在");
+            }
+
+            $data=array(
+                'newsid'=>$news['newsid'],
+                'newstitle'=>$news['title'],
+                'newsurl'=>$news['url'],
+                'nickname'=>$user['nickname'],
+                'userid'=>$user['userid'],
+                'avatar'=>$user['avatar'],
+                'status'=>"1",
+                'addtime'=>date('Y-m-d H:i:s')
+            );
+
+            $res=Db::name("news_zan")->insert($data);
+
+            $news_up=Db::name('news_list')->where('newsid',$post['newsid'])->setInc('zan');
+
+            if($res!==false && $news_up !==false){
+                $this->success("点赞成功~");
+            }else{
+                $this->error("点赞失败~");
+            }
+            
+
         }
+    }
+
+
+    #站点地图#
+    public function sitemap($pid="0"){
+
+        $this->assign('list',self::getcatelist(true));
+
+        return $this->fetch();
+
+    }
+
+    #站点地图 递归计算#
+    private function getcatelist($list=""){
+        
+        if(is_array($list)){
+
+            foreach ($list as $k => $v) {
+
+                $arr=Db::name('news_cate')->where('pid',$v['cateid'])->order('catepx desc')->field('cateid,catename,url')->select();
+
+                $list[$k]["list"]=self::getcatelist($arr);
+                
+            }
+
+            return $list;
+
+        }
+        //初始数据
+        if($list==true){
+
+             $map=array(
+                'pid'=>"0",
+                'status'=>'1'
+            );
+
+            $list=Db::name('news_cate')->where($map)->order('cateid desc')->field('cateid,catename,url')->select();    
+            return self::getcatelist($list);
+        }
+
+        //return $list;
     }
 
 

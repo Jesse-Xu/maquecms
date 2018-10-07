@@ -263,3 +263,15 @@ function ercode($text){
     exit;
 
 }
+#用户信息#
+function userinfo($name=""){
+    $data=session('user');
+    if(!empty($data)){
+        if(empty($name)){
+            return $data;
+        }else{
+            return isset($data[$name])?$data[$name]:"";
+        }
+    }
+    return "";
+}

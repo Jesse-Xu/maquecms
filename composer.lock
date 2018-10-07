@@ -6,7 +6,7 @@
     ],
     "content-hash": "cb7a452faa0a740fb744fb9c7809f36b",
     "packages": [
-        {
+        { 
             "name": "aliyuncs/oss-sdk-php",
             "version": "v2.3.0",
             "source": {

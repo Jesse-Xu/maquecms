@@ -23,4 +23,34 @@
     'tongji' => '统计代码',
     'beian' => '备案号',
   ),
+  'water' => 
+  array (
+    'water' => '0',
+    'wate_position' => '9',
+    'wate_path' => '',
+    'file' => '',
+    'wate_transparent' => '29',
+    'wate_text' => '',
+    'text_font' => '',
+    'text_color' => '#910d0d',
+    'text_size' => '',
+  ),
+  'upload' => 
+  array (
+    'type' => '本地',
+    'OSS' => 
+    array (
+      'key' => '',
+      'server' => '',
+      'put' => '',
+    ),
+    'qiniu' => 
+    array (
+      'key' => '',
+      'server' => '',
+      'put' => '',
+    ),
+    'delete' => '保存',
+    'file' => 'jpg,png',
+  ),
 );

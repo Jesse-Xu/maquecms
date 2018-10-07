@@ -298,11 +298,11 @@
             </div>
         
     </div>
-    <?php if(!empty($source)){?>
+	<?php if(!empty($source)){?>
         <div class="source-code">
             <pre class="prettyprint lang-php"><ol start="<?php echo $source['first']; ?>"><?php foreach ((array) $source['source'] as $key => $value) { ?><li class="line-<?php echo $key + $source['first']; ?>"><code><?php echo htmlentities($value); ?></code></li><?php } ?></ol></pre>
         </div>
-    <?php }?>
+	<?php }?>
         <div class="trace">
             <h2>Call Stack</h2>
             <ol>
@@ -333,7 +333,7 @@
     </div>
     <?php } else { ?>
     <div class="exception">
-            <h2>麻雀cms提醒：</h2>
+        
             <div class="info"><h1><?php echo htmlentities($message); ?></h1></div>
         
     </div>
@@ -410,9 +410,9 @@
     <?php } ?>
 
     <div class="copyright">
-        <!-- <a title="官方网站" href="http://www.thinkphp.cn">ThinkPHP</a> 
-         <span>V<?php echo \think\facade\App::version(); ?></span> --> 
-        <span> <a href="https://gitee.com/32684028888/MaQuecms">麻雀cms,麻雀虽小，五脏俱全</a> </span>
+        <a title="官方网站" href="http://www.thinkphp.cn">ThinkPHP</a> 
+        <span>V<?php echo \think\facade\App::version(); ?></span> 
+        <span>{ 十年磨一剑-为API开发设计的高性能框架 }</span>
     </div>
     <?php if(\think\facade\App::isDebug()) { ?>
     <script>
