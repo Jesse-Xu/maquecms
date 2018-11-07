@@ -24,7 +24,7 @@ class Banner extends Common{
                 exit;
             }
           
-        		return $this->fetch();
+        	return $this->fetch();
 
         }
 
@@ -89,6 +89,7 @@ class Banner extends Common{
           $map[$this->pk]=$this->request->param($this->pk);
 
           $res=BaseValidate::Required($map[$this->pk]);
+          
           if($res) $this->error($res);
 
           echo  BaseModel::DataDel($this->table,$map);
@@ -101,16 +102,11 @@ class Banner extends Common{
 
         if($this->request->isAjax()){
 
-        $post= $this->request->param();
+            $post= $this->request->param();
+            
+            $post['status']=$post['status']== 'true'?'1':'0';
 
-        if($post['status']== 'true'){
-            $post['status']="1";
-        }else{
-            $post['status']="0";
-        }
-     
-
-        echo  BaseModel::DataUp($this->table,$post);
+            echo  BaseModel::DataUp($this->table,$post);
 
         }
     }

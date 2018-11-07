@@ -15,15 +15,15 @@
   </div>
 
 </div>
-<table class="layui-table" lay-data="{height:500,url:location.href, page:true, id:'table'}" lay-filter="table">
+<table class="layui-table" lay-data="{height:500,url:location.href, page:true, id:'table'}" lay-filter="table" lay-size="lg">
   <thead>
     <tr>
-      <th lay-data="{field:'bannerid',  sort: true}">ID</th>
-      <th lay-data="{field:'px',  sort: true}">排序</th>
-      <th lay-data="{field:'src',templet:'#src'}">缩略图</th>
+      <th lay-data="{field:'bannerid',width:75}">ID</th>
+      <th lay-data="{field:'px',width:75}">排序</th>
+      <th lay-data="{field:'src',templet:'#src',width:75}">缩略图</th>
       <th lay-data="{field:'link',templet:'#link'}">跳转连接</th>
-      <th lay-data="{field:'status',templet:'#status'}">状态</th>
-      <th lay-data="{field:'addtime', sort: true}">添加时间</th>
+      <th lay-data="{field:'status',templet:'#status',width:105}">状态</th>
+      <th lay-data="{field:'addtime'}">添加时间</th>
       <th lay-data="{fixed: 'right', align:'center', toolbar: '#barDemo'}">操作</th>
     </tr>
   </thead>
@@ -92,12 +92,12 @@ layui.use(['table','laydate','form'], function(){
     }
   });
 
-  //图片查看
-  layer.photos({
-    photos: 'div'
-    ,anim: 5 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
+ //图片查看
+  $("body").on("click","img",function(e){
+        layer.photos({ photos: {"data": [{"src": e.target.src}]},anim: 5 });
   });
   
+ 
   //开关
   form.on('switch(status)', function(data){
 

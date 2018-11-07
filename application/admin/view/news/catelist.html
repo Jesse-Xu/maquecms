@@ -17,18 +17,17 @@
       </select>  
   </div>
 </div>
-<table class="layui-table" lay-data="{height:650,url:location.href,where:{pid:'{:input('pid')}'}, page:true, id:'list'}" lay-filter="table" id="table">
+<table class="layui-table" lay-data="{height:650,url:location.href,where:{pid:'{:input('pid')}'}, page:true, id:'list'}" lay-filter="table" id="table" lay-size="lg">
   <thead>
     <tr>
-      <th lay-data="{field:'cateid',sort: true,width:65}">ID</th>
-      <th lay-data="{field:'catepx',sort: true}">排序</th>
-      <th lay-data="{field:'catethumb',templet:'#thumb'}">缩略图</th>
+      <th lay-data="{field:'cateid',width:65}">ID</th>
+      <th lay-data="{field:'catepx',width:65}">排序</th>
+      <th lay-data="{field:'catethumb',templet:'#thumb',width:75}">缩略图</th>
       <th lay-data="{field:'catename'}">分类名称</th>
       <th lay-data="{field:'url',templet:'#link'}">跳转连接</th>
       <th lay-data="{field:'modelname'}">模型</th>
-      <th lay-data="{field:'other'}">备注</th>
-      <th lay-data="{field:'isnav',templet:'#nav'}">导航</th>
-      <th lay-data="{field:'status',templet:'#status'}">状态</th>
+      <th lay-data="{field:'isnav',templet:'#nav',width:105}">导航</th>
+      <th lay-data="{field:'status',templet:'#status',width:105}">状态</th>
       <th lay-data="{field:'addtime'}">添加时间</th>
       <th lay-data="{fixed: 'right',  toolbar: '#barDemo'}">操作</th>
     </tr>
@@ -112,9 +111,8 @@ layui.use(['table','laydate','form'], function(){
   });
 
  //图片查看
-  layer.photos({
-    photos: 'div'
-    ,anim: 5 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
+  $("body").on("click","img",function(e){
+        layer.photos({ photos: {"data": [{"src": e.target.src}]},anim: 5 });
   });
 
   //开关

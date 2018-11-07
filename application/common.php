@@ -18,6 +18,28 @@ function JsonData($data,$status="1"){
 	);
 	return json_encode($arr);
 }
+function JsonSuccess($msg='操作成功~',$data='',$url=''){
+    
+    $arr=array(
+        'msg'=>$msg,
+        'code'=>'1',
+        'data'=>$data,
+        'url'=>$url,
+    );
+
+    return json_encode($arr);
+}
+function JsonError($msg='操作失败~',$data='',$url=''){
+    
+    $arr=array(
+        'msg'=>$msg,
+        'code'=>'0',
+        'data'=>$data,
+        'url'=>$url,
+    );
+
+    return json_encode($arr);
+}
 function getDir($dir) {
     $dirArray[]=NULL;
     if (false != ($handle = opendir ( $dir ))) {

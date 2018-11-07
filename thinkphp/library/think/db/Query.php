@@ -628,6 +628,9 @@ class Query
             $result = (float) $result;
         }
 
+        // 查询完成后清空聚合字段信息
+        $this->removeOption('field');
+
         return $result;
     }
 
@@ -653,10 +656,12 @@ class Query
                 $query->fetchSql(true);
             }
 
-            return $query->aggregate('COUNT', '*', true);
+            $count = $query->aggregate('COUNT', '*');
+        } else {
+            $count = $this->aggregate('COUNT', $field);
         }
 
-        return $this->aggregate('COUNT', $field, true);
+        return is_string($count) ? $count : (int) $count;
     }
 
     /**
@@ -1882,10 +1887,21 @@ class Query
      * 表达式方式指定Field排序
      * @access public
      * @param  string $field 排序字段
+     * @param  array  $bind  参数绑定
      * @return $this
      */
-    public function orderRaw($field)
+    public function orderRaw($field, $bind = [])
     {
+        if ($bind) {
+            foreach ($bind as $key => $value) {
+                if (!is_numeric($key)) {
+                    $field = str_replace(':' . $key, '?', $field);
+                }
+            }
+
+            $this->bind(array_values($bind));
+        }
+
         $this->options['order'][] = $this->raw($field);
 
         return $this;
@@ -2634,7 +2650,8 @@ class Query
             }
 
             foreach ($relations as $key => $relation) {
-                $closure = null;
+                $closure = $aggregateField = null;
+
                 if ($relation instanceof \Closure) {
                     $closure  = $relation;
                     $relation = $key;
@@ -2643,14 +2660,15 @@ class Query
                     $relation       = $key;
                 }
 
-                if (!isset($aggregateField)) {
+                $relation = Loader::parseName($relation, 1, false);
+
+                $count = $this->model->$relation()->getRelationCountQuery($closure, $aggregate, $field, $aggregateField);
+
+                if (empty($aggregateField)) {
                     $aggregateField = Loader::parseName($relation) . '_' . $aggregate;
                 }
 
-                $relation = Loader::parseName($relation, 1, false);
-                $count    = '(' . $this->model->$relation()->getRelationCountQuery($closure, $aggregate, $field) . ')';
-
-                $this->field([$count => $aggregateField]);
+                $this->field(['(' . $count . ')' => $aggregateField]);
             }
         }
 

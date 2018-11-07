@@ -21,6 +21,7 @@ class News extends Common{
 
     #分类列表#
 	public function catelist(){
+		
 		if($this->request->isGet()){
 
 			if($this->request->isajax()){
@@ -69,22 +70,21 @@ class News extends Common{
 			}
 
 			if(empty($data['modelid'])){
-
 				$this->error("请选择相应的模型");
-
-			}else{
-
-				$modelinfo=NewsModel::DataFind('news_model',['modelid'=>$data['modelid']],'modelid,type,page,category,list,content');
-
-				if($modelinfo['type']=='单页类型'){
-					$data['template']=$modelinfo['page'];
-				}	
-
-				if($modelinfo['type']=='列表类型'){
-					$data['template']=$modelinfo['list'];
-				}
-					
 			}
+
+
+			$modelinfo=NewsModel::DataFind('news_model',['modelid'=>$data['modelid']],'modelid,type,page,category,list,content');
+
+			if($modelinfo['type']=='单页类型'){
+				$data['template']=$modelinfo['page'];
+			}	
+
+			if($modelinfo['type']=='列表类型'){
+				$data['template']=$modelinfo['list'];
+			}
+					
+		
 	
 			$data['status']=empty($data['status'])?"1":$data['status'];
 
@@ -837,14 +837,8 @@ class News extends Common{
 
 			$post=$this->request->post();
 
-			if($post['value']==='false'){
-				$post['value']='0';
-			}else{
-				$post['value']='1';
-			}
-			
 			$data["authorid"]=$post['authorid'];
-			$data[$post['type']]=$post['value'];
+			$data[$post['type']]=$post['value']==='false'?"0":"1";
 
 			echo NewsModel::DataUp('news_author',$data,'','uptime');
 		}
@@ -881,10 +875,8 @@ class News extends Common{
 
 			$info=Db::name('news_list')->where($map)->find();
 			
-			if($info){
-				$this->assign('info',$info);
-			}
-			
+			if($info) $this->assign('info',$info);
+				
 			return $this->fetch('content');
 			exit;
 
@@ -950,6 +942,7 @@ class News extends Common{
 	}
 
 	public function getpageinfo(){
+
 		if($this->request->isajax()){
 			$cateid=input('cateid');
 			$template=Db::name('news_cate')->where('cateid',$cateid)->value('template');
@@ -1002,15 +995,8 @@ class News extends Common{
 		if($this->request->ispost()){
 
 			$post=$this->request->post();
-
-			if($post['value']==='false'){
-				$post['value']='0';
-			}else{
-				$post['value']='1';
-			}
-			
 			$data["id"]=$post['id'];
-			$data[$post['type']]=$post['value'];
+			$data[$post['type']]=$post['value']==='false'?'0':'1';
 
 			echo NewsModel::DataUp('comment_list',$data,'','uptime');
 		}

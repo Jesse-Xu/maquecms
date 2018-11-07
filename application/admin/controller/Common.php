@@ -20,11 +20,11 @@ class Common extends Controller{
             exit;
         }
               
-        $this->request = Request;
+        //$this->request = Request;
 
         //放在最后面
         parent::__construct();
-
+      
         $controller=strtolower($this->request->controller());
         $action=strtolower($this->request->action());
 
@@ -34,8 +34,6 @@ class Common extends Controller{
         );
 
         $title=Db::name('admin_action')->where($map)->cache(true)->value('name');
-
-        $this->assign('title',$title);
 
         if($this->request->isGet()){
           $method="访问";
@@ -65,6 +63,7 @@ class Common extends Controller{
 
         }
         
+        $this->assign('title',$title);
         $this->assign('controller',$controller);
         $this->assign('action',$action);
     }
@@ -80,11 +79,12 @@ class Common extends Controller{
     public function log($content=""){
 
       $log=array(
-            'adminid'=>session('admin.adminid'),
-            'name'=>session('admin.nickname'),
+            'adminid'=> administrator =='麻雀cms' ? '': session('admin.adminid'),
+            'name'=> administrator =='麻雀cms' ? '': session('admin.nickname'),
             'content'=>$content,
             'addtime'=>date('Y-m-d H:i:s',time())
         );
+
       Db::name('admin_log')->insert($log);
       
     }
@@ -153,11 +153,7 @@ class Common extends Controller{
       $file_up_path= $Env::get('root_path').'/public/uploads/';
       
       //创建目录
-      if(!is_dir($file_up_path)){
-
-        mkdir ($file_up_path,0777,true);  
-      }
-
+      if(!is_dir($file_up_path)) mkdir($file_up_path,0777,true); 
 
       $validate=Config::get('upload.file');
 
@@ -197,9 +193,11 @@ class Common extends Controller{
               $image->water(".".$water['wate_path'],$water['wate_position'],$water['wate_transparent'])->save($path);
           
           }else if($water['water']=='text'){
+
               $image = \think\Image::open($path);
               $font=$water['text_font'];
               $image->text($water['wate_text'],$font,$water['text_size'],$water['text_color'])->save($path);
+          
           }
 
         }
@@ -270,6 +268,7 @@ class Common extends Controller{
 
   #删除文件#
   public function removefile($file=""){
+    
     $config=Config::get('site');
 
     if($config['delete']=='1'){

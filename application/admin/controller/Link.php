@@ -44,9 +44,8 @@ class Link extends Common{
 
                 $info=BaseModel::DataFind($this->table,$map);
 
-                if(!empty($info)){
-                    $this->assign('info',$info);
-                }
+                if(!empty($info)) $this->assign('info',$info);
+                    
             }
 
             return $this->fetch();
@@ -97,16 +96,11 @@ class Link extends Common{
 
         if($this->request->isAjax()){
 
-        $post= $this->request->param();
+            $post= $this->request->param();
 
-        if($post['status']== 'true'){
-            $post['status']="1";
-        }else{
-            $post['status']="0";
-        }
-     
+            $post['status']=$post['status']== 'true'?'1':'0';
 
-        echo  BaseModel::DataUp($this->table,$post);
+            echo  BaseModel::DataUp($this->table,$post);
 
         }
     }

@@ -18,13 +18,14 @@
   </div>
 
 </div>
-<table class="layui-table" lay-data="{height:500,url:'{:Url('loglist')}', page:true, id:'videolist'}" lay-filter="table">
+<table class="layui-table" lay-data="{height:500,url:'{:Url('loglist')}', page:true, id:'videolist'}" lay-filter="table" lay-size="lg">
   <thead>
     <tr>
-      <th lay-data="{field:'logid',sort: true}">ID</th>
-      <th lay-data="{field:'name'}">管理员名称</th>
+      <th lay-data="{field:'logid',width:75}">ID</th>
+      <th lay-data="{field:'name',width:125}">管理员名称</th>
       <th lay-data="{field:'content'}">日志</th>
-      <th lay-data="{field:'addtime', sort: true}">操作时间</th>
+      <th lay-data="{field:'ip'}">ip</th>
+      <th lay-data="{field:'addtime'}">操作时间</th>
     </tr>
   </thead>
 </table>

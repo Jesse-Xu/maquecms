@@ -18,7 +18,12 @@ class Index extends Common{
 
     }
 
-    public function index(){
+    public function  index(){
+
+      return $this->fetch();
+      
+    }
+    public function ecscharts(){
     
         if($this->request->isGet()){
 

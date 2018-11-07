@@ -3,11 +3,11 @@
 <div class="demoTable">
   <a  href="{:Url('modelinfo')}" class="layui-btn" data-type="reload" >添加模型</a>
 </div>
-<table class="layui-table" lay-data="{height:650,url:location.href, page:true, id:'list'}" lay-filter="table">
+<table class="layui-table" lay-data="{height:650,url:location.href, page:true, id:'list'}" lay-filter="table" lay-size="lg">
   <thead>
     <tr>
-      <th lay-data="{field:'modelid', sort: true,width:65}">ID</th>
-      <th lay-data="{field:'px', sort: true}">排序</th>
+      <th lay-data="{field:'modelid',width:75}">ID</th>
+      <th lay-data="{field:'px',width:75}">排序</th>
       <th lay-data="{field:'name'}">模型名称</th>
       <th lay-data="{field:'type'}">类型</th>
       <th lay-data="{field:'page'}">单页模板</th>

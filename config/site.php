@@ -12,8 +12,6 @@
     'type' => 
     array (
       'pc' => 'on',
-      'mb' => 'on',
-      'wx' => 'on',
     ),
     'logo' => '/uploads/file/20180727/718effa54d1f77036ad7ce6d545abab5.jpg',
     'title' => '麻雀cms',
@@ -29,10 +27,10 @@
     'wate_position' => '9',
     'wate_path' => '',
     'file' => '',
-    'wate_transparent' => '29',
+    'wate_transparent' => '83',
     'wate_text' => '',
     'text_font' => '',
-    'text_color' => '#910d0d',
+    'text_color' => '#c13333',
     'text_size' => '',
   ),
   'upload' => 

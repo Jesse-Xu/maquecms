@@ -22,12 +22,12 @@
 <table class="layui-table" lay-data="{height:650,url:location.href,where:{newsid:'{:input('newsid')}'}, page:true, id:'comment'}" lay-filter="table">
   <thead>
     <tr>
-      <th lay-data="{field:'id', sort: true}">ID</th>
+      <th lay-data="{field:'id', sort: true,width:75}">ID</th>
       <th lay-data="{field:'title'}">新闻标题</th>
-      <th lay-data="{field:'avatar',templet:'#avatar'}">用户头像</th>
+      <th lay-data="{field:'avatar',templet:'#avatar',width:75}">头像</th>
       <th lay-data="{field:'nickname'}">昵称</th>
       <th lay-data="{field:'content'}">评论内容</th>
-      <th lay-data="{field:'status',templet:'#status'}">状态</th>
+      <th lay-data="{field:'status',templet:'#status',width:105}">状态</th>
       <th lay-data="{field:'addtime', sort: true}">评论时间</th>
       <th lay-data="{fixed: 'right', width:160, align:'center', toolbar: '#barDemo'}">操作</th>
     </tr>
@@ -119,9 +119,8 @@ layui.use(['table','laydate','form'], function(){
   }); 
 
   //图片查看
-  layer.photos({
-    photos: 'div'
-    ,anim: 5 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
+  $("body").on("click","img",function(e){
+        layer.photos({ photos: {"data": [{"src": e.target.src}]},anim: 5 });
   });
 
 

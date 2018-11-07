@@ -40,5 +40,6 @@ class Login extends Controller{
         $common->log("退出登录");
         
         $this->success("退出成功~",url('login/index'));
+        exit;
     }
 }

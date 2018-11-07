@@ -33,7 +33,7 @@ return [
     // 标签库标签结束标记
     'taglib_end'   => '}',
     //模板
-    'user_template' => 'xianyan',
+    'user_template' => '22',
 
     
 ];

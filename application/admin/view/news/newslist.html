@@ -47,24 +47,24 @@
     <div class="layui-inline">
       <button class="layui-btn" lay-filter="submit" lay-submit>搜索</button>
       <button class="layui-btn layui-btn-primary"  lay-filter="submit" lay-submit>重置</button>
-      <a href="{:url('news/newsinfo')}" class="layui-btn" >添加新闻</a>
+      <a href="javascript:LayerOpen('{:url('news/newsinfo')}');" class="layui-btn" >添加新闻</a>
     </div>
 
   </div>
 </form>
-<table class="layui-table" lay-data="{height:650,url:location.href,where:{cateid:'{:input('cateid')}'}, page:true, id:'newslist'}" lay-filter="table">
+<table class="layui-table" lay-data="{height:650,url:location.href,where:{cateid:'{:input('cateid')}'}, page:true, id:'newslist'}" lay-filter="table" lay-size="lg">
   <thead>
     <tr>
-      <th lay-data="{field:'newsid', sort: true,width:68}">ID</th>
-      <th lay-data="{field:'thumb',templet:'#thumb'}">缩略图</th>
-      <th lay-data="{field:'catename'}">所属分类</th>
+      <th lay-data="{field:'newsid',width:75}">ID</th>
+      <th lay-data="{field:'thumb',templet:'#thumb',width:75}">缩略图</th>
+      <th lay-data="{field:'catename',width:100}">所属分类</th>
       <th lay-data="{field:'title',templet:'#link'}">标题</th>
-      <th lay-data="{field:'keyword'}">关键字</th>
-      <th lay-data="{field:'hits',sort: true,width:100}">阅读量</th>
-      <th lay-data="{field:'authorname'}">作者</th>
-      <th lay-data="{field:'status',templet:'#status'}">状态</th>
-      <th lay-data="{templet:'#count'}">其他</th>
-      <th lay-data="{field:'pushtime', sort: true}">发布时间</th>
+      <!-- <th lay-data="{field:'keyword'}">关键字</th> -->
+      <th lay-data="{field:'hits',width:100}">阅读量</th>
+      <th lay-data="{field:'authorname',width:100}">作者</th>
+      <th lay-data="{field:'status',templet:'#status',width:150}">状态</th>
+      <!-- <th lay-data="{templet:'#count'}">其他</th> -->
+      <th lay-data="{field:'pushtime',width:180}">发布时间</th>
       <th lay-data="{fixed: 'right', width:160, align:'center', toolbar: '#barDemo'}">操作</th>
     </tr>
   </thead>
@@ -128,7 +128,8 @@ layui.use(['table','laydate','form'], function(){
         
       });
     } else if(obj.event === 'edit'){
-        location.href="/admin.php/news/newsinfo/newsid/"+data.newsid;
+        let href="/admin.php/news/newsinfo/newsid/"+data.newsid;
+        LayerOpen(href);
       //layer.alert('编辑行：<br>'+ JSON.stringify(data))
     }
   });
@@ -147,9 +148,8 @@ layui.use(['table','laydate','form'], function(){
   }); 
 
   //图片查看
-  layer.photos({
-    photos: 'div'
-    ,anim: 5 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
+  $("body").on("click","img",function(e){
+        layer.photos({ photos: {"data": [{"src": e.target.src}]},anim: 5 });
   });
 
 

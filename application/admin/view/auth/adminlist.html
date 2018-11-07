@@ -18,15 +18,15 @@
   </div>
 
 </div>
-<table class="layui-table" lay-data="{height:500,url:location.href, page:true, id:'table'}" lay-filter="table">
+<table class="layui-table" lay-data="{height:500,url:location.href, page:true, id:'table'}" lay-filter="table" lay-size="lg">
   <thead>
     <tr>
-      <th lay-data="{field:'adminid',  sort: true}">管理员id</th>
-      <th lay-data="{field:'avatar',templet:'#avatar'}">头像</th>
+      <th lay-data="{field:'adminid',width:75}">id</th>
+      <th lay-data="{field:'avatar',templet:'#avatar',width:75}">头像</th>
       <th lay-data="{field:'nickname'}">管理员昵称</th>
       <th lay-data="{field:'username'}">账号</th>
       <th lay-data="{field:'rolename'}">角色</th>
-      <th lay-data="{field:'status',templet:'#status'}">状态</th>
+      <th lay-data="{field:'status',templet:'#status',width:105}">状态</th>
       <th lay-data="{field:'logintime'}">上次登录时间</th>
       <th lay-data="{field:'addtime'}">添加时间</th>
       <th lay-data="{field:'uptime'}">更新时间</th>
@@ -102,9 +102,8 @@ layui.use(['table','laydate','form'], function(){
   });
 
   //图片查看
-  layer.photos({
-    photos: 'div'
-    ,anim: 5 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
+  $("body").on("click","img",function(e){
+        layer.photos({ photos: {"data": [{"src": e.target.src}]},anim: 5 });
   });
   
   //开关

@@ -1314,7 +1314,11 @@ abstract class Connection
      */
     public function aggregate(Query $query, $aggregate, $field)
     {
-        $field = $aggregate . '(' . $this->builder->parseKey($query, $field, true) . ') AS tp_' . strtolower($aggregate);
+        if (0 === stripos($field, 'DISTINCT ')) {
+            list($distinct, $field) = explode(' ', $field);
+        }
+
+        $field = $aggregate . '(' . (!empty($distinct) ? 'DISTINCT ' : '') . $this->builder->parseKey($query, $field, true) . ') AS tp_' . strtolower($aggregate);
 
         return $this->value($query, $field, 0);
     }
@@ -1351,8 +1355,9 @@ abstract class Connection
             $field = array_map('trim', explode(',', $field));
         }
 
-        if ($key) {
-            $field[] = $key;
+        if ($key && ['*'] != $field) {
+            array_unshift($field, $key);
+            $field = array_unique($field);
         }
 
         $query->setOption('field', $field);
@@ -1382,7 +1387,7 @@ abstract class Connection
         } else {
             $resultSet = $pdo->fetchAll(PDO::FETCH_ASSOC);
 
-            if ('*' == $field && $key) {
+            if (['*'] == $field && $key) {
                 $result = array_column($resultSet, null, $key);
             } elseif ($resultSet) {
                 $fields = array_keys($resultSet[0]);

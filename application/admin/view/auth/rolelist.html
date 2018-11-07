@@ -21,14 +21,14 @@
 
   </div>
 </form>
-<table class="layui-table" lay-data="{height:650,url:location.href,where:{roleid:'{:input('roleid')}'}, page:true, id:'rolelist'}" lay-filter="table">
+<table class="layui-table" lay-data="{height:650,url:location.href,where:{roleid:'{:input('roleid')}'}, page:true, id:'rolelist'}" lay-filter="table" lay-size="lg">
   <thead>
     <tr>
-      <th lay-data="{field:'roleid', sort: true}">ID</th>
+      <th lay-data="{field:'roleid'}">ID</th>
       <th lay-data="{field:'px'}">排序</th>
       <th lay-data="{field:'name'}">名称</th>
       <th lay-data="{field:'status',templet:'#status'}">状态</th>
-      <th lay-data="{field:'addtime', sort: true}">添加时间</th>
+      <th lay-data="{field:'addtime'}">添加时间</th>
       <th lay-data="{fixed: 'right', width:160, align:'center', toolbar: '#barDemo'}">操作</th>
     </tr>
   </thead>

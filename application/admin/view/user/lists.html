@@ -19,15 +19,15 @@
   </div>
 
 </div>
-<table class="layui-table" lay-data="{height:500,url:location.href, page:true, id:'table'}" lay-filter="table">
+<table class="layui-table" lay-data="{height:500,url:location.href, page:true, id:'table'}" lay-filter="table" lay-size="lg">
   <thead>
     <tr>
-      <th lay-data="{field:'userid',  sort: true,width:85}">用户ID</th>
-      <th lay-data="{field:'src',templet:'#src'}">头像</th>
+      <th lay-data="{field:'userid',width:75}">ID</th>
+      <th lay-data="{field:'src',templet:'#src',width:75}">头像</th>
       <th lay-data="{field:'nickname'}">用户昵称</th>
       <th lay-data="{field:'tel'}">手机号</th>
       <th lay-data="{field:'email'}">邮箱</th>
-      <th lay-data="{field:'status',templet:'#status'}">状态</th>
+      <th lay-data="{field:'status',templet:'#status',width:105}">状态</th>
       <th lay-data="{field:'addtime', sort: true}">加入时间</th>
     </tr>
   </thead>
@@ -89,9 +89,8 @@ layui.use(['table','laydate','form'], function(){
   });
 
   //图片查看
-  layer.photos({
-    photos: 'div'
-    ,anim: 5 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
+  $("body").on("click","img",function(e){
+        layer.photos({ photos: {"data": [{"src": e.target.src}]},anim: 5 });
   });
   
   //开关
@@ -135,6 +134,6 @@ layui.use(['table','laydate','form'], function(){
       alert("ASd");
      });
   }
-
+ 
 </script>
 {/block}
