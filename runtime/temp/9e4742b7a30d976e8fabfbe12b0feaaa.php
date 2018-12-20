@@ -1,4 +1,4 @@
-<?php /*a:3:{s:56:"G:\www2\cms2\application\admin\view\index\ecscharts.html";i:1541607972;s:52:"G:\www2\cms2\application\admin\view\public\base.html";i:1541603122;s:52:"G:\www2\cms2\application\admin\view\public\head.html";i:1541608406;}*/ ?>
+<?php /*a:3:{s:56:"G:\www2\cms2\application\admin\view\index\ecscharts.html";i:1541780127;s:52:"G:\www2\cms2\application\admin\view\public\base.html";i:1543161944;s:52:"G:\www2\cms2\application\admin\view\public\head.html";i:1541778938;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>

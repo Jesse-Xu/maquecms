@@ -1,4 +1,4 @@
-<?php /*a:3:{s:50:"G:\www2\cms2\application\admin\view\msg\lists.html";i:1540918286;s:52:"G:\www2\cms2\application\admin\view\public\base.html";i:1541603122;s:52:"G:\www2\cms2\application\admin\view\public\head.html";i:1541602514;}*/ ?>
+<?php /*a:3:{s:50:"G:\www2\cms2\application\admin\view\msg\lists.html";i:1540918286;s:52:"G:\www2\cms2\application\admin\view\public\base.html";i:1543161944;s:52:"G:\www2\cms2\application\admin\view\public\head.html";i:1541778938;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +13,9 @@
 
   <link rel="stylesheet" href="/static/admin/layui/css/layui.css?v=2">
   <link rel="stylesheet" href="/static/admin/css/admin.css?v=1.4">
- 
+  <script type="text/javascript" src="https://cdn.bootcss.com/layer/2.3/layer.js"></script>
+  <script type="text/javascript" src="/static/admin/js/admin.js"></script>
+  
 </head>
 <body class="layui-layout-body">
 

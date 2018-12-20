@@ -1,0 +1,14 @@
+{include file='public/head' /}
+
+  
+  <div class="layui-body">
+   <!-- 内容主体区域 -->
+  <div id="main">
+
+     
+      {block name="main"}{/block}
+       
+  </div>
+  
+  <!-- 引入底部 -->
+  {include file='public/foot' /}

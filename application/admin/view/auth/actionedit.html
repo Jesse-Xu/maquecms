@@ -1,0 +1,87 @@
+{extend name="public:base"/}
+{block name="main"}
+
+<form class="layui-form" action="" method="POST">
+        <div class="layui-form-item">
+          <label class="layui-form-label"><span class="form-required">*</span>分类</label>
+          <div class="layui-input-block"  style="width:350px;">
+            <select name="type" lay-verify="required" lay-filter="select">
+              <option value="">请选择分类</option>
+              <option value="控制器"  {if condition="$info['type'] eq '控制器' "}selected="selected"{/if}>控制器</option>
+              <option value="操作"  {if condition="$info['type'] eq '操作' "}selected="selected"{/if}>操作</option>
+            </select>
+          </div>
+        </div>
+        <div class="layui-form-item" {if condition="$info['type'] eq '操作'"}style="display:none;" {/if} id="pid">
+          <label class="layui-form-label">所属控制器</label>
+          <div class="layui-input-block"  style="width:350px;">
+            <select name="pid" {if condition="$info['type'] eq '操作'"} selected {/if}>
+              <option value="">请选择控制器</option>
+              {foreach $list as $v}
+              <option value="{$v['actionid']}"  {if condition="$info['pid'] eq $v['actionid'] "}selected="selected"{/if}>{$v['name']}</option>
+              {/foreach}
+            </select>
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label"><span class="form-required">*</span>名称</label>
+          <div class="layui-input-inline" style="width:350px;">
+            <input type="hidden" name="actionid" value="{$info['actionid']}">
+            <input type="text" name="name" required lay-verify="required" placeholder="名称" autocomplete="off" class="layui-input"  value="{$info['name']}">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label"><span class="form-required">*</span>数值</label>
+          <div class="layui-input-inline" style="width:350px;">
+            <input type="text" name="value" required lay-verify="required" placeholder="数值" autocomplete="off" class="layui-input"  value="{$info['value']}">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">排序</label>
+          <div class="layui-input-inline" style="width:350px;">
+            <input type="text" name="px"  placeholder="排序" autocomplete="off" class="layui-input"  value="{$info['px']}">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">状态</label>
+          <div class="layui-input-block">
+            <input type="checkbox" name="status" lay-skin="switch" lay-text="启用|禁用" lay-filter="switchTest" value="1" {if condition="($info['status'] eq '1') OR ($info['status'] neq '0')"}checked=''{/if}>
+            <div class="layui-unselect layui-form-switch" lay-skin="_switch">
+            	<em>OFF</em><i></i>
+            </div>
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <div class="layui-input-block">
+            <button class="layui-btn" lay-submit="" lay-filter="submit">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+          </div>
+        </div>
+</form>
+
+<script type="text/javascript">
+	layui.use(['form','layedit','upload'], function(){
+	  var form = layui.form
+    ,upload  = layui.upload;
+     
+	   form.on('select(select)', function(data){
+       if(data.value=="操作"){
+         $("#pid").show();
+         $("#pid").find("select").attr('disabled',false);
+       }else{
+         $("#pid").hide();
+         $("#pid").find("select").attr('disabled',true);
+       }
+    });  
+
+    form.on('submit(submit)', function(data){
+      
+      return FormAjax(location.href,data.field);
+     
+    });    
+	  
+	});
+</script>
+
+
+{/block}

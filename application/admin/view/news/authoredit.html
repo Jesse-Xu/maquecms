@@ -1,0 +1,84 @@
+{extend name="public:base"/}
+{block name="main"}
+
+<form class="layui-form" action="" method="POST" >
+  <div class="layui-form-item">
+    <label class="layui-form-label"><span class="form-required">*</span>作者名称</label>
+    <div class="layui-input-inline ">
+      <input type="hidden" name="authorid" value="{$info['authorid']}">
+      <input type="text" name="name" lay-verify="required"  placeholder="请输入作者名称" autocomplete="off" class="layui-input" value="{$info['name']}">
+    </div>
+  </div>
+  <div class="layui-form-item">
+     <label class="layui-form-label">缩略图</label>
+     <div class="layui-input-inline  width-350" >
+       <input type="text" name="pic"  placeholder="头像图片地址" autocomplete="off" class="layui-input"  value="{$info['pic']}">
+       
+     </div>
+     <div class="layui-word-aux">
+
+        <img src="{$info['pic']}" class="content-photos">
+        
+       <button type="button" class="layui-btn layui-btn-small layui-btn-normal" id="fileupload">
+         <i class="layui-icon">&#xe60d;</i>上传头像
+       </button>
+     </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">排序</label>
+    <div class="layui-input-inline">
+      <input type="number" name="px"  placeholder="请输入数字排序" autocomplete="off" class="layui-input" value="{$info['px']}">
+    </div>
+  </div>
+
+
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+    </div>
+  </div>
+</form>
+
+<script type="text/javascript">
+	layui.use(['form','upload'], function(){
+	  
+    form = layui.form;
+    upload=layui.upload;
+
+    //上传
+    var uploadInst = upload.render({
+        elem: '#fileupload' //绑定元素
+        ,url: '{:Url('common/fileupload',array('width'=>"60",'height'=>"60",'nowater'=>'1'))}' //上传接口
+        ,done: function(res){
+           if(res.status=='1'){
+             layui.$("input[name='pic']").val(res.path);
+             $(".content-photos").attr("src",res.path);
+             alert("上传成功~");
+           }else{
+            alert("上传失败~");
+           }
+        }
+        ,error: function(){
+          alert("上传失败~");
+        },accept: 'images'
+        ,field:'file'
+        ,data:{type:'image'}
+    });
+    
+    layer.photos({
+      photos: 'div'
+      ,anim: 5 
+    }); 
+
+    form.on('submit(submit)', function(data){
+      
+      return FormAjax(location.href,data.field);
+     
+    });
+	 
+	});
+</script>
+
+{/block}

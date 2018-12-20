@@ -1,4 +1,4 @@
-<?php /*a:3:{s:55:"G:\www2\cms2\application\admin\view\news\modellist.html";i:1540918267;s:52:"G:\www2\cms2\application\admin\view\public\base.html";i:1541603122;s:52:"G:\www2\cms2\application\admin\view\public\head.html";i:1541602514;}*/ ?>
+<?php /*a:3:{s:55:"G:\www2\cms2\application\admin\view\news\modellist.html";i:1541910621;s:52:"G:\www2\cms2\application\admin\view\public\base.html";i:1543161944;s:52:"G:\www2\cms2\application\admin\view\public\head.html";i:1541778938;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +13,9 @@
 
   <link rel="stylesheet" href="/static/admin/layui/css/layui.css?v=2">
   <link rel="stylesheet" href="/static/admin/css/admin.css?v=1.4">
- 
+  <script type="text/javascript" src="https://cdn.bootcss.com/layer/2.3/layer.js"></script>
+  <script type="text/javascript" src="/static/admin/js/admin.js"></script>
+  
 </head>
 <body class="layui-layout-body">
 
@@ -32,7 +34,7 @@
    
       
 <div class="demoTable">
-  <a  href="<?php echo Url('modelinfo'); ?>" class="layui-btn" data-type="reload" >添加模型</a>
+  <a  href="javascript:LayerOpen('<?php echo Url('modeladd'); ?>');" class="layui-btn layui-btn-normal" data-type="reload" >添加模型</a>
 </div>
 <table class="layui-table" lay-data="{height:650,url:location.href, page:true, id:'list'}" lay-filter="table" lay-size="lg">
   <thead>
@@ -77,21 +79,11 @@ layui.use(['table','laydate','form'], function(){
     var data = obj.data;
 
     if(obj.event === 'del'){
-      layer.confirm('真的删除本条数据吗？', function(index){
 
-        $.post("<?php echo Url('modeldel'); ?>",{'modelid': data.modelid},function(data){
-           if(data=='1'){
-              alert();
-              obj.del();
-              layer.close(index);
-           }else{
-             alert("删除失败请重试！");
-           }
-        })
-        
-      });
+       Delete("<?php echo Url('modeldel'); ?>",{'modelid': data.modelid},obj);
+      
     } else if(obj.event === 'edit'){
-        location.href="/admin.php/news/modelinfo/modelid/"+data.modelid;
+        LayerOpen("/admin.php/news/modeledit/modelid/"+data.modelid);
     }
 
   });

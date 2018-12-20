@@ -1,0 +1,162 @@
+{extend name="public:base"/}
+{block name="main"}
+
+<form class="layui-form" action="" method="POST" >
+  <div class="layui-form-item">
+      <label class="layui-form-label">上级菜单</label>
+      <div class="layui-input-inline width-350"  >
+         <select name="pid" lay-filter="select" >
+          <option value="0">一级菜单</option>
+            {notempty name="catelist"}
+            {foreach $catelist as $k=>$v}
+            <option value="{$v['cateid']}" {if condition="$info['pid'] eq $v['cateid'] "}selected="selected"{/if}>{$v['catename']}</option>
+            {/foreach}
+            {/notempty}
+        </select>  
+      </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label"><span class="form-required">*</span>分类名称</label>
+    <div class="layui-input-inline  width-350">
+      <input type="hidden" name="cateid" value="{$info['cateid']}">
+      <input type="text" name="catename" lay-verify="required"  placeholder="请输入分类名称" autocomplete="off" class="layui-input" value="{$info['catename']}">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">seo关键字</label>
+    <div class="layui-input-block  width-350">
+      <input type="text" name="keyword"  placeholder="请输入分类关键字" autocomplete="off" class="layui-input" value="{$info['keyword']}">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">seo描述</label>
+    <div class="layui-input-block  width-350">
+      <input type="text" name="description"  placeholder="请输入分类描述" autocomplete="off" class="layui-input" value="{$info['description']}">
+    </div>
+  </div>
+  <div class="layui-form-item">
+      <label class="layui-form-label"><span class="form-required">*</span>模型</label>
+      <div class="layui-input-inline width-350" >
+        <select name="modelid" lay-verify="required" lay-filter="modelid" id="catetype" >
+         
+          <option value="">请选择一个模型</option>
+          {foreach $modellist as $v}
+          <option value="{$v['modelid']}" {if condition="$v['modelid'] eq ''"}selected {/if}>{$v['name']}</option>
+          {/foreach}
+            
+        </select>   
+      </div>
+  </div>
+  
+  <div class="layui-form-item">
+     <label class="layui-form-label">缩略图</label>
+     <div class="layui-input-inline  width-350" >
+       <input type="text" name="catethumb"  placeholder="图片地址" autocomplete="off" class="layui-input"  value="{$info['catethumb']}">
+       
+     </div>
+     <div class="layui-word-aux">
+        {notempty name="info['catethumb']"}
+        <img src="{$info['catethumb']}" class="content-photos">
+        {else/}
+        <img src="" class="content-photos" >
+        {/notempty}
+        
+       <button type="button" class="layui-btn layui-btn-small layui-btn-normal" id="fileupload">
+         <i class="layui-icon">&#xe60d;</i>上传图片
+       </button>
+     </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">跳转链接</label>
+    <div class="layui-input-block width-350">
+      <input type="text" name="url" requplaceholder="请输入跳转链接" autocomplete="off" class="layui-input" value="{$info['url']}">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">备注</label>
+    <div class="layui-input-inline">
+      <input type="text" name="other" requplaceholder="请输入分类备注名称" autocomplete="off" class="layui-input" value="{$info['other']}">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">导航栏</label>
+    <div class="layui-input-block">
+      <input type="checkbox" name="isnav" lay-skin="switch" lay-text="显示|隐藏" lay-filter="switchTest" value="1" {if condition="($info['isnav'] eq '1') OR ($info['isnav'] eq '')"}checked=''{/if}>
+      <div class="layui-unselect layui-form-switch" lay-skin="_switch">
+        <em>OFF</em><i></i>
+      </div>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">状态</label>
+    <div class="layui-input-block">
+      <input type="checkbox" name="status" lay-skin="switch" lay-text="启用|禁用" lay-filter="switchTest" value="1" {if condition="($info['status'] eq '1') OR ($info['status'] neq '0')"}checked=''{/if}>
+      <div class="layui-unselect layui-form-switch" lay-skin="_switch">
+        <em>OFF</em><i></i>
+      </div>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">排序</label>
+    <div class="layui-input-inline width-350">
+      <input type="number" name="catepx"  placeholder="请输入数字排序" autocomplete="off" class="layui-input" value="{$info['catepx']}">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button class="layui-btn" lay-submit lay-filter="submit">立即提交</button>
+      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+    </div>
+  </div>
+</form>
+
+<script type="text/javascript">
+	layui.use(['form','upload'], function(){
+	  form = layui.form;
+    upload=layui.upload;
+
+    //上传
+    var uploadInst = upload.render({
+        elem: '#fileupload' //绑定元素
+        ,url: '{:Url('common/fileupload',array('width'=>"60",'height'=>"60",'notwater'=>"1"))}' //上传接口
+        ,done: function(res){
+           if(res.status=='1'){
+             layui.$("input[name='catethumb']").val(res.path);
+             $(".content-photos").attr("src",res.path);
+             alert("上传成功~");
+           }else{
+            alert("上传失败~");
+           }
+        }
+        ,error: function(){
+          alert("上传失败~");
+        },accept: 'images'
+        ,field:'file'
+        ,data:{type:'image'}
+    }); 
+
+    form.on('select(select)', function(data){
+      $("input[name='url']").val("");
+    });  
+
+    {notempty name="info"}
+      layui.$("select[name='modelid']").val({$info['modelid']});
+      layui.form.render('select')
+    {/notempty}
+
+    layer.photos({
+      photos: '.layui-word-aux'
+      ,anim: 5 
+    }); 
+
+    form.on('submit(submit)', function(data){
+    
+      return FormAjax(location.href,data.field);
+     
+  });
+
+	  
+	});
+</script>
+
+{/block}

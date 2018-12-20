@@ -1,0 +1,145 @@
+{extend name="public:base"}
+{block name="main"}
+<form class="layui-form">
+  <div class="demoTable">
+    条件搜索：
+   
+    <div class="layui-inline">
+      <input class="layui-input" name="keyword" id="keyword" autocomplete="off" placeholder="请输入关键字">
+    </div>
+    <div class="layui-inline">
+      <input class="layui-input" name="start" id="start"  placeholder="请输入添加开始时间">
+    </div>
+    <div class="layui-inline">
+      <input class="layui-input" name="end" id="end"  placeholder="请输入添加结束时间">
+    </div>
+    <div class="layui-inline">
+      <button class="layui-btn" lay-filter="submit" lay-submit>搜索</button>
+      <button class="layui-btn layui-btn-primary"  lay-filter="submit" lay-submit>重置</button>
+      <a href="{:url('auth/roleinfo')}" class="layui-btn">添加角色</a>
+    </div>
+
+  </div>
+</form>
+<table class="layui-table" lay-data="{height:650,url:location.href,where:{roleid:'{:input('roleid')}'}, page:true, id:'rolelist'}" lay-filter="table">
+  <thead>
+    <tr>
+      <th lay-data="{field:'roleid', sort: true}">ID</th>
+      <th lay-data="{field:'px'}">排序</th>
+      <th lay-data="{field:'name'}">名称</th>
+      <th lay-data="{field:'status',templet:'#status'}">状态</th>
+      <th lay-data="{field:'addtime', sort: true}">添加时间</th>
+      <th lay-data="{fixed: 'right', width:160, align:'center', toolbar: '#barDemo'}">操作</th>
+    </tr>
+  </thead>
+</table>
+
+<script type="text/html" id="barDemo">
+  <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+  <a class="layui-btn layui-btn-xs" lay-event="menu">菜单</a>
+  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+<script>
+layui.use(['table','laydate','form'], function(){
+  var table = layui.table;
+  var laydate = layui.laydate;
+  var form = layui.form;
+   laydate.render({
+      elem: '#start',
+      max: 0
+   });
+    laydate.render({
+      elem: '#end',
+      max: 1
+   });
+
+  //搜索
+  form.on('submit(submit)', function(data){
+   
+    var field=data.field;
+
+    if($(data.elem).html()=="重置"){
+
+        $("input").val("");
+        field="";
+    }
+
+    table.reload('rolelist', {
+       where: field
+    });
+
+    return false; 
+  });
+
+
+
+
+  table.on('tool(table)', function(obj){
+    var data = obj.data;
+
+    if(obj.event === 'del'){
+      layer.confirm('真的删除本条数据吗？', function(index){
+
+        $.post("{:Url('roledel')}",{'roleid': data.roleid},function(data){
+           if(data=='1'){
+              alert();
+              obj.del();
+              layer.close(index);
+           }else{
+             alert("删除失败请重试！");
+           }
+        })
+        
+      });
+    } else if(obj.event === 'edit'){
+        location.href="/admin.php/auth/roleinfo/roleid/"+data.roleid;
+    }else if(obj.event === 'menu'){
+        location.href="/admin.php/auth/rolemenu/roleid/"+data.roleid;
+    }
+  });
+
+  //开关
+  form.on('switch(status)', function(data){
+
+    var name=$(this).attr('name');
+
+    $.post("{:url('roleup')}",{status:data.elem.checked,'roleid':data.value},function(res){
+      if(res=='0'){
+        alert("操作失败");
+      }
+    });
+   
+  }); 
+
+
+  //图片查看
+  layer.photos({
+    photos: 'div'
+    ,anim: 5 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
+  });
+
+
+});
+
+</script>
+
+
+<script type="text/html" id="link">
+  {{#  if(d.url != '' && typeof(d.url) != 'undefined'){ }}
+     <a href="{{d.url}}" class="layui-table-link" target="_blank">{{d.title}}</a>
+  {{#  } else { }}
+    {{d.title}}
+  {{#  } }}
+</script>
+
+<script type="text/html" id="status">
+  {{#  if(d.status == '1'){ }}
+    <input type="checkbox" name="status" lay-skin="switch" lay-text="启用|禁用" lay-filter="status" value="{{d.roleid}}" checked>
+  {{#  } else { }}
+    <input type="checkbox" name="status" lay-skin="switch" lay-text="启用|禁用" lay-filter="status"  value="{{d.roleid}}">
+  {{#  } }}
+</script>
+
+
+{/block}

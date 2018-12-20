@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>用户中心</title>
+{include file="common/link" /} 
+</head>
+<body>
+
+{include file="common/header" /} 
+
+<div class="layui-container fly-marginTop fly-user-main">
+
+  {include file="common/user-nav" /} 
+  
+  <div class="fly-panel fly-panel-user" pad20>
+    <div class="layui-tab layui-tab-brief" lay-filter="user" id="LAY_uc">
+      {empty name="userinfo['email']"}
+      <div class="fly-msg">
+        您的邮箱尚未验证，这比较影响您的帐号安全，<a href="/user/activate/">立即去激活？</a>
+      </div>
+      {/empty} 
+
+      <ul class="layui-tab-title" id="LAY_mine">
+        <li data-type="mine-jie" lay-id="index" class="layui-this">我发的帖（<span>{$count['news']}</span>）</li>
+        <!-- <li data-type="collection" data-url="/collection/find/" lay-id="collection">我收藏的帖（<span>{$count['com']}</span>）</li> -->
+        <li data-type="collection" data-url="/collection/find/" lay-id="collection">我评论的帖（<span>{$count['com']}</span>）</li>
+      </ul>
+
+
+      <div class="layui-tab-content" id="LAY_ucm" style="padding: 20px 0;">
+        <div class="layui-tab-item layui-show">
+          <ul class="mine-view jie-row" id="news">
+            <div class="fly-none" style="min-height: 50px; padding:30px 0; height:auto;"><i style="font-size:14px;">数据加载中....</i></div>
+          </ul>
+          <div id="news_page"></div>
+        </div>
+        <div class="layui-tab-item">
+          <ul class="mine-view jie-row" id="com">
+            <div class="fly-none" style="min-height: 50px; padding:30px 0; height:auto;"><i style="font-size:14px;">数据加载中....</i></div>
+          </ul>
+          <div id="comment_page"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{include file="common/footer" /} 
+<script>
+layui.use(['laypage','element'], function(){
+
+  var laypage = layui.laypage;
+  //帖子
+  laypage.render({
+    elem: 'news_page' // 元素
+    ,count: Math.ceil({$count['news']}/10) //数据总数
+    ,jump: function(obj, first){
+
+      $.post(location.href,{type:'news',page:obj.curr},function(res){
+
+        let list=res.list;
+        let html=status="";
+ 
+        if(list.length=='0'){
+          let msg=obj.curr=="1"?"还没有发帖":"暂无更多帖子";
+          html='<div class="fly-none" style="min-height: 50px; padding:30px 0; height:auto;"><i style="font-size:14px;">'+msg+'</i></div>';
+        }else{
+
+          for(let i=0;i<list.length;i++){
+
+            if(list[i].hot=='1'){
+              status+='<span class="mine-edit ">推荐</span>';
+            }
+            if(list[i].top=='1'){
+              status+='<span class="mine-edit">置顶</span>';
+            }
+
+            html+='<li><a class="jie-title" href="'+list[i].url+'" target="_blank">'+list[i].title+'</a><i>'+list[i].pushtime+'</i><em>'+list[i].hits+'阅/10答</em>'+status+'</li>';
+          }
+
+        }
+
+        $("#news").html(html);
+
+      },'json');
+    
+    }
+  });
+
+  //评论
+  laypage.render({
+    elem: 'comment_page' // 元素
+    ,count: Math.ceil({$count['com']}/10) //数据总数
+    ,jump: function(obj, first){
+
+      $.post(location.href,{type:'com',page:obj.curr},function(res){
+
+        let list=res.list;
+        let html=status="";
+ 
+        if(list.length=='0'){
+          let msg=obj.curr=="1"?"还没有发帖":"暂无更多帖子";
+          html='<div class="fly-none" style="min-height: 50px; padding:30px 0; height:auto;"><i style="font-size:14px;">'+msg+'</i></div>';
+        }else{
+
+          for(let i=0;i<list.length;i++){
+
+            if(list[i].hot=='1'){
+              status+='<a class="mine-edit" href="/jie/edit/8116">推荐</a>';
+            }
+            if(list[i].top=='1'){
+              status+='<a class="mine-edit" href="/jie/edit/8116">置顶</a>';
+            }
+
+            html+='<li><a class="jie-title" href="'+list[i].newsurl+'" target="_blank">帖子:'+list[i].newstitle+'</a><i>'+list[i].content+'</i><em>'+list[i].addtime+'</em>'+status+'</li>';
+          }
+
+        }
+
+        $("#com").html(html);
+
+      },'json');
+    
+    }
+  });
+
+
+
+});
+</script>
+</body>
+</html>

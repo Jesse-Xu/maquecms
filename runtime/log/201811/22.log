@@ -1,0 +1,2469 @@
+---------------------------------------------------------------
+[ 2018-11-22T23:40:10+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/news/newsadd.html
+[运行时间：0.189011s] [吞吐率：5.29req/s] [内存消耗：3,915.70kb] [文件加载：110]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.cms2.com/admin.php/news/newslist.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\www2\cms2\application\admin\view\news\newsadd.html [ array (
+  0 => 'title',
+  1 => 'controller',
+  2 => 'action',
+  3 => 'catelist',
+  4 => 'authorlist',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011000s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_action` [ RunTime:0.008001s ]
+[ sql ] [ SQL ] SELECT `name` FROM `cms_admin_action` WHERE  `controller` = 'news'  AND `action` = 'newsadd' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.007000s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[访问_] , 控制器：news/newsadd' , '2018-11-22 23:40:10') [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_cate` [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT COUNT(`cateid`) AS tp_count FROM `cms_news_cate` WHERE  `status` = 1 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 0 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 2 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 1 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 5 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 6 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 9 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 11 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_author` [ RunTime:0.009001s ]
+[ sql ] [ SQL ] SELECT * FROM `cms_news_author` WHERE  `status` = 1 ORDER BY `px` DESC [ RunTime:0.000000s ]
+[ error ] [8]未定义变量: param[G:\www2\cms2\application\admin\controller\Common.php:54]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+[ error ] [4]语法错误: unexpected '.'[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:91]
+---------------------------------------------------------------
+[ 2018-11-22T23:40:31+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/news/newsadd.html
+[运行时间：0.181011s] [吞吐率：5.52req/s] [内存消耗：3,676.30kb] [文件加载：104]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\www2\cms2\application\admin\view\news\newsadd.html [ array (
+  0 => 'title',
+  1 => 'controller',
+  2 => 'action',
+  3 => 'catelist',
+  4 => 'authorlist',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_action` [ RunTime:0.006000s ]
+[ sql ] [ SQL ] SELECT `name` FROM `cms_admin_action` WHERE  `controller` = 'news'  AND `action` = 'newsadd' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.007000s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[访问_] , 控制器：news/newsadd' , '2018-11-22 23:40:31') [ RunTime:0.034002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_cate` [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT COUNT(`cateid`) AS tp_count FROM `cms_news_cate` WHERE  `status` = 1 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 0 ORDER BY `catepx` DESC [ RunTime:0.001001s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 2 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 1 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 5 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 6 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 9 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 11 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_author` [ RunTime:0.006000s ]
+[ sql ] [ SQL ] SELECT * FROM `cms_news_author` WHERE  `status` = 1 ORDER BY `px` DESC [ RunTime:0.001000s ]
+[ error ] [8]未定义变量: param[G:\www2\cms2\application\admin\controller\Common.php:54]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+[ error ] [4]语法错误: unexpected '.'[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:91]
+---------------------------------------------------------------
+[ 2018-11-22T23:41:16+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/news/newsadd.html
+[运行时间：0.170010s] [吞吐率：5.88req/s] [内存消耗：3,917.13kb] [文件加载：109]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\www2\cms2\application\admin\view\news\newsadd.html [ array (
+  0 => 'title',
+  1 => 'controller',
+  2 => 'action',
+  3 => 'catelist',
+  4 => 'authorlist',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011001s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_action` [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT `name` FROM `cms_admin_action` WHERE  `controller` = 'news'  AND `action` = 'newsadd' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.005000s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[访问_] , 控制器：news/newsadd' , '2018-11-22 23:41:16') [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_cate` [ RunTime:0.008001s ]
+[ sql ] [ SQL ] SELECT COUNT(`cateid`) AS tp_count FROM `cms_news_cate` WHERE  `status` = 1 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 0 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 2 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 1 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 5 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 6 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 9 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 11 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_author` [ RunTime:0.006000s ]
+[ sql ] [ SQL ] SELECT * FROM `cms_news_author` WHERE  `status` = 1 ORDER BY `px` DESC [ RunTime:0.001000s ]
+[ error ] [8]未定义变量: param[G:\www2\cms2\application\admin\controller\Common.php:54]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:67]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:68]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:74]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:91]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:149]
+[ error ] [8]未定义变量: modelinfo[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:150]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:173]
+---------------------------------------------------------------
+[ 2018-11-22T23:41:27+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/news/newsadd.html
+[运行时间：0.157009s] [吞吐率：6.37req/s] [内存消耗：3,915.80kb] [文件加载：110]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\www2\cms2\application\admin\view\news\newsadd.html [ array (
+  0 => 'title',
+  1 => 'controller',
+  2 => 'action',
+  3 => 'catelist',
+  4 => 'authorlist',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_action` [ RunTime:0.006001s ]
+[ sql ] [ SQL ] SELECT `name` FROM `cms_admin_action` WHERE  `controller` = 'news'  AND `action` = 'newsadd' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.006000s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[访问_] , 控制器：news/newsadd' , '2018-11-22 23:41:27') [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_cate` [ RunTime:0.006000s ]
+[ sql ] [ SQL ] SELECT COUNT(`cateid`) AS tp_count FROM `cms_news_cate` WHERE  `status` = 1 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 0 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 2 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 1 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 5 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 6 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 9 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 11 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_author` [ RunTime:0.006000s ]
+[ sql ] [ SQL ] SELECT * FROM `cms_news_author` WHERE  `status` = 1 ORDER BY `px` DESC [ RunTime:0.001000s ]
+[ error ] [8]未定义变量: param[G:\www2\cms2\application\admin\controller\Common.php:54]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+[ error ] [4]语法错误: unexpected '.'[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:91]
+---------------------------------------------------------------
+[ 2018-11-22T23:41:28+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/news/newsadd.html
+[运行时间：0.156009s] [吞吐率：6.41req/s] [内存消耗：3,676.46kb] [文件加载：104]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\www2\cms2\application\admin\view\news\newsadd.html [ array (
+  0 => 'title',
+  1 => 'controller',
+  2 => 'action',
+  3 => 'catelist',
+  4 => 'authorlist',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011001s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_action` [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT `name` FROM `cms_admin_action` WHERE  `controller` = 'news'  AND `action` = 'newsadd' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.006000s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[访问_] , 控制器：news/newsadd' , '2018-11-22 23:41:28') [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_cate` [ RunTime:0.009000s ]
+[ sql ] [ SQL ] SELECT COUNT(`cateid`) AS tp_count FROM `cms_news_cate` WHERE  `status` = 1 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 0 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 2 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 1 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 5 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 6 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 9 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 11 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_author` [ RunTime:0.008000s ]
+[ sql ] [ SQL ] SELECT * FROM `cms_news_author` WHERE  `status` = 1 ORDER BY `px` DESC [ RunTime:0.001000s ]
+[ error ] [8]未定义变量: param[G:\www2\cms2\application\admin\controller\Common.php:54]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+[ error ] [4]语法错误: unexpected '.'[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:91]
+---------------------------------------------------------------
+[ 2018-11-22T23:41:33+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/news/newsadd.html
+[运行时间：0.160009s] [吞吐率：6.25req/s] [内存消耗：3,915.77kb] [文件加载：110]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\www2\cms2\application\admin\view\news\newsadd.html [ array (
+  0 => 'title',
+  1 => 'controller',
+  2 => 'action',
+  3 => 'catelist',
+  4 => 'authorlist',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_action` [ RunTime:0.008001s ]
+[ sql ] [ SQL ] SELECT `name` FROM `cms_admin_action` WHERE  `controller` = 'news'  AND `action` = 'newsadd' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.007001s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[访问_] , 控制器：news/newsadd' , '2018-11-22 23:41:33') [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_cate` [ RunTime:0.006000s ]
+[ sql ] [ SQL ] SELECT COUNT(`cateid`) AS tp_count FROM `cms_news_cate` WHERE  `status` = 1 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 0 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 2 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 1 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 5 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 6 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 9 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 11 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_author` [ RunTime:0.008001s ]
+[ sql ] [ SQL ] SELECT * FROM `cms_news_author` WHERE  `status` = 1 ORDER BY `px` DESC [ RunTime:0.001000s ]
+[ error ] [8]未定义变量: param[G:\www2\cms2\application\admin\controller\Common.php:54]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+[ error ] [4]语法错误: unexpected '.'[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:91]
+---------------------------------------------------------------
+[ 2018-11-22T23:41:34+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/news/newsadd.html
+[运行时间：0.141008s] [吞吐率：7.09req/s] [内存消耗：3,676.46kb] [文件加载：104]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\www2\cms2\application\admin\view\news\newsadd.html [ array (
+  0 => 'title',
+  1 => 'controller',
+  2 => 'action',
+  3 => 'catelist',
+  4 => 'authorlist',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_action` [ RunTime:0.006000s ]
+[ sql ] [ SQL ] SELECT `name` FROM `cms_admin_action` WHERE  `controller` = 'news'  AND `action` = 'newsadd' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.006001s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[访问_] , 控制器：news/newsadd' , '2018-11-22 23:41:34') [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_cate` [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT COUNT(`cateid`) AS tp_count FROM `cms_news_cate` WHERE  `status` = 1 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 0 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 2 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 1 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 5 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 6 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 9 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 11 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_author` [ RunTime:0.006000s ]
+[ sql ] [ SQL ] SELECT * FROM `cms_news_author` WHERE  `status` = 1 ORDER BY `px` DESC [ RunTime:0.001000s ]
+[ error ] [8]未定义变量: param[G:\www2\cms2\application\admin\controller\Common.php:54]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+[ error ] [4]语法错误: unexpected '.'[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:91]
+---------------------------------------------------------------
+[ 2018-11-22T23:41:35+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/news/newsadd.html
+[运行时间：0.139008s] [吞吐率：7.19req/s] [内存消耗：3,676.46kb] [文件加载：104]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\www2\cms2\application\admin\view\news\newsadd.html [ array (
+  0 => 'title',
+  1 => 'controller',
+  2 => 'action',
+  3 => 'catelist',
+  4 => 'authorlist',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_action` [ RunTime:0.006000s ]
+[ sql ] [ SQL ] SELECT `name` FROM `cms_admin_action` WHERE  `controller` = 'news'  AND `action` = 'newsadd' LIMIT 1 [ RunTime:0.001001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.007000s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[访问_] , 控制器：news/newsadd' , '2018-11-22 23:41:35') [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_cate` [ RunTime:0.006001s ]
+[ sql ] [ SQL ] SELECT COUNT(`cateid`) AS tp_count FROM `cms_news_cate` WHERE  `status` = 1 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 0 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 2 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 1 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 5 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 6 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 9 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 11 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_author` [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT * FROM `cms_news_author` WHERE  `status` = 1 ORDER BY `px` DESC [ RunTime:0.000000s ]
+[ error ] [8]未定义变量: param[G:\www2\cms2\application\admin\controller\Common.php:54]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+[ error ] [4]语法错误: unexpected '.'[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:91]
+---------------------------------------------------------------
+[ 2018-11-22T23:41:43+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/news/newsadd.html
+[运行时间：0.158009s] [吞吐率：6.33req/s] [内存消耗：3,917.13kb] [文件加载：109]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\www2\cms2\application\admin\view\news\newsadd.html [ array (
+  0 => 'title',
+  1 => 'controller',
+  2 => 'action',
+  3 => 'catelist',
+  4 => 'authorlist',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011001s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_action` [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT `name` FROM `cms_admin_action` WHERE  `controller` = 'news'  AND `action` = 'newsadd' LIMIT 1 [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.006001s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[访问_] , 控制器：news/newsadd' , '2018-11-22 23:41:43') [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_cate` [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT COUNT(`cateid`) AS tp_count FROM `cms_news_cate` WHERE  `status` = 1 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 0 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 2 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 1 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 5 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 6 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 9 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 11 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_author` [ RunTime:0.006001s ]
+[ sql ] [ SQL ] SELECT * FROM `cms_news_author` WHERE  `status` = 1 ORDER BY `px` DESC [ RunTime:0.000000s ]
+[ error ] [8]未定义变量: param[G:\www2\cms2\application\admin\controller\Common.php:54]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:67]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:68]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:74]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:91]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:149]
+[ error ] [8]未定义变量: modelinfo[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:150]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:173]
+---------------------------------------------------------------
+[ 2018-11-22T23:41:55+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/news/newsadd.html
+[运行时间：0.157009s] [吞吐率：6.37req/s] [内存消耗：3,917.13kb] [文件加载：109]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\www2\cms2\application\admin\view\news\newsadd.html [ array (
+  0 => 'title',
+  1 => 'controller',
+  2 => 'action',
+  3 => 'catelist',
+  4 => 'authorlist',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_action` [ RunTime:0.008000s ]
+[ sql ] [ SQL ] SELECT `name` FROM `cms_admin_action` WHERE  `controller` = 'news'  AND `action` = 'newsadd' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.006001s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[访问_] , 控制器：news/newsadd' , '2018-11-22 23:41:55') [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_cate` [ RunTime:0.009000s ]
+[ sql ] [ SQL ] SELECT COUNT(`cateid`) AS tp_count FROM `cms_news_cate` WHERE  `status` = 1 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 0 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 2 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 1 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 5 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 6 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 9 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 11 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_author` [ RunTime:0.007001s ]
+[ sql ] [ SQL ] SELECT * FROM `cms_news_author` WHERE  `status` = 1 ORDER BY `px` DESC [ RunTime:0.000000s ]
+[ error ] [8]未定义变量: param[G:\www2\cms2\application\admin\controller\Common.php:54]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:67]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:68]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:74]
+[ error ] [8]未定义变量: data[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:91]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:149]
+[ error ] [8]未定义变量: modelinfo[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:150]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:173]
+---------------------------------------------------------------
+[ 2018-11-22T23:41:56+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/news/newsadd.html
+[运行时间：0.141008s] [吞吐率：7.09req/s] [内存消耗：3,735.04kb] [文件加载：106]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\www2\cms2\application\admin\view\news\newsadd.html [ array (
+  0 => 'title',
+  1 => 'controller',
+  2 => 'action',
+  3 => 'catelist',
+  4 => 'authorlist',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_action` [ RunTime:0.006000s ]
+[ sql ] [ SQL ] SELECT `name` FROM `cms_admin_action` WHERE  `controller` = 'news'  AND `action` = 'newsadd' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.007001s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[访问_] , 控制器：news/newsadd' , '2018-11-22 23:41:56') [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_cate` [ RunTime:0.006000s ]
+[ sql ] [ SQL ] SELECT COUNT(`cateid`) AS tp_count FROM `cms_news_cate` WHERE  `status` = 1 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 0 ORDER BY `catepx` DESC [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 2 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 1 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 5 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 6 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 9 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 11 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_author` [ RunTime:0.008000s ]
+[ sql ] [ SQL ] SELECT * FROM `cms_news_author` WHERE  `status` = 1 ORDER BY `px` DESC [ RunTime:0.000000s ]
+[ error ] [8]未定义变量: param[G:\www2\cms2\application\admin\controller\Common.php:54]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:67]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:68]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:74]
+[ error ] [8]未定义变量: data[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:91]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:149]
+[ error ] [8]未定义变量: modelinfo[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:150]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:173]
+---------------------------------------------------------------
+[ 2018-11-22T23:41:57+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/news/newsadd.html
+[运行时间：0.141008s] [吞吐率：7.09req/s] [内存消耗：3,735.04kb] [文件加载：106]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\www2\cms2\application\admin\view\news\newsadd.html [ array (
+  0 => 'title',
+  1 => 'controller',
+  2 => 'action',
+  3 => 'catelist',
+  4 => 'authorlist',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_action` [ RunTime:0.006001s ]
+[ sql ] [ SQL ] SELECT `name` FROM `cms_admin_action` WHERE  `controller` = 'news'  AND `action` = 'newsadd' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.006000s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[访问_] , 控制器：news/newsadd' , '2018-11-22 23:41:57') [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_cate` [ RunTime:0.005001s ]
+[ sql ] [ SQL ] SELECT COUNT(`cateid`) AS tp_count FROM `cms_news_cate` WHERE  `status` = 1 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 0 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 2 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 1 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 5 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 6 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 9 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 11 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_author` [ RunTime:0.006000s ]
+[ sql ] [ SQL ] SELECT * FROM `cms_news_author` WHERE  `status` = 1 ORDER BY `px` DESC [ RunTime:0.001000s ]
+[ error ] [8]未定义变量: param[G:\www2\cms2\application\admin\controller\Common.php:54]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:67]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:68]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:74]
+[ error ] [8]未定义变量: data[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:91]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:149]
+[ error ] [8]未定义变量: modelinfo[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:150]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:173]
+---------------------------------------------------------------
+[ 2018-11-22T23:41:57+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/news/newsadd.html
+[运行时间：0.160009s] [吞吐率：6.25req/s] [内存消耗：3,735.04kb] [文件加载：106]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\www2\cms2\application\admin\view\news\newsadd.html [ array (
+  0 => 'title',
+  1 => 'controller',
+  2 => 'action',
+  3 => 'catelist',
+  4 => 'authorlist',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_action` [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT `name` FROM `cms_admin_action` WHERE  `controller` = 'news'  AND `action` = 'newsadd' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.006001s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[访问_] , 控制器：news/newsadd' , '2018-11-22 23:41:57') [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_cate` [ RunTime:0.008000s ]
+[ sql ] [ SQL ] SELECT COUNT(`cateid`) AS tp_count FROM `cms_news_cate` WHERE  `status` = 1 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 0 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 2 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 1 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 5 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 6 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 9 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 11 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_author` [ RunTime:0.007001s ]
+[ sql ] [ SQL ] SELECT * FROM `cms_news_author` WHERE  `status` = 1 ORDER BY `px` DESC [ RunTime:0.000000s ]
+[ error ] [8]未定义变量: param[G:\www2\cms2\application\admin\controller\Common.php:54]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:67]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:68]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:74]
+[ error ] [8]未定义变量: data[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:91]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:149]
+[ error ] [8]未定义变量: modelinfo[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:150]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:173]
+---------------------------------------------------------------
+[ 2018-11-22T23:41:57+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/news/newsadd.html
+[运行时间：0.149009s] [吞吐率：6.71req/s] [内存消耗：3,735.04kb] [文件加载：106]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\www2\cms2\application\admin\view\news\newsadd.html [ array (
+  0 => 'title',
+  1 => 'controller',
+  2 => 'action',
+  3 => 'catelist',
+  4 => 'authorlist',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011001s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_action` [ RunTime:0.006000s ]
+[ sql ] [ SQL ] SELECT `name` FROM `cms_admin_action` WHERE  `controller` = 'news'  AND `action` = 'newsadd' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.006000s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[访问_] , 控制器：news/newsadd' , '2018-11-22 23:41:57') [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_cate` [ RunTime:0.006000s ]
+[ sql ] [ SQL ] SELECT COUNT(`cateid`) AS tp_count FROM `cms_news_cate` WHERE  `status` = 1 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 0 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 2 ORDER BY `catepx` DESC [ RunTime:0.001001s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 1 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 5 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 6 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 9 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 11 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_author` [ RunTime:0.006000s ]
+[ sql ] [ SQL ] SELECT * FROM `cms_news_author` WHERE  `status` = 1 ORDER BY `px` DESC [ RunTime:0.001000s ]
+[ error ] [8]未定义变量: param[G:\www2\cms2\application\admin\controller\Common.php:54]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:67]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:68]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:74]
+[ error ] [8]未定义变量: data[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:91]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:149]
+[ error ] [8]未定义变量: modelinfo[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:150]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:173]
+---------------------------------------------------------------
+[ 2018-11-22T23:41:57+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/news/newsadd.html
+[运行时间：0.145008s] [吞吐率：6.90req/s] [内存消耗：3,735.04kb] [文件加载：106]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\www2\cms2\application\admin\view\news\newsadd.html [ array (
+  0 => 'title',
+  1 => 'controller',
+  2 => 'action',
+  3 => 'catelist',
+  4 => 'authorlist',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_action` [ RunTime:0.006000s ]
+[ sql ] [ SQL ] SELECT `name` FROM `cms_admin_action` WHERE  `controller` = 'news'  AND `action` = 'newsadd' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.007001s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[访问_] , 控制器：news/newsadd' , '2018-11-22 23:41:57') [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_cate` [ RunTime:0.008000s ]
+[ sql ] [ SQL ] SELECT COUNT(`cateid`) AS tp_count FROM `cms_news_cate` WHERE  `status` = 1 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 0 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 2 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 1 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 5 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 6 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 9 ORDER BY `catepx` DESC [ RunTime:0.001001s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 11 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_author` [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT * FROM `cms_news_author` WHERE  `status` = 1 ORDER BY `px` DESC [ RunTime:0.001000s ]
+[ error ] [8]未定义变量: param[G:\www2\cms2\application\admin\controller\Common.php:54]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:67]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:68]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:74]
+[ error ] [8]未定义变量: data[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:91]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:149]
+[ error ] [8]未定义变量: modelinfo[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:150]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:173]
+---------------------------------------------------------------
+[ 2018-11-22T23:41:58+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/news/newsadd.html
+[运行时间：0.143008s] [吞吐率：6.99req/s] [内存消耗：3,735.04kb] [文件加载：106]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\www2\cms2\application\admin\view\news\newsadd.html [ array (
+  0 => 'title',
+  1 => 'controller',
+  2 => 'action',
+  3 => 'catelist',
+  4 => 'authorlist',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_action` [ RunTime:0.007001s ]
+[ sql ] [ SQL ] SELECT `name` FROM `cms_admin_action` WHERE  `controller` = 'news'  AND `action` = 'newsadd' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.007001s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[访问_] , 控制器：news/newsadd' , '2018-11-22 23:41:58') [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_cate` [ RunTime:0.010000s ]
+[ sql ] [ SQL ] SELECT COUNT(`cateid`) AS tp_count FROM `cms_news_cate` WHERE  `status` = 1 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 0 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 2 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 1 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 5 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 6 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 9 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 11 ORDER BY `catepx` DESC [ RunTime:0.001001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_author` [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT * FROM `cms_news_author` WHERE  `status` = 1 ORDER BY `px` DESC [ RunTime:0.001000s ]
+[ error ] [8]未定义变量: param[G:\www2\cms2\application\admin\controller\Common.php:54]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:67]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:68]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:74]
+[ error ] [8]未定义变量: data[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:91]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:149]
+[ error ] [8]未定义变量: modelinfo[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:150]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:173]
+---------------------------------------------------------------
+[ 2018-11-22T23:41:58+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/news/newsadd.html
+[运行时间：0.184011s] [吞吐率：5.43req/s] [内存消耗：3,735.04kb] [文件加载：106]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\www2\cms2\application\admin\view\news\newsadd.html [ array (
+  0 => 'title',
+  1 => 'controller',
+  2 => 'action',
+  3 => 'catelist',
+  4 => 'authorlist',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_action` [ RunTime:0.007001s ]
+[ sql ] [ SQL ] SELECT `name` FROM `cms_admin_action` WHERE  `controller` = 'news'  AND `action` = 'newsadd' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.008001s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[访问_] , 控制器：news/newsadd' , '2018-11-22 23:41:58') [ RunTime:0.022001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_cate` [ RunTime:0.009000s ]
+[ sql ] [ SQL ] SELECT COUNT(`cateid`) AS tp_count FROM `cms_news_cate` WHERE  `status` = 1 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 0 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 2 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 1 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 5 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 6 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 9 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 11 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_author` [ RunTime:0.008000s ]
+[ sql ] [ SQL ] SELECT * FROM `cms_news_author` WHERE  `status` = 1 ORDER BY `px` DESC [ RunTime:0.000000s ]
+[ error ] [8]未定义变量: param[G:\www2\cms2\application\admin\controller\Common.php:54]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:67]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:68]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:74]
+[ error ] [8]未定义变量: data[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:91]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:149]
+[ error ] [8]未定义变量: modelinfo[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:150]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:173]
+---------------------------------------------------------------
+[ 2018-11-22T23:43:30+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/news/newsadd.html
+[运行时间：0.174010s] [吞吐率：5.75req/s] [内存消耗：3,917.13kb] [文件加载：109]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\www2\cms2\application\admin\view\news\newsadd.html [ array (
+  0 => 'title',
+  1 => 'controller',
+  2 => 'action',
+  3 => 'catelist',
+  4 => 'authorlist',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011000s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_action` [ RunTime:0.006001s ]
+[ sql ] [ SQL ] SELECT `name` FROM `cms_admin_action` WHERE  `controller` = 'news'  AND `action` = 'newsadd' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.008000s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[访问_] , 控制器：news/newsadd' , '2018-11-22 23:43:29') [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_cate` [ RunTime:0.006001s ]
+[ sql ] [ SQL ] SELECT COUNT(`cateid`) AS tp_count FROM `cms_news_cate` WHERE  `status` = 1 LIMIT 1 [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 0 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 2 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 1 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 5 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 6 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 9 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 11 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_author` [ RunTime:0.006001s ]
+[ sql ] [ SQL ] SELECT * FROM `cms_news_author` WHERE  `status` = 1 ORDER BY `px` DESC [ RunTime:0.000000s ]
+[ error ] [8]未定义变量: param[G:\www2\cms2\application\admin\controller\Common.php:54]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:67]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:68]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:74]
+[ error ] [8]未定义变量: data[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:91]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:149]
+[ error ] [8]未定义变量: modelinfo[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:150]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:173]
+---------------------------------------------------------------
+[ 2018-11-22T23:43:44+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/index/index.html
+[运行时间：0.125008s] [吞吐率：8.00req/s] [内存消耗：3,280.19kb] [文件加载：100]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.cms2.com/admin.php/login/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\www2\cms2\application\admin\view\index\index.html [ array (
+  0 => 'title',
+  1 => 'controller',
+  2 => 'action',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_action` [ RunTime:0.008000s ]
+[ sql ] [ SQL ] SELECT `name` FROM `cms_admin_action` WHERE  `controller` = 'index'  AND `action` = 'index' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.006001s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[访问_] , 控制器：index/index' , '2018-11-22 23:43:44') [ RunTime:0.001000s ]
+[ error ] [8]未定义变量: param[G:\www2\cms2\application\admin\controller\Common.php:54]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+---------------------------------------------------------------
+[ 2018-11-22T23:43:44+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/index/ecscharts.html
+[运行时间：0.233014s] [吞吐率：4.29req/s] [内存消耗：3,235.46kb] [文件加载：98]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.cms2.com/admin.php/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\www2\cms2\application\admin\view\index\ecscharts.html [ array (
+  0 => 'title',
+  1 => 'controller',
+  2 => 'action',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_action` [ RunTime:0.008001s ]
+[ sql ] [ SQL ] SELECT `name` FROM `cms_admin_action` WHERE  `controller` = 'index'  AND `action` = 'ecscharts' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.007000s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[访问_] , 控制器：index/ecscharts' , '2018-11-22 23:43:44') [ RunTime:0.001000s ]
+[ error ] [8]未定义变量: param[G:\www2\cms2\application\admin\controller\Common.php:54]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+[ error ] [8]Use of undefined constant dddd22 - assumed 'dddd22'[G:\www2\cms2\runtime\temp\9e4742b7a30d976e8fabfbe12b0feaaa.php:40]
+---------------------------------------------------------------
+[ 2018-11-22T23:43:45+08:00 ] 127.0.0.1 POST www.cms2.com/admin.php/index/ecscharts.html
+[运行时间：0.171010s] [吞吐率：5.85req/s] [内存消耗：3,432.65kb] [文件加载：102]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.cms2.com/admin.php/index/ecscharts.html',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://www.cms2.com',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'content-length' => '6',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+)
+[ info ] [ PARAM ] array (
+  'type' => '7',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_action` [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT `name` FROM `cms_admin_action` WHERE  `controller` = 'index'  AND `action` = 'ecscharts' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.008000s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[操作_] , 控制器：index/ecscharts , 参数：{\"type\":\"7\"}' , '2018-11-22 23:43:45') [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_user_list` [ RunTime:0.010001s ]
+[ sql ] [ SQL ] SELECT COUNT(`userid`) AS tp_count FROM `cms_user_list` WHERE  `addtime` BETWEEN '2018-11-16 00:00:00' AND '2018-11-16 23:59:59' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_order_list` [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT COUNT(`orderid`) AS tp_count FROM `cms_order_list` LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT SUM(`money`) AS tp_sum FROM `cms_order_list` LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`userid`) AS tp_count FROM `cms_user_list` WHERE  `addtime` BETWEEN '2018-11-17 00:00:00' AND '2018-11-17 23:59:59' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT COUNT(`orderid`) AS tp_count FROM `cms_order_list` LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT SUM(`money`) AS tp_sum FROM `cms_order_list` LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`userid`) AS tp_count FROM `cms_user_list` WHERE  `addtime` BETWEEN '2018-11-18 00:00:00' AND '2018-11-18 23:59:59' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`orderid`) AS tp_count FROM `cms_order_list` LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT SUM(`money`) AS tp_sum FROM `cms_order_list` LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`userid`) AS tp_count FROM `cms_user_list` WHERE  `addtime` BETWEEN '2018-11-19 00:00:00' AND '2018-11-19 23:59:59' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT COUNT(`orderid`) AS tp_count FROM `cms_order_list` LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT SUM(`money`) AS tp_sum FROM `cms_order_list` LIMIT 1 [ RunTime:0.001001s ]
+[ sql ] [ SQL ] SELECT COUNT(`userid`) AS tp_count FROM `cms_user_list` WHERE  `addtime` BETWEEN '2018-11-20 00:00:00' AND '2018-11-20 23:59:59' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`orderid`) AS tp_count FROM `cms_order_list` LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT SUM(`money`) AS tp_sum FROM `cms_order_list` LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`userid`) AS tp_count FROM `cms_user_list` WHERE  `addtime` BETWEEN '2018-11-21 00:00:00' AND '2018-11-21 23:59:59' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`orderid`) AS tp_count FROM `cms_order_list` LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT SUM(`money`) AS tp_sum FROM `cms_order_list` LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`userid`) AS tp_count FROM `cms_user_list` WHERE  `addtime` BETWEEN '2018-11-22 00:00:00' AND '2018-11-22 23:59:59' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`orderid`) AS tp_count FROM `cms_order_list` LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT SUM(`money`) AS tp_sum FROM `cms_order_list` LIMIT 1 [ RunTime:0.000000s ]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+[ error ] [8]未定义变量: order_map[G:\www2\cms2\application\admin\model\IndexModel.php:58]
+[ error ] [8]未定义变量: order_map[G:\www2\cms2\application\admin\model\IndexModel.php:64]
+[ error ] [8]未定义变量: order_map[G:\www2\cms2\application\admin\model\IndexModel.php:58]
+[ error ] [8]未定义变量: order_map[G:\www2\cms2\application\admin\model\IndexModel.php:64]
+[ error ] [8]未定义变量: order_map[G:\www2\cms2\application\admin\model\IndexModel.php:58]
+[ error ] [8]未定义变量: order_map[G:\www2\cms2\application\admin\model\IndexModel.php:64]
+[ error ] [8]未定义变量: order_map[G:\www2\cms2\application\admin\model\IndexModel.php:58]
+[ error ] [8]未定义变量: order_map[G:\www2\cms2\application\admin\model\IndexModel.php:64]
+[ error ] [8]未定义变量: order_map[G:\www2\cms2\application\admin\model\IndexModel.php:58]
+[ error ] [8]未定义变量: order_map[G:\www2\cms2\application\admin\model\IndexModel.php:64]
+[ error ] [8]未定义变量: order_map[G:\www2\cms2\application\admin\model\IndexModel.php:58]
+[ error ] [8]未定义变量: order_map[G:\www2\cms2\application\admin\model\IndexModel.php:64]
+[ error ] [8]未定义变量: order_map[G:\www2\cms2\application\admin\model\IndexModel.php:58]
+[ error ] [8]未定义变量: order_map[G:\www2\cms2\application\admin\model\IndexModel.php:64]
+---------------------------------------------------------------
+[ 2018-11-22T23:43:45+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/news/newsadd.html
+[运行时间：0.208012s] [吞吐率：4.81req/s] [内存消耗：3,917.13kb] [文件加载：109]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\www2\cms2\application\admin\view\news\newsadd.html [ array (
+  0 => 'title',
+  1 => 'controller',
+  2 => 'action',
+  3 => 'catelist',
+  4 => 'authorlist',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_action` [ RunTime:0.008001s ]
+[ sql ] [ SQL ] SELECT `name` FROM `cms_admin_action` WHERE  `controller` = 'news'  AND `action` = 'newsadd' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.008000s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[访问_] , 控制器：news/newsadd' , '2018-11-22 23:43:45') [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_cate` [ RunTime:0.009001s ]
+[ sql ] [ SQL ] SELECT COUNT(`cateid`) AS tp_count FROM `cms_news_cate` WHERE  `status` = 1 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 0 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 2 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 1 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 5 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 6 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 9 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 11 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_author` [ RunTime:0.009001s ]
+[ sql ] [ SQL ] SELECT * FROM `cms_news_author` WHERE  `status` = 1 ORDER BY `px` DESC [ RunTime:0.001000s ]
+[ error ] [8]未定义变量: param[G:\www2\cms2\application\admin\controller\Common.php:54]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:67]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:68]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:74]
+[ error ] [8]未定义变量: data[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:91]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:149]
+[ error ] [8]未定义变量: modelinfo[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:150]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:173]
+---------------------------------------------------------------
+[ 2018-11-22T23:44:01+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/index/index.html
+[运行时间：0.126007s] [吞吐率：7.94req/s] [内存消耗：3,139.34kb] [文件加载：97]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.cms2.com/admin.php/login/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\www2\cms2\application\admin\view\index\index.html [ array (
+  0 => 'title',
+  1 => 'controller',
+  2 => 'action',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_action` [ RunTime:0.008000s ]
+[ sql ] [ SQL ] SELECT `name` FROM `cms_admin_action` WHERE  `controller` = 'index'  AND `action` = 'index' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.009000s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[访问_] , 控制器：index/index' , '2018-11-22 23:44:01') [ RunTime:0.001000s ]
+[ error ] [8]未定义变量: param[G:\www2\cms2\application\admin\controller\Common.php:54]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+---------------------------------------------------------------
+[ 2018-11-22T23:44:01+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/index/ecscharts.html
+[运行时间：0.205011s] [吞吐率：4.88req/s] [内存消耗：3,086.98kb] [文件加载：95]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.cms2.com/admin.php/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\www2\cms2\application\admin\view\index\ecscharts.html [ array (
+  0 => 'title',
+  1 => 'controller',
+  2 => 'action',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003000s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_action` [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT `name` FROM `cms_admin_action` WHERE  `controller` = 'index'  AND `action` = 'ecscharts' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.009000s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[访问_] , 控制器：index/ecscharts' , '2018-11-22 23:44:01') [ RunTime:0.001000s ]
+[ error ] [8]未定义变量: param[G:\www2\cms2\application\admin\controller\Common.php:54]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+[ error ] [8]Use of undefined constant dddd22 - assumed 'dddd22'[G:\www2\cms2\runtime\temp\9e4742b7a30d976e8fabfbe12b0feaaa.php:40]
+---------------------------------------------------------------
+[ 2018-11-22T23:44:02+08:00 ] 127.0.0.1 POST www.cms2.com/admin.php/index/ecscharts.html
+[运行时间：0.378022s] [吞吐率：2.65req/s] [内存消耗：3,432.65kb] [文件加载：102]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.cms2.com/admin.php/index/ecscharts.html',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://www.cms2.com',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'content-length' => '6',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+)
+[ info ] [ PARAM ] array (
+  'type' => '7',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_action` [ RunTime:0.014001s ]
+[ sql ] [ SQL ] SELECT `name` FROM `cms_admin_action` WHERE  `controller` = 'index'  AND `action` = 'ecscharts' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.010001s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[操作_] , 控制器：index/ecscharts , 参数：{\"type\":\"7\"}' , '2018-11-22 23:44:02') [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_user_list` [ RunTime:0.013001s ]
+[ sql ] [ SQL ] SELECT COUNT(`userid`) AS tp_count FROM `cms_user_list` WHERE  `addtime` BETWEEN '2018-11-16 00:00:00' AND '2018-11-16 23:59:59' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_order_list` [ RunTime:0.013001s ]
+[ sql ] [ SQL ] SELECT COUNT(`orderid`) AS tp_count FROM `cms_order_list` LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT SUM(`money`) AS tp_sum FROM `cms_order_list` LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT COUNT(`userid`) AS tp_count FROM `cms_user_list` WHERE  `addtime` BETWEEN '2018-11-17 00:00:00' AND '2018-11-17 23:59:59' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`orderid`) AS tp_count FROM `cms_order_list` LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT SUM(`money`) AS tp_sum FROM `cms_order_list` LIMIT 1 [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT COUNT(`userid`) AS tp_count FROM `cms_user_list` WHERE  `addtime` BETWEEN '2018-11-18 00:00:00' AND '2018-11-18 23:59:59' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT COUNT(`orderid`) AS tp_count FROM `cms_order_list` LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT SUM(`money`) AS tp_sum FROM `cms_order_list` LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT COUNT(`userid`) AS tp_count FROM `cms_user_list` WHERE  `addtime` BETWEEN '2018-11-19 00:00:00' AND '2018-11-19 23:59:59' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT COUNT(`orderid`) AS tp_count FROM `cms_order_list` LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT SUM(`money`) AS tp_sum FROM `cms_order_list` LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`userid`) AS tp_count FROM `cms_user_list` WHERE  `addtime` BETWEEN '2018-11-20 00:00:00' AND '2018-11-20 23:59:59' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`orderid`) AS tp_count FROM `cms_order_list` LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT SUM(`money`) AS tp_sum FROM `cms_order_list` LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT COUNT(`userid`) AS tp_count FROM `cms_user_list` WHERE  `addtime` BETWEEN '2018-11-21 00:00:00' AND '2018-11-21 23:59:59' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`orderid`) AS tp_count FROM `cms_order_list` LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT SUM(`money`) AS tp_sum FROM `cms_order_list` LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`userid`) AS tp_count FROM `cms_user_list` WHERE  `addtime` BETWEEN '2018-11-22 00:00:00' AND '2018-11-22 23:59:59' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT COUNT(`orderid`) AS tp_count FROM `cms_order_list` LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT SUM(`money`) AS tp_sum FROM `cms_order_list` LIMIT 1 [ RunTime:0.001000s ]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+[ error ] [8]未定义变量: order_map[G:\www2\cms2\application\admin\model\IndexModel.php:58]
+[ error ] [8]未定义变量: order_map[G:\www2\cms2\application\admin\model\IndexModel.php:64]
+[ error ] [8]未定义变量: order_map[G:\www2\cms2\application\admin\model\IndexModel.php:58]
+[ error ] [8]未定义变量: order_map[G:\www2\cms2\application\admin\model\IndexModel.php:64]
+[ error ] [8]未定义变量: order_map[G:\www2\cms2\application\admin\model\IndexModel.php:58]
+[ error ] [8]未定义变量: order_map[G:\www2\cms2\application\admin\model\IndexModel.php:64]
+[ error ] [8]未定义变量: order_map[G:\www2\cms2\application\admin\model\IndexModel.php:58]
+[ error ] [8]未定义变量: order_map[G:\www2\cms2\application\admin\model\IndexModel.php:64]
+[ error ] [8]未定义变量: order_map[G:\www2\cms2\application\admin\model\IndexModel.php:58]
+[ error ] [8]未定义变量: order_map[G:\www2\cms2\application\admin\model\IndexModel.php:64]
+[ error ] [8]未定义变量: order_map[G:\www2\cms2\application\admin\model\IndexModel.php:58]
+[ error ] [8]未定义变量: order_map[G:\www2\cms2\application\admin\model\IndexModel.php:64]
+[ error ] [8]未定义变量: order_map[G:\www2\cms2\application\admin\model\IndexModel.php:58]
+[ error ] [8]未定义变量: order_map[G:\www2\cms2\application\admin\model\IndexModel.php:64]
+---------------------------------------------------------------
+[ 2018-11-22T23:44:02+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/news/newsadd.html
+[运行时间：0.160009s] [吞吐率：6.25req/s] [内存消耗：3,917.13kb] [文件加载：109]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\www2\cms2\application\admin\view\news\newsadd.html [ array (
+  0 => 'title',
+  1 => 'controller',
+  2 => 'action',
+  3 => 'catelist',
+  4 => 'authorlist',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_action` [ RunTime:0.006000s ]
+[ sql ] [ SQL ] SELECT `name` FROM `cms_admin_action` WHERE  `controller` = 'news'  AND `action` = 'newsadd' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.007001s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[访问_] , 控制器：news/newsadd' , '2018-11-22 23:44:02') [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_cate` [ RunTime:0.008000s ]
+[ sql ] [ SQL ] SELECT COUNT(`cateid`) AS tp_count FROM `cms_news_cate` WHERE  `status` = 1 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 0 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 2 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 1 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 5 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 6 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 9 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 11 ORDER BY `catepx` DESC [ RunTime:0.001001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_author` [ RunTime:0.008000s ]
+[ sql ] [ SQL ] SELECT * FROM `cms_news_author` WHERE  `status` = 1 ORDER BY `px` DESC [ RunTime:0.000000s ]
+[ error ] [8]未定义变量: param[G:\www2\cms2\application\admin\controller\Common.php:54]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:67]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:68]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:74]
+[ error ] [8]未定义变量: data[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:91]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:149]
+[ error ] [8]未定义变量: modelinfo[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:150]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:173]
+---------------------------------------------------------------
+[ 2018-11-22T23:44:05+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/index/index.html
+[运行时间：0.128007s] [吞吐率：7.81req/s] [内存消耗：3,139.34kb] [文件加载：97]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.cms2.com/admin.php/login/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\www2\cms2\application\admin\view\index\index.html [ array (
+  0 => 'title',
+  1 => 'controller',
+  2 => 'action',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_action` [ RunTime:0.008000s ]
+[ sql ] [ SQL ] SELECT `name` FROM `cms_admin_action` WHERE  `controller` = 'index'  AND `action` = 'index' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.006001s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[访问_] , 控制器：index/index' , '2018-11-22 23:44:05') [ RunTime:0.000000s ]
+[ error ] [8]未定义变量: param[G:\www2\cms2\application\admin\controller\Common.php:54]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+---------------------------------------------------------------
+[ 2018-11-22T23:44:05+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/index/ecscharts.html
+[运行时间：0.195011s] [吞吐率：5.13req/s] [内存消耗：3,086.98kb] [文件加载：95]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.cms2.com/admin.php/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\www2\cms2\application\admin\view\index\ecscharts.html [ array (
+  0 => 'title',
+  1 => 'controller',
+  2 => 'action',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010001s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_action` [ RunTime:0.009000s ]
+[ sql ] [ SQL ] SELECT `name` FROM `cms_admin_action` WHERE  `controller` = 'index'  AND `action` = 'ecscharts' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.008000s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[访问_] , 控制器：index/ecscharts' , '2018-11-22 23:44:05') [ RunTime:0.001000s ]
+[ error ] [8]未定义变量: param[G:\www2\cms2\application\admin\controller\Common.php:54]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+[ error ] [8]Use of undefined constant dddd22 - assumed 'dddd22'[G:\www2\cms2\runtime\temp\9e4742b7a30d976e8fabfbe12b0feaaa.php:40]
+---------------------------------------------------------------
+[ 2018-11-22T23:44:06+08:00 ] 127.0.0.1 POST www.cms2.com/admin.php/index/ecscharts.html
+[运行时间：0.308018s] [吞吐率：3.25req/s] [内存消耗：3,432.65kb] [文件加载：102]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.cms2.com/admin.php/index/ecscharts.html',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://www.cms2.com',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'content-length' => '6',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+)
+[ info ] [ PARAM ] array (
+  'type' => '7',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002001s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_action` [ RunTime:0.016000s ]
+[ sql ] [ SQL ] SELECT `name` FROM `cms_admin_action` WHERE  `controller` = 'index'  AND `action` = 'ecscharts' LIMIT 1 [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.013001s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[操作_] , 控制器：index/ecscharts , 参数：{\"type\":\"7\"}' , '2018-11-22 23:44:06') [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_user_list` [ RunTime:0.012001s ]
+[ sql ] [ SQL ] SELECT COUNT(`userid`) AS tp_count FROM `cms_user_list` WHERE  `addtime` BETWEEN '2018-11-16 00:00:00' AND '2018-11-16 23:59:59' LIMIT 1 [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_order_list` [ RunTime:0.012000s ]
+[ sql ] [ SQL ] SELECT COUNT(`orderid`) AS tp_count FROM `cms_order_list` LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT SUM(`money`) AS tp_sum FROM `cms_order_list` LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`userid`) AS tp_count FROM `cms_user_list` WHERE  `addtime` BETWEEN '2018-11-17 00:00:00' AND '2018-11-17 23:59:59' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT COUNT(`orderid`) AS tp_count FROM `cms_order_list` LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT SUM(`money`) AS tp_sum FROM `cms_order_list` LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT COUNT(`userid`) AS tp_count FROM `cms_user_list` WHERE  `addtime` BETWEEN '2018-11-18 00:00:00' AND '2018-11-18 23:59:59' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT COUNT(`orderid`) AS tp_count FROM `cms_order_list` LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT SUM(`money`) AS tp_sum FROM `cms_order_list` LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`userid`) AS tp_count FROM `cms_user_list` WHERE  `addtime` BETWEEN '2018-11-19 00:00:00' AND '2018-11-19 23:59:59' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT COUNT(`orderid`) AS tp_count FROM `cms_order_list` LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT SUM(`money`) AS tp_sum FROM `cms_order_list` LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`userid`) AS tp_count FROM `cms_user_list` WHERE  `addtime` BETWEEN '2018-11-20 00:00:00' AND '2018-11-20 23:59:59' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT COUNT(`orderid`) AS tp_count FROM `cms_order_list` LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT SUM(`money`) AS tp_sum FROM `cms_order_list` LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`userid`) AS tp_count FROM `cms_user_list` WHERE  `addtime` BETWEEN '2018-11-21 00:00:00' AND '2018-11-21 23:59:59' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`orderid`) AS tp_count FROM `cms_order_list` LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT SUM(`money`) AS tp_sum FROM `cms_order_list` LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`userid`) AS tp_count FROM `cms_user_list` WHERE  `addtime` BETWEEN '2018-11-22 00:00:00' AND '2018-11-22 23:59:59' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`orderid`) AS tp_count FROM `cms_order_list` LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT SUM(`money`) AS tp_sum FROM `cms_order_list` LIMIT 1 [ RunTime:0.000000s ]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+[ error ] [8]未定义变量: order_map[G:\www2\cms2\application\admin\model\IndexModel.php:58]
+[ error ] [8]未定义变量: order_map[G:\www2\cms2\application\admin\model\IndexModel.php:64]
+[ error ] [8]未定义变量: order_map[G:\www2\cms2\application\admin\model\IndexModel.php:58]
+[ error ] [8]未定义变量: order_map[G:\www2\cms2\application\admin\model\IndexModel.php:64]
+[ error ] [8]未定义变量: order_map[G:\www2\cms2\application\admin\model\IndexModel.php:58]
+[ error ] [8]未定义变量: order_map[G:\www2\cms2\application\admin\model\IndexModel.php:64]
+[ error ] [8]未定义变量: order_map[G:\www2\cms2\application\admin\model\IndexModel.php:58]
+[ error ] [8]未定义变量: order_map[G:\www2\cms2\application\admin\model\IndexModel.php:64]
+[ error ] [8]未定义变量: order_map[G:\www2\cms2\application\admin\model\IndexModel.php:58]
+[ error ] [8]未定义变量: order_map[G:\www2\cms2\application\admin\model\IndexModel.php:64]
+[ error ] [8]未定义变量: order_map[G:\www2\cms2\application\admin\model\IndexModel.php:58]
+[ error ] [8]未定义变量: order_map[G:\www2\cms2\application\admin\model\IndexModel.php:64]
+[ error ] [8]未定义变量: order_map[G:\www2\cms2\application\admin\model\IndexModel.php:58]
+[ error ] [8]未定义变量: order_map[G:\www2\cms2\application\admin\model\IndexModel.php:64]
+---------------------------------------------------------------
+[ 2018-11-22T23:44:07+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/news/newslist.html
+[运行时间：0.256015s] [吞吐率：3.91req/s] [内存消耗：3,858.14kb] [文件加载：108]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.cms2.com/admin.php/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\www2\cms2\application\admin\view\news\newslist.html [ array (
+  0 => 'title',
+  1 => 'controller',
+  2 => 'action',
+  3 => 'authorlist',
+  4 => 'catelist',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_action` [ RunTime:0.011001s ]
+[ sql ] [ SQL ] SELECT `name` FROM `cms_admin_action` WHERE  `controller` = 'news'  AND `action` = 'newslist' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.010001s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[访问_新闻列表] , 控制器：news/newslist' , '2018-11-22 23:44:07') [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_author` [ RunTime:0.012001s ]
+[ sql ] [ SQL ] SELECT * FROM `cms_news_author` WHERE  `status` = 1 ORDER BY `px` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_cate` [ RunTime:0.015000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 0 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 2 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 1 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 5 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 6 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 9 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 11 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ error ] [8]未定义变量: param[G:\www2\cms2\application\admin\controller\Common.php:54]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+---------------------------------------------------------------
+[ 2018-11-22T23:44:07+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/news/newslist.html?page=1&limit=10&cateid=
+[运行时间：0.170009s] [吞吐率：5.88req/s] [内存消耗：3,633.70kb] [文件加载：102]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.cms2.com/admin.php/news/newslist.html',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+  'cateid' => '',
+)
+[ info ] [ DB ] INIT mysql
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.008001s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[操作_新闻列表] , 控制器：news/newslist , 参数：{\"page\":\"1\",\"limit\":\"10\",\"cateid\":\"\"}' , '2018-11-22 23:44:07') [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_list` [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT `news`.*,`cate`.`catename`,author.name as authorname FROM `cms_news_list` `news` LEFT JOIN `cms_news_cate` `cate` ON `news`.`cateid`=`cate`.`cateid` LEFT JOIN `cms_news_author` `author` ON `news`.`authorid`=`author`.`authorid` ORDER BY `news`.`newsid` DESC LIMIT 0,10 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_comment_list` [ RunTime:0.008001s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 16 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 16 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 16 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 15 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 15 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 15 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 14 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 14 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 14 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 13 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 13 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 13 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 7 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 7 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 7 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 5 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 5 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 5 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 4 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 4 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 4 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 3 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 3 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 3 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `cms_news_list` `news` LEFT JOIN `cms_news_cate` `cate` ON `news`.`cateid`=`cate`.`cateid` LEFT JOIN `cms_news_author` `author` ON `news`.`authorid`=`author`.`authorid` LIMIT 1 [ RunTime:0.000000s ]
+---------------------------------------------------------------
+[ 2018-11-22T23:44:08+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/news/newsadd.html
+[运行时间：0.171010s] [吞吐率：5.85req/s] [内存消耗：3,735.00kb] [文件加载：106]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.cms2.com/admin.php/news/newslist.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\www2\cms2\application\admin\view\news\newsadd.html [ array (
+  0 => 'title',
+  1 => 'controller',
+  2 => 'action',
+  3 => 'catelist',
+  4 => 'authorlist',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003001s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_action` [ RunTime:0.010000s ]
+[ sql ] [ SQL ] SELECT `name` FROM `cms_admin_action` WHERE  `controller` = 'news'  AND `action` = 'newsadd' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.009001s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[访问_] , 控制器：news/newsadd' , '2018-11-22 23:44:08') [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_cate` [ RunTime:0.006000s ]
+[ sql ] [ SQL ] SELECT COUNT(`cateid`) AS tp_count FROM `cms_news_cate` WHERE  `status` = 1 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 0 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 2 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 1 ORDER BY `catepx` DESC [ RunTime:0.001001s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 5 ORDER BY `catepx` DESC [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 6 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 9 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 11 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_author` [ RunTime:0.006000s ]
+[ sql ] [ SQL ] SELECT * FROM `cms_news_author` WHERE  `status` = 1 ORDER BY `px` DESC [ RunTime:0.000000s ]
+[ error ] [8]未定义变量: param[G:\www2\cms2\application\admin\controller\Common.php:54]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:59]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:67]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:68]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:74]
+[ error ] [8]未定义变量: data[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:91]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:149]
+[ error ] [8]未定义变量: modelinfo[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:150]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\929e192a71765db2db685271c68c44ea.php:173]
+---------------------------------------------------------------
+[ 2018-11-22T23:44:44+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/news/newslist.html
+[运行时间：0.154009s] [吞吐率：6.49req/s] [内存消耗：3,705.47kb] [文件加载：105]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.cms2.com/admin.php/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\www2\cms2\application\admin\view\news\newslist.html [ array (
+  0 => 'title',
+  1 => 'controller',
+  2 => 'action',
+  3 => 'authorlist',
+  4 => 'catelist',
+) ]
+[ error ] [8]未定义变量: param[G:\www2\cms2\application\admin\controller\Common.php:54]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.008001s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[访问_新闻列表] , 控制器：news/newslist' , '2018-11-22 23:44:44') [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_author` [ RunTime:0.009000s ]
+[ sql ] [ SQL ] SELECT * FROM `cms_news_author` WHERE  `status` = 1 ORDER BY `px` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_cate` [ RunTime:0.008001s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 0 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 2 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 1 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 5 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 6 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 9 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 11 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+---------------------------------------------------------------
+[ 2018-11-22T23:44:44+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/news/newslist.html?page=1&limit=10&cateid=
+[运行时间：0.173010s] [吞吐率：5.78req/s] [内存消耗：3,633.70kb] [文件加载：102]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.cms2.com/admin.php/news/newslist.html',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+  'cateid' => '',
+)
+[ info ] [ DB ] INIT mysql
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.008000s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[操作_新闻列表] , 控制器：news/newslist , 参数：{\"page\":\"1\",\"limit\":\"10\",\"cateid\":\"\"}' , '2018-11-22 23:44:44') [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_list` [ RunTime:0.007001s ]
+[ sql ] [ SQL ] SELECT `news`.*,`cate`.`catename`,author.name as authorname FROM `cms_news_list` `news` LEFT JOIN `cms_news_cate` `cate` ON `news`.`cateid`=`cate`.`cateid` LEFT JOIN `cms_news_author` `author` ON `news`.`authorid`=`author`.`authorid` ORDER BY `news`.`newsid` DESC LIMIT 0,10 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_comment_list` [ RunTime:0.008000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 16 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 16 LIMIT 1 [ RunTime:0.001001s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 16 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 15 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 15 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 15 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 14 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 14 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 14 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 13 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 13 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 13 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 7 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 7 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 7 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 5 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 5 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 5 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 4 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 4 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 4 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 3 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 3 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(`id`) AS tp_count FROM `cms_comment_list` WHERE  `newsid` = 3 LIMIT 1 [ RunTime:0.001001s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `cms_news_list` `news` LEFT JOIN `cms_news_cate` `cate` ON `news`.`cateid`=`cate`.`cateid` LEFT JOIN `cms_news_author` `author` ON `news`.`authorid`=`author`.`authorid` LIMIT 1 [ RunTime:0.001000s ]
+---------------------------------------------------------------
+[ 2018-11-22T23:44:45+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/news/catelist.html
+[运行时间：0.185011s] [吞吐率：5.41req/s] [内存消耗：3,856.25kb] [文件加载：108]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.cms2.com/admin.php/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\www2\cms2\application\admin\view\news\catelist.html [ array (
+  0 => 'title',
+  1 => 'controller',
+  2 => 'action',
+  3 => 'catelist',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001001s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_action` [ RunTime:0.009000s ]
+[ sql ] [ SQL ] SELECT `name` FROM `cms_admin_action` WHERE  `controller` = 'news'  AND `action` = 'catelist' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.009001s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[访问_分类列表] , 控制器：news/catelist' , '2018-11-22 23:44:45') [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_cate` [ RunTime:0.008001s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 0 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 2 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 1 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 5 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 6 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 9 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 11 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ error ] [8]未定义变量: param[G:\www2\cms2\application\admin\controller\Common.php:54]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\7d26b5a1103d72db1630e491465ac997.php:49]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\7d26b5a1103d72db1630e491465ac997.php:49]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\7d26b5a1103d72db1630e491465ac997.php:49]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\7d26b5a1103d72db1630e491465ac997.php:49]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\7d26b5a1103d72db1630e491465ac997.php:49]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\7d26b5a1103d72db1630e491465ac997.php:49]
+---------------------------------------------------------------
+[ 2018-11-22T23:44:45+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/news/catelist.html?page=1&limit=10&pid=
+[运行时间：0.155009s] [吞吐率：6.45req/s] [内存消耗：3,619.12kb] [文件加载：101]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.cms2.com/admin.php/news/catelist.html',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+  'pid' => '',
+)
+[ info ] [ DB ] INIT mysql
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.009000s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[操作_分类列表] , 控制器：news/catelist , 参数：{\"page\":\"1\",\"limit\":\"10\",\"pid\":\"\"}' , '2018-11-22 23:44:45') [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_cate` [ RunTime:0.008001s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 0 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 2 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 1 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 5 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 6 ORDER BY `catepx` DESC [ RunTime:0.003000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 9 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 11 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+---------------------------------------------------------------
+[ 2018-11-22T23:44:45+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/news/undefined
+[运行时间：0.162009s] [吞吐率：6.17req/s] [内存消耗：3,630.66kb] [文件加载：105]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.cms2.com/admin.php/news/catelist.html',
+  'accept' => 'image/webp,image/apng,image/*,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001001s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_action` [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT `name` FROM `cms_admin_action` WHERE  `controller` = 'news'  AND `action` = 'undefined' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.009001s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[访问_] , 控制器：news/undefined' , '2018-11-22 23:44:45') [ RunTime:0.000000s ]
+[ error ] [8]未定义变量: param[G:\www2\cms2\application\admin\controller\Common.php:54]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+---------------------------------------------------------------
+[ 2018-11-22T23:44:46+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/news/cateadd.html
+[运行时间：0.186011s] [吞吐率：5.38req/s] [内存消耗：3,875.92kb] [文件加载：109]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.cms2.com/admin.php/news/catelist.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\www2\cms2\application\admin\view\news\cateadd.html [ array (
+  0 => 'title',
+  1 => 'controller',
+  2 => 'action',
+  3 => 'modellist',
+  4 => 'pages',
+  5 => 'catelist',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_action` [ RunTime:0.010000s ]
+[ sql ] [ SQL ] SELECT `name` FROM `cms_admin_action` WHERE  `controller` = 'news'  AND `action` = 'cateadd' LIMIT 1 [ RunTime:0.002001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.006000s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[访问_] , 控制器：news/cateadd' , '2018-11-22 23:44:46') [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_cate` [ RunTime:0.009001s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 0 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 2 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 1 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 5 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 6 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 9 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 11 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_model` [ RunTime:0.009001s ]
+[ sql ] [ SQL ] SELECT * FROM `cms_news_model` ORDER BY `px` DESC [ RunTime:0.001000s ]
+[ error ] [8]未定义变量: param[G:\www2\cms2\application\admin\controller\Common.php:54]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\1431357fa1265511bf7f169600348670.php:44]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\1431357fa1265511bf7f169600348670.php:44]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\1431357fa1265511bf7f169600348670.php:44]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\1431357fa1265511bf7f169600348670.php:44]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\1431357fa1265511bf7f169600348670.php:44]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\1431357fa1265511bf7f169600348670.php:44]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\1431357fa1265511bf7f169600348670.php:84]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\1431357fa1265511bf7f169600348670.php:99]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\1431357fa1265511bf7f169600348670.php:105]
+---------------------------------------------------------------
+[ 2018-11-22T23:44:47+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/news/catetree.html
+[运行时间：0.157009s] [吞吐率：6.37req/s] [内存消耗：3,788.80kb] [文件加载：106]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.cms2.com/admin.php/news/catelist.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\www2\cms2\application\admin\view\news\catetree.html [ array (
+  0 => 'title',
+  1 => 'controller',
+  2 => 'action',
+  3 => 'info',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_action` [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT `name` FROM `cms_admin_action` WHERE  `controller` = 'news'  AND `action` = 'catetree' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.008001s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[访问_] , 控制器：news/catetree' , '2018-11-22 23:44:47') [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_news_cate` [ RunTime:0.010000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 0 ORDER BY `catepx` DESC [ RunTime:0.001001s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 2 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 1 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 5 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 6 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 9 ORDER BY `catepx` DESC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `cateid`,`pid`,`catepx`,`catethumb`,`catename`,`url`,`template`,`addtime`,`isnav`,`status` FROM `cms_news_cate` WHERE  `pid` = 11 ORDER BY `catepx` DESC [ RunTime:0.000000s ]
+[ error ] [8]未定义变量: param[G:\www2\cms2\application\admin\controller\Common.php:54]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+---------------------------------------------------------------
+[ 2018-11-22T23:45:03+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/user/lists.html
+[运行时间：0.180010s] [吞吐率：5.56req/s] [内存消耗：3,655.95kb] [文件加载：108]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.cms2.com/admin.php/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\www2\cms2\application\admin\view\user\lists.html [ array (
+  0 => 'title',
+  1 => 'controller',
+  2 => 'action',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_action` [ RunTime:0.005000s ]
+[ sql ] [ SQL ] SELECT `name` FROM `cms_admin_action` WHERE  `controller` = 'user'  AND `action` = 'lists' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.009001s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[访问_数据列表] , 控制器：user/lists' , '2018-11-22 23:45:03') [ RunTime:0.001000s ]
+[ error ] [8]未定义变量: param[G:\www2\cms2\application\admin\controller\Common.php:54]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+---------------------------------------------------------------
+[ 2018-11-22T23:45:03+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/user/lists.html?page=1&limit=10
+[运行时间：0.123007s] [吞吐率：8.13req/s] [内存消耗：3,436.60kb] [文件加载：101]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.cms2.com/admin.php/user/lists.html',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+)
+[ info ] [ DB ] INIT mysql
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.008001s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[操作_数据列表] , 控制器：user/lists , 参数：{\"page\":\"1\",\"limit\":\"10\"}' , '2018-11-22 23:45:03') [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_user_list` [ RunTime:0.006000s ]
+[ sql ] [ SQL ] SELECT * FROM `cms_user_list` ORDER BY `addtime` DESC LIMIT 0,10 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `cms_user_list` LIMIT 1 [ RunTime:0.000000s ]
+---------------------------------------------------------------
+[ 2018-11-22T23:45:03+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/user/undefined
+[运行时间：0.129007s] [吞吐率：7.75req/s] [内存消耗：3,465.07kb] [文件加载：105]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.cms2.com/admin.php/user/lists.html',
+  'accept' => 'image/webp,image/apng,image/*,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_action` [ RunTime:0.007001s ]
+[ sql ] [ SQL ] SELECT `name` FROM `cms_admin_action` WHERE  `controller` = 'user'  AND `action` = 'undefined' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.009001s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[访问_] , 控制器：user/undefined' , '2018-11-22 23:45:03') [ RunTime:0.001000s ]
+[ error ] [8]未定义变量: param[G:\www2\cms2\application\admin\controller\Common.php:54]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+---------------------------------------------------------------
+[ 2018-11-22T23:45:04+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/msg/lists.html
+[运行时间：0.131008s] [吞吐率：7.63req/s] [内存消耗：3,279.78kb] [文件加载：100]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.cms2.com/admin.php/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\www2\cms2\application\admin\view\msg\lists.html [ array (
+  0 => 'title',
+  1 => 'controller',
+  2 => 'action',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_action` [ RunTime:0.007001s ]
+[ sql ] [ SQL ] SELECT `name` FROM `cms_admin_action` WHERE  `controller` = 'msg'  AND `action` = 'lists' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.008000s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[访问_数据列表] , 控制器：msg/lists' , '2018-11-22 23:45:04') [ RunTime:0.000000s ]
+[ error ] [8]未定义变量: param[G:\www2\cms2\application\admin\controller\Common.php:54]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+---------------------------------------------------------------
+[ 2018-11-22T23:45:04+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/msg/lists.html?page=1&limit=10
+[运行时间：0.150009s] [吞吐率：6.67req/s] [内存消耗：3,376.86kb] [文件加载：100]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.cms2.com/admin.php/msg/lists.html',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+)
+[ info ] [ DB ] INIT mysql
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.006000s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[操作_数据列表] , 控制器：msg/lists , 参数：{\"page\":\"1\",\"limit\":\"10\"}' , '2018-11-22 23:45:04') [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_msg_list` [ RunTime:0.037002s ]
+[ sql ] [ SQL ] SELECT * FROM `cms_msg_list` ORDER BY `addtime` DESC LIMIT 0,10 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `cms_msg_list` LIMIT 1 [ RunTime:0.000000s ]
+---------------------------------------------------------------
+[ 2018-11-22T23:45:05+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/link/lists.html
+[运行时间：0.150009s] [吞吐率：6.67req/s] [内存消耗：3,638.80kb] [文件加载：108]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.cms2.com/admin.php/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\www2\cms2\application\admin\view\link\lists.html [ array (
+  0 => 'title',
+  1 => 'controller',
+  2 => 'action',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_action` [ RunTime:0.008000s ]
+[ sql ] [ SQL ] SELECT `name` FROM `cms_admin_action` WHERE  `controller` = 'link'  AND `action` = 'lists' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.006001s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[访问_数据列表] , 控制器：link/lists' , '2018-11-22 23:45:05') [ RunTime:0.001000s ]
+[ error ] [8]未定义变量: param[G:\www2\cms2\application\admin\controller\Common.php:54]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+---------------------------------------------------------------
+[ 2018-11-22T23:45:05+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/link/lists.html?page=1&limit=10
+[运行时间：0.152009s] [吞吐率：6.58req/s] [内存消耗：3,417.91kb] [文件加载：101]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.cms2.com/admin.php/link/lists.html',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+)
+[ info ] [ DB ] INIT mysql
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.008001s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[操作_数据列表] , 控制器：link/lists , 参数：{\"page\":\"1\",\"limit\":\"10\"}' , '2018-11-22 23:45:05') [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_link_list` [ RunTime:0.033002s ]
+[ sql ] [ SQL ] SELECT * FROM `cms_link_list` ORDER BY `addtime` DESC LIMIT 0,10 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `cms_link_list` LIMIT 1 [ RunTime:0.000000s ]
+---------------------------------------------------------------
+[ 2018-11-22T23:45:06+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/link/add.html
+[运行时间：0.153009s] [吞吐率：6.54req/s] [内存消耗：3,585.70kb] [文件加载：106]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.cms2.com/admin.php/link/lists.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\www2\cms2\application\admin\view\link\add.html [ array (
+  0 => 'title',
+  1 => 'controller',
+  2 => 'action',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_action` [ RunTime:0.006000s ]
+[ sql ] [ SQL ] SELECT `name` FROM `cms_admin_action` WHERE  `controller` = 'link'  AND `action` = 'add' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.009001s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[访问_] , 控制器：link/add' , '2018-11-22 23:45:06') [ RunTime:0.000000s ]
+[ error ] [8]未定义变量: param[G:\www2\cms2\application\admin\controller\Common.php:54]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\c3f3338f85740a671d3370d42e8b52fd.php:42]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\c3f3338f85740a671d3370d42e8b52fd.php:48]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\c3f3338f85740a671d3370d42e8b52fd.php:54]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\c3f3338f85740a671d3370d42e8b52fd.php:61]
+[ error ] [8]未定义变量: info[G:\www2\cms2\runtime\temp\c3f3338f85740a671d3370d42e8b52fd.php:61]
+---------------------------------------------------------------
+[ 2018-11-22T23:45:08+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/link/edit/linkid/4
+[运行时间：0.182010s] [吞吐率：5.49req/s] [内存消耗：3,592.07kb] [文件加载：106]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.cms2.com/admin.php/link/lists.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'linkid' => '4',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\www2\cms2\application\admin\view\link\edit.html [ array (
+  0 => 'title',
+  1 => 'controller',
+  2 => 'action',
+  3 => 'info',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_action` [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT `name` FROM `cms_admin_action` WHERE  `controller` = 'link'  AND `action` = 'edit' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.005001s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[访问_] , 控制器：link/edit , 参数：{\"linkid\":\"4\"}' , '2018-11-22 23:45:08') [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_link_list` [ RunTime:0.010000s ]
+[ sql ] [ SQL ] SELECT * FROM `cms_link_list` WHERE  `linkid` = 4 LIMIT 1 [ RunTime:0.001000s ]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+---------------------------------------------------------------
+[ 2018-11-22T23:45:10+08:00 ] 127.0.0.1 PUT www.cms2.com/admin.php/link/edit/linkid/4
+[运行时间：0.140008s] [吞吐率：7.14req/s] [内存消耗：3,518.17kb] [文件加载：106]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.cms2.com/admin.php/link/edit/linkid/4',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://www.cms2.com',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'content-length' => '38',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+)
+[ info ] [ PARAM ] array (
+  'linkid' => '4',
+  'name' => 'd',
+  'link' => 'asd',
+  'px' => '0',
+  'status' => '1',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011000s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_action` [ RunTime:0.007001s ]
+[ sql ] [ SQL ] SELECT `name` FROM `cms_admin_action` WHERE  `controller` = 'link'  AND `action` = 'edit' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.006000s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[操作_] , 控制器：link/edit , 参数：{\"linkid\":\"4\",\"name\":\"d\",\"link\":\"asd\",\"px\":\"0\",\"status\":\"1\"}' , '2018-11-22 23:45:10') [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_link_list` [ RunTime:0.007001s ]
+[ sql ] [ SQL ] UPDATE `cms_link_list`  SET `name` = 'd' , `link` = 'asd' , `px` = 0 , `status` = 1 , `uptime` = '2018-11-22 23:45:10'  WHERE  `linkid` = 4 [ RunTime:0.000000s ]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+---------------------------------------------------------------
+[ 2018-11-22T23:45:10+08:00 ] 127.0.0.1 GET www.cms2.com/admin.php/link/lists.html?page=1&limit=10
+[运行时间：0.124007s] [吞吐率：8.06req/s] [内存消耗：3,417.91kb] [文件加载：101]
+[ info ] [ LANG ] G:\www2\cms2\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=n6j1cdh1n1ukmnq6sgt6bjglr3',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.cms2.com/admin.php/link/lists.html',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'connection' => 'keep-alive',
+  'host' => 'www.cms2.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+)
+[ info ] [ DB ] INIT mysql
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:82]
+[ error ] [8]Use of undefined constant administrator - assumed 'administrator'[G:\www2\cms2\application\admin\controller\Common.php:83]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;dbname=cms0518;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_admin_log` [ RunTime:0.008001s ]
+[ sql ] [ SQL ] INSERT INTO `cms_admin_log` (`adminid` , `name` , `content` , `addtime`) VALUES (1 , '超级管理员' , '[操作_数据列表] , 控制器：link/lists , 参数：{\"page\":\"1\",\"limit\":\"10\"}' , '2018-11-22 23:45:10') [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cms_link_list` [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT * FROM `cms_link_list` ORDER BY `addtime` DESC LIMIT 0,10 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `cms_link_list` LIMIT 1 [ RunTime:0.001000s ]

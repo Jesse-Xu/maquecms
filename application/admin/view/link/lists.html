@@ -11,6 +11,7 @@
   <div class="layui-inline">
     <button class="layui-btn" lay-filter="submit" lay-submit>搜索</button>
     <button class="layui-btn layui-btn-primary"  lay-filter="submit" lay-submit>重置</button>
+    <a href="javascript:LayerOpen('{:url('link/add')}');" class="layui-btn layui-btn-normal" >添加链接</a>
   </div>
 
 </div>
@@ -36,7 +37,7 @@
 
 <script>
 layui.use(['table','laydate','form'], function(){
-  var table = layui.table;
+  table = layui.table;
   var laydate = layui.laydate;
   var form = layui.form;
    laydate.render({
@@ -72,21 +73,11 @@ layui.use(['table','laydate','form'], function(){
     var data = obj.data;
 
     if(obj.event === 'del'){
-      layer.confirm('真的删除本条数据吗？', function(index){
 
-        $.post("{:Url('del')}",{'linkid': data.linkid},function(data){
-           if(data=='1'){
-              alert("操作成功~");
-              obj.del();
-              layer.close(index);
-           }else{
-             alert("删除失败请重试！");
-           }
-        })
-        
-      });
+      Delete("{:Url('del')}",{'linkid': data.linkid},obj);
+
     } else if(obj.event === 'edit'){
-        location.href="info/linkid/"+data.linkid;
+        LayerOpen("edit/linkid/"+data.linkid);
     
     }
   });
@@ -99,11 +90,7 @@ layui.use(['table','laydate','form'], function(){
   //开关
   form.on('switch(status)', function(data){
 
-    $.post("{:url('up')}",{'status':data.elem.checked,'linkid':data.value},function(res){
-      if(res=='0'){
-        alert("操作失败");
-      }
-    });
+     Status("{:url('up')}",{'status':data.elem.checked,'linkid':data.value});
    
   });  
 

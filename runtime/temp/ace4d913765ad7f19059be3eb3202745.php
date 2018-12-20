@@ -1,4 +1,4 @@
-<?php /*a:3:{s:51:"G:\www2\cms2\application\admin\view\user\lists.html";i:1541608387;s:52:"G:\www2\cms2\application\admin\view\public\base.html";i:1541603122;s:52:"G:\www2\cms2\application\admin\view\public\head.html";i:1541608406;}*/ ?>
+<?php /*a:3:{s:51:"G:\www2\cms2\application\admin\view\user\lists.html";i:1542122580;s:52:"G:\www2\cms2\application\admin\view\public\base.html";i:1543161944;s:52:"G:\www2\cms2\application\admin\view\public\head.html";i:1541778938;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -101,23 +101,14 @@ layui.use(['table','laydate','form'], function(){
 
 
   table.on('tool(table)', function(obj){
+    
     return false;
     var data = obj.data;
 
     if(obj.event === 'del'){
-      layer.confirm('真的删除本条数据吗？', function(index){
+      
+      Delete("<?php echo Url('del'); ?>",{'userid': data.userid},obj);
 
-        $.post("<?php echo Url('del'); ?>",{'userid': data.userid},function(data){
-           if(data=='1'){
-              alert("操作成功~");
-              obj.del();
-              layer.close(index);
-           }else{
-             alert("删除失败请重试！");
-           }
-        })
-        
-      });
     }
   });
 
@@ -129,11 +120,7 @@ layui.use(['table','laydate','form'], function(){
   //开关
   form.on('switch(status)', function(data){
 
-    $.post("<?php echo url('up'); ?>",{'status':data.elem.checked,'userid':data.value},function(res){
-      if(res=='0'){
-        alert("操作失败");
-      }
-    });
+     Status("<?php echo url('up'); ?>",{'status':data.elem.checked,'userid':data.value});
    
   });  
 
@@ -164,7 +151,7 @@ layui.use(['table','laydate','form'], function(){
 
   function ExportExcel(){
      $.post("<?php echo url('ExportExcel'); ?>",function(){
-      alert("ASd");
+      alert("开发中..");
      });
   }
  

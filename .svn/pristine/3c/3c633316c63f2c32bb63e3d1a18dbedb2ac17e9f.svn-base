@@ -1,0 +1,822 @@
+<?php
+namespace app\admin\controller;
+
+use think\Db;
+use think\facade\Cache;
+use app\admin\model\AuthModel;
+
+#@管理员管理@#
+class Auth extends Common{
+
+	public $model;
+
+    protected function initialize(){
+
+        $this->model = new \app\admin\model\AuthModel();
+    }
+
+	#管理员列表#
+	public function adminlist(){
+
+		if($this->request->isGet()){
+
+			if($this->request->isAjax()){
+
+				$param=$this->request->param();
+				echo $this->model->AdminPage($param);
+				exit;
+
+			}
+			
+			return $this->fetch();
+		}
+
+	}
+
+	#添加管理员#
+	public function adminadd(){
+
+		if($this->request->isGet()){
+
+			$this->assign('rolelist',$this->model->Rolelist());
+			return $this->fetch();
+
+		}else{
+
+			$data=$this->request->post();
+
+			$res = $this->model->AdminAdd($data);
+
+			if($res==true){
+				$this->success("管理员信息添加成功~",url('adminlist'));
+			}
+			
+			$this->error("管理员信息添加失败!");
+			
+		}
+	}
+	#编辑管理员信息#
+	public function adminedit(){
+
+		if($this->request->isGet()){
+
+			$adminid=$this->request->param('adminid');
+
+			if($adminid=="1"){
+				$this->error("超级管理员不可修改！！");
+			}
+
+			$info = $this->model->AdminInfo($adminid);
+
+			if(empty($info)){
+				$this->error("当前管理员信息不存在~");
+			}
+
+			$this->assign('info',$info);
+			
+			$this->assign('rolelist',$this->model->Rolelist());
+			return $this->fetch();
+
+		}else if($this->request->isput()){
+
+			$data=$this->request->put();
+
+			$res = $this->model->AdminEdit($data);
+
+			if($res==true){
+				$this->success("管理员信息修改成功~",url('adminlist'));
+			}
+			
+			$this->error("管理员信息修改失败!");
+			
+		}
+	}
+
+
+	#修改管理员状态#
+	public function adminup(){
+
+		if($this->request->isput()){
+
+			$post=$this->request->post();
+
+			if($post['status']==='false'){
+				$post['status']='0';
+			}else{
+				$post['status']='1';
+			}
+			
+			$post["adminid"]=$post['adminid'];
+
+			$res = $this->model->AdminUp($post);
+
+			if($res==true){
+				$this->success("管理员状态修改成功~",url('adminlist'));
+			}
+			
+			$this->error("管理员状态修改失败!");
+
+		}
+
+	}
+
+	#删除管理员#
+	public function admindel(){
+
+		if($this->request->isdelete()){
+
+			$adminid=$this->request->param('adminid');
+
+
+			if($adminid == "1"){
+				$this->error("超级管理员不可删除！！");
+			}
+
+			$res = $this->model->AdminDel($adminid);
+
+			if($res==true){
+				$this->success("管理员删除成功~",url('adminlist'));
+			}
+			
+			$this->error("管理员删除失败!");
+
+		}
+		
+	}
+
+	#角色列表#
+	public function rolelist(){
+
+		if($this->request->isGet()){
+
+			if($this->request->isAjax()){
+				$param=$this->request->param();
+				echo $this->model->Page('admin_role',$param,'name');
+				exit;
+			}
+			
+			return $this->fetch();
+		}
+
+	}
+
+	#添加角色#
+	public function roleadd(){
+
+		if($this->request->isGet()){
+
+			$this->assign('actinoinfo',$this->model->ActionGroupList());
+
+			return $this->fetch();
+
+		}else{
+
+			$data=$this->request->post();
+			
+			/*	
+			$auth="";
+
+			if(empty($data['auth'])){
+				$this->error("请选择用户权限");
+			}
+			foreach ($data['auth'] as $k => $v) {
+				$auth.=$v.",";
+			}
+			$data['auth']=rtrim($auth, ",");*/
+
+			$data['auth']=strtolower(json_encode($data['auth']));
+
+			$data['status']=empty($data['status'])?"0":$data['status'];
+
+			$map=array(
+				'name'=>$data['name']
+			);
+
+			if($this->model->DataCount('admin_role',$map,"name") > 0){
+				$this->error("当前角色名称已经存在~");
+			}
+
+			//自动生成菜单
+			$data['menu']=$this->FirstMenuBuild($data['auth']);
+
+			$res=$this->model->DataIns("admin_role",$data,'addtime');
+
+			if($res==true){
+
+				$this->success("角色信息添加成功~",url('rolelist'));
+
+			}
+				
+			$this->error("角色信息添加失败!");
+
+			
+		}
+	}
+
+	#添加角色信息#
+	public function roleedit(){
+
+		if($this->request->isGet()){
+
+			$roleid=$this->request->param('roleid');
+			
+			$info = $this->model->RoleInfo($roleid);
+				
+			if(empty($info)){
+				$this->error("当前角色信息不存在~");
+			}
+
+
+			//$info['auth']=json_decode($info['auth'],true);
+			$this->assign('info',$info);
+			
+
+			$this->assign('actinoinfo',$this->model->ActionGroupList());
+
+			return $this->fetch();
+
+		}else if($this->request->isput()){
+
+			$data=$this->request->put();
+			
+			/*	
+			$auth="";
+
+			if(empty($data['auth'])){
+				$this->error("请选择用户权限");
+			}
+			foreach ($data['auth'] as $k => $v) {
+				$auth.=$v.",";
+			}
+			$data['auth']=rtrim($auth, ",");*/
+
+			$data['auth']=strtolower(json_encode($data['auth']));
+
+			$res = $this->model->RoleEdit($data);
+
+			if($res==true){
+
+				Cache::rm('role_auth_'.$data['roleid']);
+
+				$this->success("角色信息修改成功~",url('rolelist'));
+			}
+				
+			$this->error("角色信息修改失败!");
+			
+		}
+	}
+
+
+	#删除角色#
+	public function roledel(){
+
+		if($this->request->isdelete()){
+
+			$roleid=$this->request->delete('roleid');
+
+			$res = $this->model->RoleDel($roleid);
+
+			if($res==true){
+				$this->success("角色删除成功~",url('adminlist'));
+			}
+			
+			$this->error("角色删除失败!");
+
+		}
+		
+	}
+
+	#修改角色状态#
+	public function roleup(){
+
+		if($this->request->isput()){
+
+			$post=$this->request->put();
+
+			$message=AuthValidate::Required($post['roleid']);
+          	if($message) $this->error($message);
+
+			if($post['roleid']=='1'){
+				$this->error("超级管理员不可修改！！");
+			}
+
+			if($post['status']==='false'){
+				$post['status']='0';
+			}else{
+				$post['status']='1';
+			}
+				
+			$res = $this->model->RoleUp($post);
+
+			if($res==true){
+				$this->success("角色状态修改成功~",url('adminlist'));
+			}
+			
+			$this->error("角色状态修改失败!");
+
+			
+		}
+
+	}
+
+	#权限列表#
+	public function actionlist(){
+
+		if($this->request->isGet()){
+
+			if($this->request->isAjax()){
+				
+				$param=$this->request->param();
+				echo $this->model->Page('admin_action',$param,'name|controller|action');
+				exit;
+			}
+			
+			return $this->fetch();
+		}
+
+	}
+
+	#添加权限信息#
+	public function actionadd(){
+
+		if($this->request->isGet()){
+
+			$this->assign('list',$this->model->ActionList(['status'=>'1','pid'=>'0'],"actionid,name"));
+			return $this->fetch();
+
+		}else{
+
+			$data=$this->request->post();
+
+
+			$res=$this->model->ActionAdd($data);
+
+			if($res==true){
+				$this->success("权限信息添加成功~",url('actionlist'));
+			}
+				
+			$this->error("权限信息添加失败!");
+			
+		}
+	}
+
+	#编辑权限信息#
+	public function actionedit(){
+
+		if($this->request->isGet()){
+
+			$actionid=$this->request->param('actionid');
+
+			$info = $this->model->ActionInfo($actionid);
+
+			if(empty($info)){
+				$this->error("当前权限信息不存在~");
+			}
+			$this->assign('info',$info);
+
+			$this->assign('list',$this->model->ActionList(['status'=>'1','pid'=>'0'],"actionid,name"));
+
+			return $this->fetch();
+
+		}else if($this->request->isput()){
+
+			$data=$this->request->put();
+	
+			$res = $this->model->ActionEdit($data);
+
+			if($res==true){
+				$this->success("权限信息修改成功~",url('actionlist'));
+			}
+				
+			$this->error("权限信息修改失败!");
+			
+		}
+	}
+
+	#删除权限信息#
+	public function actiondel(){
+
+		if($this->request->isdelete()){
+
+			$actionid=$this->request->delete('actionid');
+
+			$res = $this->model->ActionDel($actionid);
+
+			if($res==true){
+				$this->success("权限信息删除成功~",url('actionlist'));
+			}
+				
+			$this->error("权限信息删除失败!");
+			
+		}
+
+		
+	}
+
+	#修改权限状态#
+	public function actionup(){
+
+		if($this->request->isput()){
+
+			$post=$this->request->put();
+
+			if($post['status']==='false'){
+				$post['status']='0';
+			}else{
+				$post['status']='1';
+			}
+			
+			$post["actionid"]=$post['actionid'];
+
+			$res = $this->model->ActionUp($post);
+
+			if($res==true){
+				$this->success("权限信息状态成功~",url('actionlist'));
+			}
+				
+			$this->error("权限信息状态失败!");
+
+		}
+
+	}
+
+	#管理员日志#
+	public function loglist(){
+		if($this->request->isGet()){
+
+			if($this->request->isAjax()){
+				$param=$this->request->param();
+				echo $this->model->Page('admin_log',$param,"name|content");exit;
+			}
+
+			return $this->fetch();
+		}
+	}
+
+	#编辑角色信息#
+	public function rolemenu(){
+
+		if($this->request->isGet()){
+
+			$roleid=$this->request->param('roleid');
+			
+			if(empty($roleid)){
+				$this->error("角色id不存在~");
+			}else{
+				$info=$this->model->DataFind('admin_role',['roleid'=>$roleid]);
+				if(empty($info)){
+					$this->error("当前角色信息不存在~");
+				}	
+				//print_r(json_decode($info['menu'],true));
+				$this->assign('other',json_decode($info['menu'],true));
+
+				$this->assign('auth',json_decode($info['auth'],true));
+				
+				$this->assign('info',$info);
+			}
+			
+			$this->assign('actinoinfo',$this->model->ActionGroupList());
+
+			return $this->fetch();
+
+		}else{
+
+			$post=$this->request->post();
+				//print_r($post);exit;
+			if(empty($post['roleid'])){
+				$this->error("请选择一个角色id");
+			}
+			
+			//
+			
+			$menu=array();
+
+			$num="0";
+
+			if(count($post['auth']) > 0){
+				foreach ($post['auth'] as $k => $v) {
+					
+					//自定义处理
+					if(is_numeric($k) || $k=='自定义'){
+
+						$list=array();
+						if(count($v) > 0){
+
+							$i=0;
+							$data=array(
+								'name'=>"",
+								'controller'=>"",
+								'list'=>array()
+							);
+							
+							foreach ($v as $ks => $vs) {
+							
+								if($i==0){
+									$data['name']=$ks;
+									$data['controller']="自定义";
+								}
+								
+								if(count($v)==1){
+									$data['list']=$vs;
+								}else{
+									
+									$info=array(
+										'name'=>$ks,
+										'action'=>$vs
+									);
+
+									array_push($data['list'],$info);
+								}
+								$i++;
+
+							}
+
+
+
+						}
+
+					}else{ 
+						$map=array(
+							'controller'=>$k,
+							'type'=>'控制器'
+						);
+
+						$data=array(
+							'name'=>$this->model->DataValue('admin_action',$map,'name'),
+							'controller'=>$k,
+							'list'=>array()
+						);
+						if(count($v) > 0){
+							foreach ($v as $key => $val) {
+
+								$map=array(
+									'action'=>$val,
+									'type'=>'操作'
+								);
+
+								$actioninfo=array(
+									'name'=>$this->model->DataValue('admin_action',$map,'name'),
+									'action'=>$val
+								);
+
+								array_push($data['list'],$actioninfo);
+							}
+						}
+					}
+
+
+					$menu[$num]=$data;
+					$num++;
+
+				}
+			}
+			
+			$updata=array(
+				'roleid'=>$post['roleid'],
+				'menu'=>json_encode($menu)
+			);
+			
+			$res=$this->model->DataUp('admin_role',$updata,'','uptime');
+
+			if($res==true){
+
+				Cache::rm('role_menu_'.$post['roleid']);
+
+				$this->success("角色菜单信息修改成功~",url('rolelist'));
+			}else{
+				$this->error("角色菜单信息修改失败!");
+			}
+	
+		}
+	}
+
+	#首次为角色生成菜单#
+	private function FirstMenuBuild($auth){
+		$auth=json_decode($auth,true);
+		$menu=array();
+
+		if(count($auth) > 0){
+
+			$num=0;
+			foreach ($auth as $k => $v) {
+
+				$map=array(
+					'controller'=>$k,
+					'type'=>'控制器'
+				);
+
+				$data=array(
+					'name'=>$this->model->DataValue('admin_action',$map,'name'),
+					'controller'=>$k,
+					'list'=>array()
+				);
+				if(count($v) > 0){
+					foreach ($v as $key => $val) {
+
+						$map=array(
+							'action'=>$val,
+							'type'=>'操作'
+						);
+
+						$actioninfo=array(
+							'name'=>$this->model->DataValue('admin_action',$map,'name'),
+							'action'=>$val
+						);
+
+						array_push($data['list'],$actioninfo);
+					}
+				}
+
+				$menu[$num]=$data;
+				$num++;
+			}
+
+			$menu=json_encode($menu);
+		}
+		
+		return $menu;
+	}
+	#角色菜单生成#
+	public function RoleMenuBuild($roleid){
+
+		$map=array(
+			'roleid'=>$roleid,
+			'status'=>'1'
+		);
+
+		$menus=Cache::get('role_menu_'.$roleid);
+
+		if(empty($menus)){
+
+			$menu=Db::name('admin_role')->where($map)->value('menu');
+			
+			$data=json_decode($menu,true);
+			
+			foreach ($data as $k => $v) {
+				if(is_array($v['list'])){
+					$menu_child="";
+					foreach ($v['list'] as $key => $val) {
+				
+						$url=Url($v['controller']."/".$val['action']);
+
+						$menu_child.='<dd><a href="'.$url.'">'.$val['name'].'</a></dd>';	
+					}
+
+					$menus.='
+					<li class="layui-nav-item layui-nav-itemed" >
+						<a class="" >'.$v['name'].'</a>
+						<dl class="layui-nav-child">
+				            '.$menu_child.'
+				        </dl>
+			        </li>';
+
+				}else{
+					$menus.='
+					<li class="layui-nav-item layui-nav-itemed">
+						<a class="" href="'.$v['list'].'">  '.$v['name'].'</a>
+						
+			        </li>
+          			';
+				}
+				
+
+			}
+
+			Cache::set('role_menu_'.$roleid,$menus);
+
+		}
+
+		
+
+		return $menus;
+
+	}
+
+	#刷新权限#
+	public function index(){
+			
+		//exit("请删除本行注释");
+		//1.获取所有控制
+		$dir="./../application/admin/controller/";
+		$data=array();
+		$con_arr=array("Common","error","Login"); //排除
+		
+		foreach (scandir($dir) as $k => $v) {
+			if(preg_match('/[A-Za-z]+.php/', $v,$res)/* && !in_array($v,$con_arr)*/){
+				//if(!in_array(trim($v),$con_arr)){
+				 $controller=substr($v, 0,-4);
+
+				 if(!in_array($controller,$con_arr)){
+
+					//2.获取所有控制器
+					
+					$cont=file_get_contents("./../application/admin/controller/".$controller.".php");
+
+					preg_match("/#@(.*?)@#/", $cont, $res);
+
+					$map=array(
+						'controller'=>$controller,
+						'type'=>'控制器'
+					);
+		
+					$actionid=Db::name("admin_action")->where($map)->value('actionid');
+					
+					if(empty($actionid)){
+						$insert_data=array(
+							'pid'=>"0",
+							'name'=>$res[1],
+							'controller'=>$controller,
+							'type'=>'控制器',
+							'addtime'=>date('Y-m-d H:i:s')
+						);
+						$actionid=Db::name("admin_action")->insertGetId($insert_data);
+					}else{
+						$up_data=array(
+							'name'=>$res[1],
+							'uptime'=>date('Y-m-d H:i:s')
+						);
+						Db::name("admin_action")->where($map)->update($up_data);
+					}
+
+					preg_match_all("/#(.*?)#(?:.|\n|\r\n)(.*?)public function (.*?)\(/", $cont, $arr);
+
+					//preg_match_all("/#(.*?)#\r\n(.*?)public function (.*?)\(/", $cont, $arr);
+					if(!empty($arr)){
+						for($i=0;$i<count($arr[1]);$i++){
+							
+							$map2=array(
+								'controller'=>$controller,
+								'action'=>$arr[3][$i],
+								'type'=>'操作',
+							);
+							$action_count=Db::name("admin_action")->where($map2)->count();
+							if($action_count>0){
+
+								$action_update_data=array(
+									'name'=>$arr[1][$i],
+									'value'=>$controller."/".$arr[3][$i],
+									'uptime'=>date('Y-m-d H:i:s')
+								);
+								Db::name("admin_action")->where($map2)->update($action_update_data);
+							
+							}else{
+
+								$insert_data=array(
+									'pid'=>$actionid,
+									'name'=>$arr[1][$i],
+									'controller'=>$controller,
+									'action'=>$arr[3][$i],
+									'value'=>$controller."/".$arr[3][$i],
+									'type'=>'操作',
+									'addtime'=>date('Y-m-d H:i:s')
+								);
+
+								Db::name("admin_action")->insert($insert_data);
+							}
+							
+						}
+						
+					}
+
+					
+					//array_push($data,substr($v, 0,-4));
+				}
+			}
+		}
+		$this->error("处理结束");
+		
+	}
+
+	#修改密码#
+    public function modifypd(){
+        if($this->request->isGet()){
+
+            return $this->fetch();
+
+        } else {
+
+          $post=$this->request->param();
+          
+          
+          $res=Db::name('admin_list')->where(['adminid'=>session('admin.adminid')])->update(['password'=>md5($post['pass1'])]);
+
+          if($res==true){
+
+            Session::clear();
+
+            $this->success("密码修改成功，请重新登录",url('login/index'));
+
+          }
+
+            $this->error("密码修改失败，请重试！！");
+     
+
+        }
+
+
+    }
+   
+
+
+
+}

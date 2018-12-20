@@ -1,0 +1,199 @@
+{extend name="public:base"}
+{block name="main"}
+<form class="layui-form">
+  <div class="demoTable">
+    条件搜索：
+    <div class="layui-inline">
+      <select name="cateid">
+        <option value="">全部分类</option>
+        {notempty name="catelist"}
+          {foreach $catelist as $v}
+          <option value="{$v['cateid']}">{$v['catename']}</option>
+          {/foreach}
+        {/notempty}
+      </select> 
+    </div>
+    <div class="layui-inline">
+      <select name="authorid">
+        <option value="">全部作者</option>
+        {notempty name="authorlist"}
+          {foreach $authorlist as $v}
+          <option value="{$v['authorid']}">{$v['name']}</option>
+          {/foreach}
+        {/notempty}
+      </select> 
+    </div>
+    <div class="layui-inline">
+      <select name="wheretype">
+        <option value="">全部状态</option>
+        <option value="ishot">已推荐</option>
+        <option value="nohot">未推荐</option>
+        <option value="istop">已置顶</option>
+        <option value="notop">未置顶</option>
+        <option value="isstatus">正常</option>
+        <option value="nostatus">下架</option>
+        <option value="caogao">草稿</option>
+      </select> 
+    </div>
+    <div class="layui-inline">
+      <input class="layui-input" name="keyword" id="keyword" autocomplete="off" placeholder="请输入关键字">
+    </div>
+    <div class="layui-inline">
+      <input class="layui-input" name="start" id="start"  placeholder="请输入发布开始时间">
+    </div>
+    <div class="layui-inline">
+      <input class="layui-input" name="end" id="end"  placeholder="请输入发布结束时间">
+    </div>
+    <div class="layui-inline">
+      <button class="layui-btn" lay-filter="submit" lay-submit>搜索</button>
+      <button class="layui-btn layui-btn-primary"  lay-filter="submit" lay-submit>重置</button>
+      <a href="{:url('news/newsinfo')}" class="layui-btn" >添加新闻</a>
+    </div>
+
+  </div>
+</form>
+<table class="layui-table" lay-data="{height:650,url:location.href,where:{cateid:'{:input('cateid')}'}, page:true, id:'newslist'}" lay-filter="table">
+  <thead>
+    <tr>
+      <th lay-data="{field:'newsid', sort: true,width:68}">ID</th>
+      <th lay-data="{field:'thumb',templet:'#thumb'}">缩略图</th>
+      <th lay-data="{field:'catename'}">所属分类</th>
+      <th lay-data="{field:'title',templet:'#link'}">标题</th>
+      <th lay-data="{field:'keyword'}">关键字</th>
+      <th lay-data="{field:'hits',sort: true,width:100}">阅读量</th>
+      <th lay-data="{field:'authorname'}">作者</th>
+      <th lay-data="{field:'status',templet:'#status'}">状态</th>
+      <th lay-data="{templet:'#count'}">其他</th>
+      <th lay-data="{field:'pushtime', sort: true}">发布时间</th>
+      <th lay-data="{fixed: 'right', width:160, align:'center', toolbar: '#barDemo'}">操作</th>
+    </tr>
+  </thead>
+</table>
+
+<script type="text/html" id="barDemo">
+  <a class="layui-btn layui-btn-sm" lay-event="edit">编辑</a>
+  <a class="layui-btn layui-btn-danger layui-btn-sm" lay-event="del">删除</a>
+</script>
+
+<script>
+layui.use(['table','laydate','form'], function(){
+  var table = layui.table;
+  var laydate = layui.laydate;
+  var form = layui.form;
+   laydate.render({
+      elem: '#start',
+      max: 0
+   });
+    laydate.render({
+      elem: '#end',
+      max: 1
+   });
+   
+
+  form.on('submit(submit)', function(data){
+   
+    var field=data.field;
+
+    if($(data.elem).html()=="重置"){
+
+        $("input").val("");
+        field="";
+    }
+
+    table.reload('newslist', {
+       where: field
+    });
+
+    return false; 
+  });
+
+
+
+
+  table.on('tool(table)', function(obj){
+    var data = obj.data;
+
+    if(obj.event === 'del'){
+      layer.confirm('真的删除本条数据吗？', function(index){
+
+        $.post("{:Url('newsdel')}",{'newsid': data.newsid},function(data){
+           if(data=='1'){
+              alert();
+              obj.del();
+              layer.close(index);
+           }else{
+             alert("删除失败请重试！");
+           }
+        })
+        
+      });
+    } else if(obj.event === 'edit'){
+        location.href="/admin.php/news/newsinfo/newsid/"+data.newsid;
+      //layer.alert('编辑行：<br>'+ JSON.stringify(data))
+    }
+  });
+
+  //开关
+  form.on('switch(status)', function(data){
+
+    var name=$(this).attr('name');
+
+    $.post("{:url('newsup')}",{type:name,value:data.elem.checked,'newsid':data.value},function(res){
+      if(res=='0'){
+        alert("操作失败");
+      }
+    });
+   
+  }); 
+
+  //图片查看
+  layer.photos({
+    photos: 'div'
+    ,anim: 5 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
+  });
+
+
+});
+
+</script>
+
+
+<script type="text/html" id="link">
+  {{#  if(d.url != '' && typeof(d.url) != 'undefined'){ }}
+     <a href="{{d.url}}" class="layui-table-link" target="_blank">{{d.title}}</a>
+  {{#  } else { }}
+    {{d.title}}
+  {{#  } }}
+</script>
+<script type="text/html" id="thumb">
+  <img src='{{d.thumb}}'>
+</script>
+
+<script type="text/html" id="status">
+  {{#  if(d.status == '1'){ }}
+    <span class="layui-badge layui-bg-green">上架</span>
+  {{#  } }}
+  {{#  if(d.status == '0'){ }}
+    <span class="layui-badge layui-bg-gray">下架</span>
+  {{#  } }}
+  {{#  if(d.status == '-1'){ }}
+    <span class="layui-badge layui-bg-blue">草稿</span>
+  {{#  } }}
+  {{#  if(d.hot == '1'){ }}
+    <span class="layui-badge layui-bg-orange">推荐</span>
+  {{#  } }}
+  {{#  if(d.top == '1'){ }}
+    <span class="layui-badge ">置顶</span>
+  {{#  } }}
+</script>
+
+<script type="text/html" id="count">
+    <span class="layui-badge layui-bg-gray" title="图片 {{d.count.img}}个"><i class="layui-icon">&#xe60d;</i> {{d.count.img}}</span>
+    <span class="layui-badge layui-bg-gray " title="附件 {{d.count.file}}个"><i class="layui-icon">&#xe621;</i> {{d.count.file}} </span>
+    <span class="layui-badge layui-bg-gray " title="评论 {{d.count.comment}}个"><i class="layui-icon">&#xe611;</i> {{d.count.comment}} </span>
+</script>
+
+
+
+
+{/block}

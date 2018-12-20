@@ -1,4 +1,4 @@
-<?php /*a:3:{s:53:"G:\www2\cms2\application\admin\view\news\comment.html";i:1539017979;s:52:"G:\www2\cms2\application\admin\view\public\base.html";i:1541603122;s:52:"G:\www2\cms2\application\admin\view\public\head.html";i:1541602514;}*/ ?>
+<?php /*a:3:{s:53:"G:\www2\cms2\application\admin\view\news\comment.html";i:1542125875;s:52:"G:\www2\cms2\application\admin\view\public\base.html";i:1543161944;s:52:"G:\www2\cms2\application\admin\view\public\head.html";i:1541778938;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +13,9 @@
 
   <link rel="stylesheet" href="/static/admin/layui/css/layui.css?v=2">
   <link rel="stylesheet" href="/static/admin/css/admin.css?v=1.4">
- 
+  <script type="text/javascript" src="https://cdn.bootcss.com/layer/2.3/layer.js"></script>
+  <script type="text/javascript" src="/static/admin/js/admin.js"></script>
+  
 </head>
 <body class="layui-layout-body">
 
@@ -117,23 +119,11 @@ layui.use(['table','laydate','form'], function(){
     var data = obj.data;
 
     if(obj.event === 'del'){
-      layer.confirm('真的删除本条数据吗？', function(index){
 
-        $.post("<?php echo Url('commentdel'); ?>",{'id': data.id},function(data){
-           if(data=='1'){
-              alert("操作成功~");
-              obj.del();
-              layer.close(index);
-           }else{
-             alert("删除失败请重试！");
-           }
-        })
-        
-      });
-    } else if(obj.event === 'edit'){
-        location.href="/admin.php/news/newsinfo/newsid/"+data.newsid;
-      //layer.alert('编辑行：<br>'+ JSON.stringify(data))
-    }
+      Delete("<?php echo Url('del'); ?>",{'id': data.id},obj);
+
+    } 
+
   });
 
   //开关
@@ -141,12 +131,8 @@ layui.use(['table','laydate','form'], function(){
 
     var name=$(this).attr('name');
 
-    $.post("<?php echo url('commentup'); ?>",{type:name,value:data.elem.checked,'id':data.value},function(res){
-      if(res=='0'){
-        alert("操作失败");
-      }
-    });
-   
+    Status("<?php echo url('commentup'); ?>",{type:name,value:data.elem.checked,'id':data.value});
+    
   }); 
 
   //图片查看

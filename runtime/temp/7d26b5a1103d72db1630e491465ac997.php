@@ -1,4 +1,4 @@
-<?php /*a:3:{s:54:"G:\www2\cms2\application\admin\view\news\catelist.html";i:1540918264;s:52:"G:\www2\cms2\application\admin\view\public\base.html";i:1541603122;s:52:"G:\www2\cms2\application\admin\view\public\head.html";i:1541602514;}*/ ?>
+<?php /*a:3:{s:54:"G:\www2\cms2\application\admin\view\news\catelist.html";i:1543162933;s:52:"G:\www2\cms2\application\admin\view\public\base.html";i:1543161944;s:52:"G:\www2\cms2\application\admin\view\public\head.html";i:1541778938;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +13,9 @@
 
   <link rel="stylesheet" href="/static/admin/layui/css/layui.css?v=2">
   <link rel="stylesheet" href="/static/admin/css/admin.css?v=1.4">
- 
+  <script type="text/javascript" src="https://cdn.bootcss.com/layer/2.3/layer.js"></script>
+  <script type="text/javascript" src="/static/admin/js/admin.js"></script>
+  
 </head>
 <body class="layui-layout-body">
 
@@ -34,7 +36,10 @@
 <div class="demoTable">
   <form class="layui-form" action="">
   <div class="layui-input-inline">
-    <a  href="<?php echo Url('cateinfo',array('cateid'=>input('pid'))); ?>" class="layui-btn" data-type="reload" lay-filter="cateadd" lay-submit>添加分类</a>
+    <a  href="javascript:LayerOpen('<?php echo Url('cateadd',array('cateid'=>input('pid'))); ?>');" class="layui-btn layui-btn-normal" data-type="reload" lay-filter="cateadd" lay-submit>添加分类</a>
+  </div>
+  <div class="layui-input-inline">
+    <a  href="javascript:LayerOpen('<?php echo Url('catetree'); ?>');" class="layui-btn layui-btn-normal" data-type="reload" lay-filter="cateadd" lay-submit>查看分类</a>
   </div>
 
   <div class="layui-input-inline " >
@@ -46,7 +51,7 @@
       </select>  
   </div>
 </div>
-<table class="layui-table" lay-data="{height:650,url:location.href,where:{pid:'<?php echo input('pid'); ?>'}, page:true, id:'list'}" lay-filter="table" id="table" lay-size="lg">
+<table class="layui-table" lay-data="{height:650,url:location.href,where:{pid:'<?php echo input('pid'); ?>'}, id:'list', page:false}" lay-filter="table" id="table" lay-size="lg">
   <thead>
     <tr>
       <th lay-data="{field:'cateid',width:65}">ID</th>
@@ -59,6 +64,17 @@
       <th lay-data="{field:'status',templet:'#status',width:105}">状态</th>
       <th lay-data="{field:'addtime'}">添加时间</th>
       <th lay-data="{fixed: 'right',  toolbar: '#barDemo'}">操作</th>
+
+      <!-- <th lay-data="{field:'cateid',width:65}">ID</th>
+      <th lay-data="{field:'catepx',width:65}">排序</th>
+      <th lay-data="{field:'catethumb',templet:'#thumb',width:75}">缩略图</th>
+      <th lay-data="{field:'catename'}">分类名称</th>
+      <th lay-data="{field:'url',templet:'#link'}">跳转连接</th>
+      <th lay-data="{field:'modelname'}">模型</th>
+      <th lay-data="{field:'isnav',templet:'#nav',width:105}">导航</th>
+      <th lay-data="{field:'status',templet:'#status',width:105}">状态</th>
+      <th lay-data="{field:'addtime'}">添加时间</th>
+      <th lay-data="{fixed: 'right',  toolbar: '#barDemo'}">操作</th> -->
     </tr>
   </thead>
 </table>
@@ -78,41 +94,23 @@
 
 <script>
 layui.use(['table','laydate','form'], function(){
-  var table = layui.table;
-  var laydate = layui.laydate;
-  var form = layui.form;
+  table = layui.table;
+  laydate = layui.laydate;
+  form = layui.form;
 
-   laydate.render({
-      elem: '#start',
-      max: 0
-   });
-    laydate.render({
-      elem: '#end',
-      max: 1
-   });
-   
+
 
 
 
   table.on('tool(table)', function(obj){
     var data = obj.data;
 
-   if(obj.event === 'del'){
-      layer.confirm('真的删除本条数据吗？', function(index){
+    if(obj.event === 'del'){
 
-        $.post("<?php echo Url('catedel'); ?>",{'cateid': data.cateid},function(data){
-           if(data=='1'){
-              alert();
-              obj.del();
-              layer.close(index);
-           }else{
-             alert("删除失败请重试！");
-           }
-        })
-        
-      });
+      Delete("<?php echo Url('catedel'); ?>",{'cateid': data.cateid},obj);
+      
     } else if(obj.event === 'edit'){
-        location.href="/admin.php/news/cateinfo/cateid/"+data.cateid;
+        LayerOpen('/admin.php/news/cateedit/cateid/'+data.cateid);
       //layer.alert('编辑行：<br>'+ JSON.stringify(data))
     } else if(obj.event === 'editpage'){
         location.href="/admin.php/news/pageinfo/cateid/"+data.cateid;
@@ -148,14 +146,9 @@ layui.use(['table','laydate','form'], function(){
   form.on('switch(status)', function(data){
 
     var name=$(this).attr('name');
+    Status("<?php echo url('cateup'); ?>",{type:name,value:data.elem.checked,'cateid':data.value});
 
-    $.post("<?php echo url('cateup'); ?>",{type:name,value:data.elem.checked,'cateid':data.value},function(res){
-      if(res=='0'){
-        alert("操作失败");
-      }
-    });
-   
-  });  
+  });
 
   //下拉选择
   form.on('select(select)', function(data){

@@ -1,4 +1,4 @@
-<?php /*a:3:{s:53:"G:\www2\cms2\application\admin\view\banner\lists.html";i:1540918311;s:52:"G:\www2\cms2\application\admin\view\public\base.html";i:1541603122;s:52:"G:\www2\cms2\application\admin\view\public\head.html";i:1541602514;}*/ ?>
+<?php /*a:3:{s:53:"G:\www2\cms2\application\admin\view\banner\lists.html";i:1541907112;s:52:"G:\www2\cms2\application\admin\view\public\base.html";i:1543161944;s:52:"G:\www2\cms2\application\admin\view\public\head.html";i:1541778938;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +13,9 @@
 
   <link rel="stylesheet" href="/static/admin/layui/css/layui.css?v=2">
   <link rel="stylesheet" href="/static/admin/css/admin.css?v=1.4">
- 
+  <script type="text/javascript" src="https://cdn.bootcss.com/layer/2.3/layer.js"></script>
+  <script type="text/javascript" src="/static/admin/js/admin.js"></script>
+  
 </head>
 <body class="layui-layout-body">
 
@@ -42,7 +44,7 @@
   <div class="layui-inline">
     <button class="layui-btn" lay-filter="submit" lay-submit>搜索</button>
     <button class="layui-btn layui-btn-primary"  lay-filter="submit" lay-submit>重置</button>
-    <a class="layui-btn layui-btn-normal"  href="<?php echo url('info'); ?>">添加</a>
+    <a class="layui-btn layui-btn-normal"  href="javascript:LayerOpen('<?php echo url('add'); ?>');">添加</a>
   </div>
 
 </div>
@@ -67,7 +69,7 @@
 
 <script>
 layui.use(['table','laydate','form'], function(){
-  var table = layui.table;
+   table = layui.table;
   var laydate = layui.laydate;
   var form = layui.form;
    laydate.render({
@@ -104,22 +106,11 @@ layui.use(['table','laydate','form'], function(){
     var data = obj.data;
 
     if(obj.event === 'del'){
-      layer.confirm('真的删除本条数据吗？', function(index){
+     
+     Delete("<?php echo Url('del'); ?>",{'bannerid': data.bannerid},obj);
 
-        $.post("<?php echo Url('del'); ?>",{'bannerid': data.bannerid},function(data){
-           if(data=='1'){
-              alert("操作成功~");
-              obj.del();
-              layer.close(index);
-           }else{
-             alert("删除失败请重试！");
-           }
-        })
-        
-      });
     } else if(obj.event === 'edit'){
-        location.href="info/bannerid/"+data.bannerid;
-    
+        LayerOpen("edit/bannerid/"+data.bannerid);
     }
   });
 
@@ -132,16 +123,14 @@ layui.use(['table','laydate','form'], function(){
   //开关
   form.on('switch(status)', function(data){
 
-    $.post("<?php echo url('up'); ?>",{'status':data.elem.checked,'bannerid':data.value},function(res){
-      if(res=='0'){
-        alert("操作失败");
-      }
-    });
+    Status("<?php echo url('up'); ?>",{'status':data.elem.checked,'bannerid':data.value});
    
-  });  
+  }); 
+
+  
+
 
 });
-
 
 
 </script>

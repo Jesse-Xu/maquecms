@@ -1,4 +1,4 @@
-<?php /*a:3:{s:56:"G:\www2\cms2\application\admin\view\news\authorlist.html";i:1540918275;s:52:"G:\www2\cms2\application\admin\view\public\base.html";i:1541603122;s:52:"G:\www2\cms2\application\admin\view\public\head.html";i:1541602514;}*/ ?>
+<?php /*a:3:{s:56:"G:\www2\cms2\application\admin\view\news\authorlist.html";i:1541909972;s:52:"G:\www2\cms2\application\admin\view\public\base.html";i:1543161944;s:52:"G:\www2\cms2\application\admin\view\public\head.html";i:1541778938;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +13,9 @@
 
   <link rel="stylesheet" href="/static/admin/layui/css/layui.css?v=2">
   <link rel="stylesheet" href="/static/admin/css/admin.css?v=1.4">
- 
+  <script type="text/javascript" src="https://cdn.bootcss.com/layer/2.3/layer.js"></script>
+  <script type="text/javascript" src="/static/admin/js/admin.js"></script>
+  
 </head>
 <body class="layui-layout-body">
 
@@ -32,7 +34,7 @@
    
       
 <div class="demoTable">
-  <a  href="<?php echo Url('authorinfo'); ?>" class="layui-btn" data-type="reload" >添加作者</a>
+  <a  href="javascript:LayerOpen('<?php echo Url('authoradd'); ?>');" class="layui-btn layui-btn-normal" data-type="reload" >添加作者</a>
 </div>
 <table class="layui-table" lay-data="{height:650,url:location.href, page:true, id:'list'}" lay-filter="table" lay-size="lg">
   <thead>
@@ -55,9 +57,9 @@
 
 <script>
 layui.use(['table','laydate','form'], function(){
-  var table = layui.table;
-  var laydate = layui.laydate;
-  var form = layui.form;
+  table = layui.table;
+  laydate = layui.laydate;
+  form = layui.form;
    laydate.render({
       elem: '#start',
       max: 0
@@ -71,21 +73,11 @@ layui.use(['table','laydate','form'], function(){
     var data = obj.data;
 
     if(obj.event === 'del'){
-      layer.confirm('真的删除本条数据吗？', function(index){
 
-        $.post("<?php echo Url('authordel'); ?>",{'authorid': data.authorid},function(data){
-           if(data=='1'){
-              alert();
-              obj.del();
-              layer.close(index);
-           }else{
-             alert("删除失败请重试！");
-           }
-        })
-        
-      });
+      Delete("<?php echo Url('authordel'); ?>",{'authorid': data.authorid},obj);
+
     } else if(obj.event === 'edit'){
-        location.href="/admin.php/news/authorinfo/authorid/"+data.authorid;
+        LayerOpen("/admin.php/news/authoredit/authorid/"+data.authorid);
     }
     
   });
@@ -100,12 +92,8 @@ layui.use(['table','laydate','form'], function(){
 
     var name=$(this).attr('name');
 
-    $.post("<?php echo url('authorup'); ?>",{type:name,value:data.elem.checked,'authorid':data.value},function(res){
-      if(res=='0'){
-        alert("操作失败");
-      }
-    });
-   
+    Status("<?php echo url('authorup'); ?>",{type:name,value:data.elem.checked,'authorid':data.value});
+    
   }); 
 
 

@@ -1,0 +1,163 @@
+
+//左边菜单栏目点击
+$(".layui-logo").click(function(){
+ 
+    if($(".left-menu").css("display")=='block'){
+      $(".left-menu").css("display","none");
+      $(".layui-body,.layui-footer").css("left","0px");
+    }else{
+      $(".left-menu").css("display","block");
+      $(".layui-body,.layui-footer").css("left","200px");
+    }
+});
+
+function ToLink(url){
+  $("iframe").attr('src',url);
+}
+
+/*iframe打开弹窗*/
+function LayerOpen(url){
+ 
+  layer.open({
+      type: 2,
+      //title: '添加',
+      shadeClose: true,
+      shade: false,
+      maxmin: true, //开启最大化最小化按钮
+      area: ['893px', '600px'],
+      content: url
+  });
+  
+}
+
+//弹出框
+function alert(data='操作成功~',url=''){
+
+  //不作任何操作
+  if(url==''){
+      layer.open({
+        title: '提示',
+        content: data
+      }); 
+  //刷新
+  }else if(url=='1' || url=='reload'){
+    layer.open({
+        title: '提示',
+        content: data,
+        yes: function(){
+            location.reload();
+        },cancel: function(){ 
+            location.reload();
+        }
+    }); 
+  //跳转
+  }else{
+     layer.open({
+        title: '提示',
+        content: data,
+        yes: function(){
+            location.href=url;
+        },cancel: function(){ 
+            location.href=url;
+        }
+      });  
+  }
+ 
+}
+
+/*修改状态*/
+function setstatus(url,id,status,type){
+    if(type){
+
+      layer.confirm('是否确认当前操作?', {icon: 3, title:'提示'}, function(index){
+        $.post(url,{"id":id,"status":status},function(data){
+            alert(data.msg,1);
+        },'JSON');
+      
+      });
+    }else{
+      $.post(url,{"id":id,"status":status},function(data){
+        alert(data.msg,1);
+      },'JSON');
+    }    
+}
+
+/*表单提交*/
+function FormAjax(href, data, table='table'){
+
+    $.ajax({
+        url: href,
+        type: 'PUT',
+        dataType:"json",
+        data:data,
+        success: function(res) {
+            if(typeof(parent.table)  != 'undefined'){
+              parent.table.reload(table);
+            }
+
+            layer.alert(res.msg, function(){
+              
+              if(typeof(parent.table)  != 'undefined'){
+                parent.layer.closeAll();
+              }else{
+                location.href = res.url;
+              }
+
+            }); 
+        }
+
+    });
+
+    return false;
+}
+
+/*删除数据*/
+function Delete(href, data='', obj, msg ='真的删除本条数据吗？'){
+
+    layer.confirm(msg, function(index){
+
+        $.ajax({
+            url: href,
+            type: 'delete',
+            dataType:"json",
+            data:data,
+            success: function(res) {
+                
+                if(res.code=='1'){
+                    alert(res.msg);
+                    obj.del();
+                    layer.close(index);
+                 }else{
+                   alert(res.msg);
+                 }
+
+            }
+
+        });
+        
+    });
+
+    return false;
+}
+
+/*修改状态*/
+function Status(href, data, tip='error'){
+
+    $.ajax({
+        url: href,
+        type: 'PUT',
+        dataType:"json",
+        data:data,
+        success: function(res) {
+            if(res.code =='0'){
+               alert(res.msg);
+            }
+        }
+
+    });
+
+
+}
+
+
+

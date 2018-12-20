@@ -1,0 +1,68 @@
+{extend name="public:base"}
+{block name="main"}
+
+<script type="text/javascript" src="http://www.jq22.com/demo/bootstrap-ztree3201708300202/js/jquery.ztree.core.js"></script>
+<script type="text/javascript" src="http://www.jq22.com/demo/bootstrap-ztree3201708300202/js/jquery.ztree.excheck.js"></script>
+<script type="text/javascript" src="http://www.jq22.com/demo/bootstrap-ztree3201708300202/js/jquery.ztree.exedit.js"></script>
+
+<link rel="stylesheet" href="http://www.jq22.com/demo/bootstrap-ztree3201708300202/css/bootstrapStyle/bootstrapStyle.css" type="text/css">
+
+
+
+  <ul id="treeDemo" class="ztree"></ul>
+ 
+
+
+
+
+<SCRIPT type="text/javascript">
+   
+        var setting = {
+            view: {
+                addHoverDom: false, //addHoverDom,
+                removeHoverDom: false,// removeHoverDom,
+                selectedMulti: false
+            },
+            check: {
+                enable: true
+            },
+            data: {
+                simpleData: {
+                    enable: true
+                }
+            },
+            edit: {
+                enable: false //true
+            }
+        };
+
+    
+        $.fn.zTree.init($("#treeDemo"), setting, {$info|raw});
+        
+
+        var newCount = 1;
+        //添加时间
+        function addHoverDom(treeId, treeNode) {
+          console.log('asd');
+            var sObj = $("#" + treeNode.tId + "_span");
+            if (treeNode.editNameFlag || $("#addBtn_"+treeNode.tId).length>0) return;
+            var addStr = "<span class='button add' id='addBtn_" + treeNode.tId
+                + "' title='add node' onfocus='this.blur();'></span>";
+            sObj.after(addStr);
+            var btn = $("#addBtn_"+treeNode.tId);
+            if (btn) btn.bind("click", function(){
+                var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+                zTree.addNodes(treeNode, {id:(100 + newCount), pId:treeNode.id, name:"new node" + (newCount++)});
+                return false;
+            });
+        };
+        //删除时间
+        function removeHoverDom(treeId, treeNode) {
+
+            $("#addBtn_"+treeNode.tId).unbind().remove();
+        };
+       
+    </SCRIPT>
+
+
+{/block}

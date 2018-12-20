@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>后台管理中心</title>
+
+  <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  
+  <script src="__ADMIN__/layui/layui.js?v=1"></script>
+
+
+  <link rel="stylesheet" href="__ADMIN__/layui/css/layui.css?v=2">
+  <link rel="stylesheet" href="__ADMIN__/css/admin.css?v=1.4">
+ 
+</head>
+<body class="layui-layout-body">
+
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+
+    <div></div>
+    <div class="layui-logo">后台管理中心</div>
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    <ul class="layui-nav layui-layout-left layui-hide-xs">
+      <li class="layui-nav-item"><a href="{:Url('index/index')}">功能管理</a></li>
+      <li class="layui-nav-item "><a href="/index.php" target="_blank">网站首页</a></li>
+    </ul>
+    <ul class="layui-nav layui-layout-right ">
+      <li class="layui-nav-item layui-hide-xs">
+        <a href="javascript:;">
+          <img src="{$Think.session.admin.avatar}" class="layui-nav-img">
+          {$Think.session.admin.nickname}
+        </a>
+      </li>
+      <li class="layui-nav-item"><a href="{:Url('login/loginout')}">退出</a></li>
+    </ul>
+  </div>
+
+
+  <div class="layui-side layui-bg-black left-menu">
+    <div class="layui-side-scroll" >
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+
+      <ul class="layui-nav layui-nav-tree"  lay-filter="menu">
+
+      
+        {if condition="($Think.session.admin.adminid eq '1') or (administrator eq '麻雀cms')"}
+        <li class="layui-nav-item {if condition="$controller eq 'index'"}layui-nav-itemed{/if}">
+
+          <a href="javascript:ToLink('{:Url('index/index')}');">
+            <i class="layui-icon">&#xe68e;</i>  数据统计
+          </a>
+        </li>
+        
+        <li class="layui-nav-item {if condition="$controller eq 'banner'"}layui-nav-itemed{/if}">
+          <a href="javascript:;">
+            <i class="layui-icon">&#xe634;</i>  轮播管理
+          </a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:ToLink('{:Url('banner/lists')}');">轮播列表</a></dd>
+            <dd><a href="javascript:ToLink('{:Url('banner/info')}');">轮播添加</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item {if condition="$controller eq 'news'"}layui-nav-itemed{/if}">
+          <a href="javascript:;">
+            <i class="layui-icon">&#xe62a;</i>  新闻管理
+          </a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:ToLink('{:Url('news/newslist')}');">新闻列表</a></dd>
+            <!-- <dd><a href="javascript:ToLink('');{:Url('news/newsinfo')}">添加新闻</a></dd> -->
+            <dd><a href="javascript:ToLink('{:Url('news/catelist')}');">分类管理</a></dd>
+            <!-- <dd><a href="javascript:ToLink('');{:Url('news/cateinfo')}">添加分类</a></dd> -->
+            <dd><a href="javascript:ToLink('{:Url('news/modellist')}');">模型管理</a></dd>
+            <!-- <dd><a href="javascript:ToLink('');{:Url('news/modelinfo')}">添加模型</a></dd> -->
+            <dd><a href="javascript:ToLink('{:Url('news/authorlist')}');">作者管理</a></dd>
+            <!-- <dd><a href="javascript:ToLink('');{:Url('news/authorinfo')}">添加作者</a></dd> -->
+            <dd><a href="javascript:ToLink('{:Url('news/comment')}');">评论管理</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item {if condition="$controller eq 'user'"}layui-nav-itemed{/if}">
+          <a href="javascript:;">
+            <i class="layui-icon">&#xe770;</i>  用户管理
+          </a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:ToLink('{:Url('user/lists')}');">用户列表</a></dd>
+            <!-- <dd><a href="javascript:ToLink('');{:Url('news/newsinfo')}">添加新闻</a></dd> -->
+          </dl>
+        </li>
+        <li class="layui-nav-item {if condition="$controller eq 'msg'"}layui-nav-itemed{/if}">
+          <a href="javascript:;">
+            <i class="layui-icon">&#xe63c;</i>  留言管理
+          </a>
+        </li>
+        <li class="layui-nav-item {if condition="$controller eq 'link'"}layui-nav-itemed{/if}">
+          <a href="javascript:;">
+            <i class="layui-icon">&#xe64c;</i>  友情链接
+          </a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:ToLink('{:Url('link/lists')}');">链接列表</a></dd>
+            <dd><a href="javascript:ToLink('{:Url('link/info')}');">链接添加</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item {if condition="$controller eq 'site'"}layui-nav-itemed{/if}">
+          <a href="javascript:;">
+            <i class="layui-icon">&#xe716;</i>  站点管理
+          </a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:ToLink('{:Url('site/index')}');">网站信息</a></dd>
+            <dd><a href="javascript:ToLink('{:Url('site/water')}');">水印设置</a></dd>
+            <dd><a href="javascript:ToLink('{:Url('site/upload')}');">上传设置</a></dd>
+            <dd><a href="javascript:ToLink('{:Url('site/template')}');">模板选择</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item {if condition="$controller eq 'auth'"}layui-nav-itemed{/if}">
+          <a href="javascript:;">
+            <i class="layui-icon">&#xe613;</i>  权限管理
+          </a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:ToLink('{:Url('auth/adminlist')}');">管理员列表</a></dd>
+            <dd><a href="javascript:ToLink('{:Url('auth/rolelist')}');">角色列表</a></dd>
+            <dd><a href="javascript:ToLink('{:Url('auth/actionlist')}');">权限列表</a></dd>
+            <dd><a href="javascript:ToLink('{:Url('auth/loglist')}');">操作日志</a></dd>
+            <dd><a href="javascript:ToLink('{:Url('auth/modifypd')}');">修改密码</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item ">
+          <a href="javascript:ToLink('{:url('index/delcache')}');">
+            <i class="layui-icon">&#xe60b;</i>  清空缓存
+          </a>
+        </li>
+        <li class="layui-nav-item ">
+          <a href="javascript:ToLink('{:url('index/serverinfo')}');">
+            <i class="layui-icon">&#xe631;</i>  服务器信息
+          </a>
+        </li>
+      {else/}
+      {:RoleMenu()}
+      {/if}
+        <li class="layui-nav-item ">
+          <a href="javascript:ToLink('{:url('login/loginout')}');">
+            <i class="layui-icon">&#xe60f;</i>  退出登录
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="layui-body">
+   <!-- 内容主体区域 -->
+  <div id="main">
+
+      <blockquote class="layui-elem-quote">
+        {$title}  
+
+        {block name="right"}{/block}
+      </blockquote>
+   
+      <iframe src="{:url('index/ecscharts')}" class="base-iframe" id='iframe'></iframe>
+       
+  </div>
+  
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    <a href="https://gitee.com/32684028888/MaQuecms" target="_blank" >© 麻雀cms</a>
+  </div>
+</div> 
+
+<script>
+//左边菜单栏目代码区域
+layui.use('element', function(){
+  let element = layui.element;
+  /*element.on('nav(menu)', function(elem){
+    let href = elem.context.href;
+    if(href != 'javascript:;' || href != '' || typeof(href) == "undefined"){
+      
+    }
+  });*/
+});
+
+function ToLink(url){
+  $("iframe").attr('src',url);
+}
+</script>
+
+<script type="text/javascript" src="__ADMIN__/js/admin.js"></script>
+</body>
+</html>

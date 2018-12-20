@@ -1,0 +1,915 @@
+<?php
+namespace app\admin\model;
+use think\Db;
+
+class ArticleModel extends BaseModel{
+
+
+	/*
+	* 分类接口
+	* @access public
+	* @param  string    $table 表名
+	* @param  string    $param 分页请求条件
+	* @param  string    $key   like查询字段
+	* @param  string    $order 默认排序方式
+	* @param  string    $time  默认时间查询字段
+	* @param  string    $type  返回数据类型
+	* @return mixed
+	*/
+    public static function CatePage($param){
+
+		$page=!empty($param['page'])?$param['page']:"1";
+		$limit=!empty($param['limit'])?$param['limit']:"10";
+		//$pid=empty($param['pid'])?"0":$param['pid'];
+		$pid=empty($param['pid'])?"":$param['pid'];
+
+		$map="";
+
+		if(!empty($param['cateid'])){
+			$map[]=['cate.cateid','=',$param['cateid']];
+		}
+		if(!empty($keyword)){
+			$map[]=['cate.title|cate.keyword|cate.description|cate.content|cate.catename','like',"%$keyword%"];
+		}
+		
+		if(!empty($param['start']) && empty($param['end'])){
+	
+			$map[]=['cate.addtime','>=',$param['start']];
+
+		} else if(!empty($param['end']) && empty($param['start'])){
+
+			$map[]=['cate.addtime','<=',$param['end']];
+
+		} else if(!empty($param['start']) && !empty($param['end'])){
+
+			$map[]=['cate.addtime','between',[$param['start'],$param['end']]];
+
+		}
+
+		unset($param['start']);
+		unset($param['end']);
+
+		if(!empty($pid)){
+			$map[]=['cate.pid','=',$pid];
+		}
+
+		
+		
+
+		$list=Db::name('news_cate')->alias('cate')->leftJoin (config('database.prefix').'news_model model','cate.modelid=model.modelid' )->where($map)->order('cate.cateid desc')->field('cate.*,model.name as modelname')->page($page.','.$limit)->select();
+		
+		$data=array(
+			'data'=>$list,
+			'code'=>"0",
+			'count'=>Db::name('news_cate')->alias('cate')->leftJoin (config('database.prefix').'news_model model','cate.modelid=model.modelid' )->where($map)->count(),
+			'msg'=>"请求成功"
+		);
+
+		return json_encode($data);
+	
+
+    }
+
+	/*
+	* 新闻分页接口
+	* @access public
+	* @param  string    $table 表名
+	* @param  string    $param 分页请求条件
+	* @param  string    $key   like查询字段
+	* @param  string    $order 默认排序方式
+	* @param  string    $time  默认时间查询字段
+	* @param  string    $type  返回数据类型
+	* @return mixed
+	*/
+    public static function NewsPage($param){
+
+		$page=!empty($param['page'])?$param['page']:"1";
+		$limit=!empty($param['limit'])?$param['limit']:"10";
+		$pid=empty($param['pid'])?"0":$param['pid'];
+
+		$map="";
+
+		if(!empty($param['cateid'])){
+			$map[]=['news.cateid','=',$param['cateid']];
+		}
+		if(!empty($param['authorid'])){
+			$map[]=['author.authorid','=',$param['authorid']];
+		}
+		if(!empty($pid)){
+			$map[]=['news.pid','=',$pid];
+		}
+		if(!empty($param['keyword'])){
+			$keyword=$param['keyword'];
+			$map[]=['news.title|news.keyword|news.description|cate.catename','like',"%$keyword%"];
+		}
+		
+		if(!empty($param['wheretype'])){
+			switch ($param['wheretype']) {
+				case 'ishot':
+					$map[]=['news.hot','=','1'];
+					break;
+				case 'nohot':
+					$map[]=['news.hot','=','0'];
+					break;
+				case 'istop':
+					$map[]=['news.top','=','1'];
+					break;
+				case 'notop':
+					$map[]=['news.top','=','0'];
+					break;
+				case 'isstatus':
+					$map[]=['news.status','=','1'];
+					break;
+				case 'nostatus':
+					$map[]=['news.status','=','0'];
+					break; 
+				case 'caogao':
+					$map[]=['news.status','=','-1'];
+					break; 
+				
+			}
+			
+		}
+
+		if(!empty($param['start']) && empty($param['end'])){
+	
+			$map[]=['news.addtime','>=',$param['start']];
+
+		} else if(!empty($param['end']) && empty($param['start'])){
+
+			$map[]=['news.addtime','<=',$param['end']];
+
+		} else if(!empty($param['start']) && !empty($param['end'])){
+
+			$map[]=['news.addtime','between',[$param['start'],$param['end']]];
+
+		}
+
+		unset($param['start']);
+		unset($param['end']);
+
+
+		$list=Db::name('news_list')
+		->alias('news')
+		->leftJoin(config('database.prefix').'news_cate cate','news.cateid=cate.cateid' )
+		->leftJoin(config('database.prefix').'news_author author','news.authorid=author.authorid' )
+		->where($map)->order('news.newsid desc')
+		->field('news.*,cate.catename,author.name as authorname')
+		->page($page.','.$limit)
+		->select();
+		
+
+		foreach ($list as $k => $v) {
+			$list[$k]['count']['comment']=Db::name('comment_list')->where("newsid",$v['newsid'])->count('id');
+			$list[$k]['count']['file']=Db::name('comment_list')->where("newsid",$v['newsid'])->count('id');
+			$list[$k]['count']['img']=Db::name('comment_list')->where("newsid",$v['newsid'])->count('id');
+		}
+		
+		$data=array(
+			'data'=>$list,
+			'code'=>"0",
+			'count'=>Db::name('news_list')->alias('news')->leftJoin (config('database.prefix').'news_cate cate','news.cateid=cate.cateid' )->leftJoin(config('database.prefix').'news_author author','news.authorid=author.authorid' )->where($map)->count(),
+			'msg'=>"请求成功"
+		);
+
+		return json_encode($data);
+	
+
+    }
+
+    #模型列表#
+    public static function ModelList(){
+    	return Db::name('news_model')->order('px desc')->select();
+    }
+    #作者列表#
+    public static function AuthorList($field="*"){
+    	return Db::name('news_author')->where('status','1')->order('px desc')->field($field)->select();
+    }
+    #获取模型类型#
+    public static function CateModelType($cateid){
+    	return Db::name('news_cate')
+		->alias('c')
+		->leftJoin('news_model m','c.modelid = m.modelid')
+		->where('c.cateid',$cateid)
+		->value('m.type');
+    }
+        /*
+	* 根据cateid显示模型信息
+	* @access public
+	* @param  string    $table 表名
+	* @param  array     $where  条件
+	* @return bool
+	*/
+    public static function CateModel($cateid){
+
+    	$map=array(
+    		'cate.cateid'=>$cateid,
+    		'cate.status'=>"1",
+    		'model.status'=>"1"
+    	);
+    
+    	return Db::name('news_cate')
+		->alias('cate')
+		->where($map)
+		->join('news_model model','cate.modelid = model.modelid')
+		->field("model.*")
+		->find();
+
+    }
+
+    #评论分页#
+    public static function CommentPage($param){
+
+		$page=!empty($param['page'])?$param['page']:"1";
+		$limit=!empty($param['limit'])?$param['limit']:"10";
+
+
+		$map="";
+
+		if(!empty($param['newsid'])){
+			$map[]=['comment.newsid','=',$param['newsid']];
+		}
+
+		if(!empty($param['keyword'])){
+			$map[]=['comment.content|comment.id|comment.nickname|comment.newsid|news.title','like',"%".$param['keyword']."%"];
+		}
+
+		if(!empty($param['start']) && empty($param['end'])){
+	
+			$map[]=['comment.addtime','>=',$param['start']];
+
+		} else if(!empty($param['end']) && empty($param['start'])){
+
+			$map[]=['comment.addtime','<=',$param['end']];
+
+		} else if(!empty($param['start']) && !empty($param['end'])){
+
+			$map[]=['comment.addtime','between',[$param['start'],$param['end']]];
+
+		}
+
+		$list=Db::name('comment_list')->alias('comment')->leftJoin (config('database.prefix').'news_list news','comment.newsid=news.newsid' )->where($map)->order('comment.id desc')->field('comment.*,news.title,news.url')->page($page.','.$limit)->select();
+		
+		$data=array(
+			'data'=>$list,
+			'code'=>"0",
+			'count'=>Db::name('comment_list')->alias('comment')->leftJoin (config('database.prefix').'news_list news','comment.newsid=news.newsid' )->where($map)->count(),
+			'msg'=>"请求成功"
+		);
+
+		return json_encode($data);
+	
+
+    }
+
+    #获取所有页面模板#
+    public static function GetTemplate($type=""){
+
+    	$Env=new \think\facade\Env;
+
+    	$dir=$Env::get('root_path')."application/index/view/".config('template.user_template')."/index/";
+    	
+    	if(!is_dir($dir)){
+    		return "";
+    	}
+
+		$template=array("page"=>array(),"category"=>array(),"list"=>array(),"content"=>array() );
+		
+	    foreach (scandir($dir) as $k => $v) {
+
+	    	//单页
+	       if(preg_match("/page_(.*?).html/",$v,$r)==true){
+	            array_push($template['page'],str_replace(".html","",$v));
+	        //栏目
+	       }else if(preg_match("/category_(.*?).html/",$v,$r)==true){ //
+	       		array_push($template['category'],str_replace(".html","",$v));
+	        //列表页
+	       }else if(preg_match("/list_(.*?).html/",$v,$r)==true){
+	       		array_push($template['list'],str_replace(".html","",$v));
+	        //内容页
+	       }else if(preg_match("/content_(.*?).html/",$v,$r)==true){
+	       		array_push($template['content'],str_replace(".html","",$v));
+	       }
+
+	    }
+	    if($type=="单页类型"){
+	    	return $template['page'];
+	    }
+	    if($type=="列表类型"){
+	    	return $template['content'];
+	    }
+	    
+	    return $template;
+    }
+
+    //新增分类
+    public function CateAdd($data){
+
+    	if($data['pid']==$data['cateid']){
+				$this->error("父菜单不能选择为自己~");
+		}
+
+		if(empty($data['modelid'])){
+			$this->error("请选择相应的模型");
+		}
+
+
+		$modelinfo=$this->DataFind('news_model',['modelid'=>$data['modelid']],'modelid,type,page,category,list,content');
+
+		if($modelinfo['type']=='单页类型'){
+			$data['template']=$modelinfo['page'];
+		}	
+
+		if($modelinfo['type']=='列表类型'){
+			$data['template']=$modelinfo['list'];
+		}
+				
+		$data['status']=empty($data['status'])?"1":$data['status'];
+
+		$data['addtime']=date('Y-m-d H:i:s');
+
+		$cateid=Db::name('news_cate')->strict(false)->insertGetId($data);
+
+		if($cateid){
+
+			if($data['url'] ==''){
+				if($data['pid'] !='0'){
+					$url="/cate-{$cateid}-pid-{$data['pid']}.html";
+				}else{
+					$url="/cate-{$cateid}.html";
+				}
+				
+			}
+
+			return $this->DataUp('news_cate',['url'=>$url],['cateid'=>$cateid]);
+
+		}
+			
+
+		return false;
+		
+    }
+
+    //修改分类
+    public function CateEdit($data){
+
+    	if($data['pid'] == $data['cateid']){
+				$this->error("父菜单不能选择为自己~");
+		}
+
+		if(empty($data['modelid'])){
+			$this->error("请选择相应的模型");
+		}
+
+		$modelinfo=$this->DataFind('news_model',['modelid'=>$data['modelid']],'modelid,type,page,category,list,content');
+
+		if($modelinfo['type']=='单页类型'){
+			$data['template']=$modelinfo['page'];
+		}	
+
+		if($modelinfo['type']=='列表类型'){
+			$data['template']=$modelinfo['list'];
+		}
+				
+		$data['status']=empty($data['status'])?"1":$data['status'];
+
+		$map=array(
+			['cateid','neq',$data['cateid']],
+			['catename','eq',$data['catename']]
+		);
+		
+		if($this->DataCount('news_cate',$map,'cateid')>0){
+			$this->error("当前分类已经存在!");
+		}
+
+		if($data['url'] ==''){
+			if($data['pid'] !='0'){
+				$data['url']="/cate-{$data['cateid']}-pid-{$data['pid']}.html";
+			}else{
+				$data['url']="/cate-{$data['cateid']}.html";
+			}	
+		}
+
+		$data['uptime']=date('Y-m-d H:i:s');
+
+		return $this->DataUp('news_cate',$data);
+
+    }
+
+    //修改分类状态
+    public function CateUp($data){
+
+    	return  $this->DataUp('news_cate',$data,'','uptime');
+    }
+
+    //删除分类
+    public function CateDel($cateid){
+
+		if(!isset($cateid)){
+			$this->error('cateid不能为空！');
+		}
+
+		if(config('site.file_del')=='1'){
+			$this->removefile($this->DataFind('news_cate',['cateid'=>$cateid],"catethumb"));
+		}
+
+		return $this->DataDel('news_cate',['cateid'=>$cateid]);
+
+    }
+
+    //添加模型
+    public function ModelAdd($data){
+
+    	if(empty($data['type'])){
+			$this->error("请先选择栏目类型");
+		}
+
+		if($data['type']=='单页类型' && $data['page']==''){
+			$this->error("请先选择单页模板！");
+		}
+
+		if($data['type']=='列表类型'){
+
+			/*if($data['category']==''){
+				$this->error("请先选择栏目模板！");
+			}*/
+			if($data['list']==''){
+				$this->error("请先选择列表模板！");
+			}
+			if($data['content']==''){
+				$this->error("请先选择内容模板！");
+			}
+
+		}
+
+		$data['status']=empty($data['status'])?"1":$data['status'];
+
+		$map=array(
+			'name'=>$data['name']
+		);
+	
+		if(Db::name('news_model')->where($map)->count()>0){
+			$this->error("当前模型已经存在!");
+		}
+
+		$data['addtime']=date('Y-m-d H:i:s',time());
+
+		return $this->DataIns("news_model",$data);
+			
+    }
+
+    //模型修改
+    public function ModelEdit($data){
+
+    	if(empty($data['type'])){
+			$this->error("请先选择栏目类型");
+		}
+
+		if($data['type']=='单页类型' && $data['page']==''){
+			$this->error("请先选择单页模板！");
+		}
+
+		if($data['type']=='列表类型'){
+
+			/*if($data['category']==''){
+				$this->error("请先选择栏目模板！");
+			}*/
+			if($data['list']==''){
+				$this->error("请先选择列表模板！");
+			}
+			if($data['content']==''){
+				$this->error("请先选择内容模板！");
+			}
+
+		}
+
+		$data['status']=empty($data['status'])?"1":$data['status'];
+
+		$map=array(
+			['modelid','neq',$data['modelid']],
+			['name','=',$data['name']],
+		);
+	
+		if(Db::name('news_model')->where($map)->count('modelid')>0){
+			$this->error("当前模型名称已经存在!");
+		}
+		
+
+		if(!empty($data['up'])){
+			
+			
+			$model_info=$this->DataFind('news_model',['modelid'=>$data['modelid']],'page,category,list,content');
+
+			if($data['type']=='单页类型'){
+
+				if($data['page'] !=$model_info['page']){
+					//更新条件
+					$up_where=array(
+						['modelid','=',$data['modelid']],
+						['template','neq',$model_info['page']]
+					);
+					//结果
+					$up_data=['template'=>$model_info['page']];
+
+					Db::name('news_cate')->where($up_where)->update($up_data);
+
+				}
+
+			}
+
+			if($data['type']=='列表类型'){
+
+				if($data['list'] !=$model_info['list']){
+					//更新条件
+					$up_where=array(
+						['modelid','=',$data['modelid']],
+						['template','neq',$data['list']]
+					);
+					//更新结果
+					$up_data=['template'=>$data['list']];
+
+					Db::name('news_cate')->where($up_where)->update($up_data);
+				}
+
+				if($data['content'] !=$model_info['content']){
+					//更新条件
+					$up_where=array(
+						['modelid','=',$data['modelid']],
+						['template','neq',$data['content']]
+					);
+					//更新结果
+					$up_data=['template'=>$data['content']];
+
+					Db::name('news_list')->where($up_where)->update($up_data);
+				}
+			
+			}
+
+			unset($data['up']);
+		}
+		
+
+		$data['uptime']=date('Y-m-d H:i:s',time());
+		//更新分类模板
+	
+		return $this->DataUp('news_model',$data);
+    }
+
+    //模型删除
+    public function ModelDel($modelid){
+    
+		if(!isset($modelid)){
+			$this->error('modelid不能为空！');
+		}
+
+		return $this->DataDel('news_model',['modelid'=>$modelid]);
+    }
+
+    //文章详情
+    public function ArticleInfo($newsid){
+
+    	if(empty($newsid)){
+    		$this->error('新闻id不存在');
+    	}
+
+    	$info=$this->DataFind('news_list',['newsid'=>$newsid]);
+		
+		$info['photos']=json_decode($info['photos'],true);
+		$info['files']=json_decode($info['files'],true);
+
+		return $info;
+    }
+
+    //文章添加
+    public function ArticleAdd($data){
+
+
+		$data['status']=empty($data['status'])?"0":$data['status'];
+		$data['hot']=isset($data['hot'])?"1":"0";
+		$data['top']=isset($data['top'])?"1":"0";
+		$data['files']=json_encode($data['files']);
+
+		
+		//作者信息
+		if(!empty($data['authorid'])){
+
+			$authorinfo=$this->DataFind('news_author',['authorid'=>$data['authorid']]);
+			$data['authorid']=$authorinfo['authorid'];
+			$data['authorname']=$authorinfo['name'];
+			$data['authorpic']=$authorinfo['pic'];
+
+		}
+
+		if(empty($data['template'])){
+			$CateModelInfo=$this->CateModel($data['cateid']);
+			$data['template']=$CateModelInfo['content'];//页面模板
+		}
+
+		$type=$this->CateModelType($data['cateid']);
+		
+		if($type=='单页模型'){
+			$count=Db::name('news_list')->where('cateid',$cateid)->count('newsid');
+			if($count>0){
+				$this->error("当前类型已经添加过内容，请选择其他分类~");
+			}
+		}
+
+
+		$data['addtime']=date('Y-m-d H:i:s',time());
+		if(empty($data['pushtime'])){
+			$data['pushtime']=$data['addtime'];
+		}
+
+		$newsid=Db::name('news_list')->strict(false)->insertGetId($data);
+
+		if($newsid){
+			if($data['url'] ==''){
+				$url="/content-{$newsid}.html";
+			}
+
+			if($this->CateModelType($data['cateid']) =='单页类型' ){
+				$cateurl=$url="/content-{$newsid}-cateid-{$data['cateid']}.html";
+				Db::name('news_cate')->where('cate',$data['cateid'])->update(['url'=>$cateurl]);
+			}
+
+			return Db::name('news_list')->where(['newsid'=>$newsid])->update(['url'=>$url]);
+			
+		}
+			
+		return false;
+
+    }
+
+    //文章修改
+    public function ArticleEdit($post){
+
+		//转json
+		$post['photos']=empty($post['photos'])?'':json_encode($post['photos']);
+		$post['files']=empty($post['files'])?'':json_encode($post['files']);
+		$post['status']=empty($post['status'])?"0":$post['status'];
+		$post['hot']=isset($post['hot'])?"1":"0";
+		$post['top']=isset($post['top'])?"1":"0";
+			
+    	//作者信息
+		if(!empty($post['authorid'])){
+
+			$authorinfo=$this->DataFind('news_author',['authorid'=>$post['authorid']]);
+			$post['authorid']=$authorinfo['authorid'];
+			$post['authorname']=$authorinfo['name'];
+			$post['authorpic']=$authorinfo['pic'];
+
+		}
+
+		if(empty($post['template'])){
+			$CateModelInfo=$this->CateModel($post['cateid']);
+			$post['template']=$CateModelInfo['content'];//页面模板
+		}
+		
+
+		/*$map=array(
+			'newsid'=>array('neq',$post['newsid']),
+			'newsname'=>$post['newsname']
+		);*/
+	
+		/*if(Db::name('news_list')->where($map)->count()>0){
+			$this->error("当前分类已经存在!");
+		}*/
+
+
+		if($post['url'] ==''){
+			$post['url']="/content-{$post['newsid']}.html";
+		}
+
+		$post['uptime']=date('Y-m-d H:i:s',time());
+
+		$r = $this->DataUp('news_list',$post);
+
+		if($this->CateModelType($post['cateid']) =='单页类型' ){
+
+			$cateurl=$url="/content-{$post['newsid']}-cate-{$post['cateid']}-.html";
+
+			$data=array(
+				'url'=>$cateurl,
+				'uptime'=>$post['uptime']
+			);
+
+			return Db::name('news_cate')->where('cateid',$post['cateid'])->update($data);
+		}
+
+		return $r;
+
+    }
+
+    //删除新闻
+    public function ArticleDel($newsid){
+
+		if(!isset($newsid)){
+			$this->error('newsid不能为空~');
+		}
+
+		if(config('site.file_del')=='1'){
+
+			$newsinfo=Db::name('news_list')->where(['newsid'=>$newsid])->find();
+			//删除缩略图
+			@$this->removefile($newsinfo['thumb']);
+			//删除图集
+			$photos=json_decode($newsinfo['photos'],true);
+			if(is_array($photos['path'])){
+				foreach ($photos['path'] as $k => $v) {
+					@$this->removefile($v);
+				}
+			}
+			//删除文件
+			if(isset($newsinfo['files'])){
+				$files=json_decode($newsinfo['files'],true);
+				@$this->removefile($files['src']);
+			}
+		}
+
+		return $this->DataDel('news_list',['newsid'=>$newsid]);
+
+    }
+
+    //修改新闻状态
+    public function NewsUp($data){
+
+    	return  $this->model->DataUp('news_list',$data,'','uptime');
+
+    }
+
+    //添加作者
+    public function AuthorAdd($data){
+
+    	$map=array(
+			'name'=>$data['name']
+		);
+	
+		if(Db::name('news_author')->where($map)->count()>0){
+			$this->error("当前作者已经存在!");
+		}
+
+		$data['addtime']=date('Y-m-d H:i:s',time());
+
+		return $this->DataIns("news_author",$data);
+    }
+
+    //修改作者
+    public function AuthorEdit($data){
+
+		$map=array(
+			['authorid','neq',$data['authorid']],
+			['name','=',$data['name']],
+		);
+	
+		if(Db::name('news_author')->where($map)->count('authorid')>0){
+			$this->error("当前作者名称已经存在!");
+		}
+
+		$data['uptime']=date('Y-m-d H:i:s',time());
+					
+		return $this->DataUp('news_author',$data);
+
+    }
+
+    //删除作者
+    public function AuthorDel($authorid){
+    	
+    	if(!isset($authorid)){
+			$this->error('authorid不能为空！');
+		}
+
+		return  $this->DataDel('news_author',['authorid'=>$authorid]);
+
+    }
+    //修改作者
+    public function AuthorUp($data){
+
+    	return  $this->DataUp('news_author',$data,'','uptime');
+
+    }
+
+    //删除评论
+    public function CommentDel($id){
+    	
+    	if(!isset($authorid)){
+			$this->error('id不能为空！');
+		}
+
+		return  $this->DataDel('comment_list',['id'=>$id]);
+
+    }
+
+  	//修改评论状态
+  	public function CommentUp($data){
+
+  		return  $this->model->DataUp('comment_list',$data,'','uptime');
+  		
+  	}
+
+    //生成文章pdf
+  	// 详细信息：https://www.jianshu.com/p/3c0ad038cee7
+  	// I 预览 ， D 下载， 
+  	public function MakePdf($newsid, $type ='I'){
+ 
+ 		if(empty($newsid)){
+ 			$this->error('文章id不能为空');
+ 		}
+
+  		$info=Db::name('news_list')->where('newsid',$newsid)->field('newsid,title,abstract,keyword,content')->find();
+
+  		if(empty($info)){
+  			$this->error('新闻不存在！');
+  		}
+
+  		$Env=new \think\facade\Env;
+       
+        require_once $Env::get('ROOT_PATH').'/vendor/tecnickcom/tcpdf/tcpdf.php';
+
+        $pdf = new \TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+
+		// set document information
+		$pdf->SetCreator('麻雀cms'); //文档创建者名称
+		$pdf->SetAuthor($info['authorname']); //设置作者
+		$pdf->SetTitle($info['title']); //设置文档标题
+		$pdf->SetSubject($info['abstract']); //文档主题
+		$pdf->SetKeywords($info['keyword']); //文档关键字
+
+		// set default header data //设置页眉页脚, php7 前两个需要传入数字，默认给个0
+		$pdf->SetHeaderData('0','0', $info['title'], $info['abstract']);
+
+		// set header and footer fonts //设置页眉页脚字体
+		//$pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+		$pdf->setHeaderFont(Array('stsongstdlight', '', '15'));
+		$pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+
+		// set default monospaced font
+		$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+
+		// set margins
+		$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+		$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+		$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+
+		// set auto page breaks
+		$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+
+		// set image scale factor
+		$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+
+		// set some language-dependent strings (optional)
+		if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
+		require_once(dirname(__FILE__).'/lang/eng.php');
+		$pdf->setLanguageArray($l);
+		}
+
+		// ---------------------------------------------------------
+
+		// set font
+		$pdf->SetFont('stsongstdlight', '', 10);
+
+		// add a page
+		$pdf->AddPage();
+
+		/* NOTE:
+		* *********************************************************
+		* You can load external XHTML using :
+		*
+		* $html = file_get_contents('/path/to/your/file.html');
+		*
+		* External CSS files will be automatically loaded.
+		* Sometimes you need to fix the path of the external CSS.
+		* *********************************************************
+		*/
+
+		// define some HTML content with style
+		$html = $info['content'];
+
+		// output the HTML content
+		$pdf->writeHTML($html, true, false, true, false, '');
+
+		// add a page
+		/*$pdf->AddPage();
+
+		$html = '内容';
+
+		// output the HTML content
+		$pdf->writeHTML($html, true, false, true, false, '');
+
+		// reset pointer to the last page
+		$pdf->lastPage();*/
+
+
+
+		//Close and output PDF document
+
+		$pdf->Output($info['title'], $type);
+
+		exit;
+
+  	}
+
+   
+	
+    
+    
+}

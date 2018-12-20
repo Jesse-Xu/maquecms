@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>我的消息</title>
+{include file="common/link"}
+</head>
+<body>
+
+{include file="common/header"}
+
+<div class="layui-container fly-marginTop fly-user-main">
+
+  {include file="common/user-nav"}
+
+  <div class="fly-panel fly-panel-user" pad20>
+	  <div class="layui-tab layui-tab-brief" lay-filter="user" id="LAY_msg" style="margin-top: 15px;">
+	    <!-- <button class="layui-btn layui-btn-danger" id="LAY_delallmsg">清空全部消息</button> -->
+	    <div id="LAY_minemsg" style="margin-top: 10px;">
+        <ul class="mine-msg" id="list">
+          <div class="fly-none">数据加载中...</div>
+        </ul>
+       	<div id="page"></div>
+      </div>
+	  </div>
+	</div>
+
+</div>
+
+{include file="common/footer"}
+<script type="text/javascript">
+
+	function dateStr(addtime){
+
+		var date = Date.parse(new Date(addtime))/1000;
+		
+	    //获取js 时间戳
+	    var time=new Date().getTime();
+	    //去掉 js 时间戳后三位，与php 时间戳保持一致
+	    time=parseInt((time-date*1000)/1000);
+
+	    //存储转换值 
+	    var s;
+	    //十分钟内
+	    if(time<60*10){
+	        return '刚刚';
+	    }else if((time<60*60)&&(time>=60*10)){
+	        //超过十分钟少于1小时
+	        s = Math.floor(time/60);
+	        return  s+"分钟前";
+	    }else if((time<60*60*24)&&(time>=60*60)){ 
+	        //超过1小时少于24小时
+	        s = Math.floor(time/60/60);
+	        return  s+"小时前";
+	    }else if((time<60*60*24*3)&&(time>=60*60*24)){ 
+	        //超过1天少于3天内
+	        s = Math.floor(time/60/60/24);
+	        return s+"天前";
+	    }else{ 
+	    	return addtime;
+	        //超过3天
+	        var date= new Date(parseInt(date) * 1000);
+	        return date.getFullYear()+"/"+(date.getMonth()+1)+"/"+date.getDate();
+	    }
+	}
+
+
+	layui.use(['laypage','form'], function(){
+		var laypage = layui.laypage;
+		  
+		  laypage.render({
+		    elem: 'page' // 元素
+		    ,count: Math.ceil(100/10) //数据总数
+		    ,jump: function(obj, first){
+
+		      $.post(location.href,{page:obj.curr},function(res){
+
+		        let list=res.list;
+		        let html=status="";
+		 
+		        if(list.length=='0'){
+		          html='<div class="fly-none">您暂时没有最新消息</div>';
+		        }else{
+
+		          for(let i=0;i<list.length;i++){
+
+		            html+='<li><blockquote class="layui-elem-quote"><a href="'+list[i].newsurl+'#'+list[i].id+'" target="_blank"><cite>'+list[i].nickname+'</cite></a>回答了您的求解<a target="_blank" href="'+list[i].newsurl+'"><cite>'+list[i].newstitle+'</cite></a></blockquote><p><span>'+dateStr(list[i].addtime)+'</span><a href="javascript:;" class="layui-btn layui-btn-sm layui-btn-danger fly-delete" data-id="'+list[i].id+'">删除</a></p></li>';
+		          }
+
+		        }
+
+		        $("#list").html(html);
+
+		      },'json');
+		    
+		    }
+		  });
+	});
+
+	$("body").on("click",".fly-delete",function(){
+		let _this=$(this);
+		let data_id=_this.attr('data-id');
+		layer.confirm('是否删除本条评论？', function(index){
+			//alert(data_id);
+			$.get(location.href,{id:data_id},function(res){
+				alert(res.msg);
+				if(res.status=='1'){
+					_this.parents("li").remove();
+				}
+				layer.close(index);
+			},'json');
+		  	
+		}); 
+	});
+</script>
+</body>
+</html>

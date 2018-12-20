@@ -1,0 +1,36 @@
+/*评论
+param newsid 新闻id
+param dom 当前元素
+*/
+function comment(dom){
+	
+  	if($("textarea[name='content']").val() !=''){
+	  	if(dom!=""){
+	  		$(dom).attr("disabled",true);
+	  	}
+	  	$.post("/index.php/index/index/comment.html",$("#comment").serialize(),function(data){
+
+	  	 	alert(data.msg);
+
+	  	 	if(data.code=='1'){
+	  	 		location.reload();
+	  	 	}else{
+	  	 		if(dom!=""){
+			  		$(dom).attr("disabled",false);
+			  	}
+	  	 	}
+	  	});
+  	}else{
+	  	alert("请输入评论内容！");
+	  	
+	}
+
+}
+
+/*回复*/
+function huifu(pid,floor,name){
+	$("#comment input[name='pid']").val(pid);
+	$("#comment input[name='floor']").val(floor);
+	$("#comment textarea[name='content']").attr("placeholder","回复给"+name+"：");
+	location.href="#comment";
+}
