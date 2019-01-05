@@ -1,0 +1,58 @@
+{extend name="public:base"/}
+{block name="main"}
+
+<form class="layui-form form" action="" method="POST">
+        
+        <div class="layui-form-item">
+          <label class="layui-form-label"><span class="form-required">*</span>链接名称</label>
+          <div class="layui-input-block" >
+            <input type="hidden" name="linkid" value="{$info['linkid']}">
+            <input type="text" name="name" required lay-verify="required" placeholder="链接名称" autocomplete="off" class="layui-input"  value="{$info['name']}">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label"><span class="form-required">*</span>跳转地址</label>
+          <div class="layui-input-block" >
+            <input type="text" name="link" required lay-verify="required" placeholder="跳转地址" autocomplete="off" class="layui-input"  value="{$info['link']}">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">排序</label>
+          <div class="layui-input-inline" >
+            <input type="number" name="px"  placeholder="排序" autocomplete="off" class="layui-input"  value="{$info['px']}">
+          </div>
+        </div>
+        
+        <div class="layui-form-item">
+          <label class="layui-form-label">状态</label>
+          <div class="layui-input-block">
+            <input type="checkbox" name="status" lay-skin="switch" lay-text="启用|禁用" lay-filter="switchTest" value="1" {if condition="($info['status'] eq '1') OR ($info['status'] neq '0')"}checked=''{/if}>
+            <div class="layui-unselect layui-form-switch" lay-skin="_switch">
+              <em>OFF</em><i></i>
+            </div>
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <div class="layui-input-block">
+            <button class="layui-btn" lay-submit="" lay-filter="submit">立即提交</button>
+          </div>
+        </div>
+</form>
+
+<script type="text/javascript">
+  layui.use('form', function(){
+    var form = layui.form
+
+    form.on('submit(submit)', function(data){
+      
+      return FormAjax(location.href,data.field);
+     
+    });
+     
+  });
+</script>
+
+
+
+
+{/block}
