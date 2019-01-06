@@ -99,7 +99,11 @@ class BaseModel extends Model{
 	* @param  array     $data  添加的数据
 	* @return bool
 	*/
-    public static function DataIns($table,$data){
+    public static function DataIns($table,$data,$addtime=''){
+
+    	if(!empty($addtime)){
+    		$data[$addtime] =  date('Y-m-d H:i:s',time());
+    	}
 
     	return Db::name($table)->strict(false)->insert($data);
 
@@ -114,11 +118,13 @@ class BaseModel extends Model{
 	* @return bool
 	*/
     public static function DataUp($table,$data,$where="",$uptime=""){
+
     	if(!empty($uptime)){
 
     		$data[$uptime]=date('Y-m-d H:i:s');
 
     	}
+    	
     	return Db::name($table)->where($where)->strict(false)->update($data);
 
     }

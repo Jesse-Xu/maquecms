@@ -34,6 +34,7 @@ class Tool extends Common{
 
 			$data=$this->request->post();
 
+			
 			$res = $this->model->CurlAdd($data);
 
 			if($res){

@@ -79,7 +79,7 @@ layui.use(['table','laydate','form'], function(){
 
     if(obj.event === 'del'){
 
-        Delete("{:Url('roledel')}",{'bannerid': data.bannerid},obj);
+        Delete("{:Url('roledel')}",{'roleid': data.roleid},obj);
         
     } else if(obj.event === 'edit'){
 

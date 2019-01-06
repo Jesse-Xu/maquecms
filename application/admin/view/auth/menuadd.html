@@ -6,7 +6,7 @@
       <label class="layui-form-label">上级菜单</label>
       <div class="layui-input-inline width-350"  >
          <select name="pid" lay-filter="select" >
-          <option value="0">一级菜单</option>
+          <option value="0">主菜单</option>
             {notempty name="list"}
             {foreach $list as $k=>$v}
             <option value="{$v['menuid']}" >{$v['name']}</option>

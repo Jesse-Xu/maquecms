@@ -184,7 +184,20 @@ class Auth extends Common{
 			}
 			$data['auth']=rtrim($auth, ",");*/
 
-			$data['auth']=strtolower(json_encode($data['auth']));
+			//$data['auth']=strtolower(json_encode($data['auth']));
+
+			//print_r($data['auth']);exit;
+
+			$auth = [];
+
+			foreach ($data['auth'] as $k => $v) {
+				foreach ($v as $key => $val) {
+					$authinfo = Db::name('admin_action')->where('actionid',$val)->field('actionid,name,controller,action,type')->find();
+					$auth[$k][$key] = $authinfo;
+				}
+			}
+			
+			$data['auth'] = json_encode($auth);
 
 			$data['status']=empty($data['status'])?"0":$data['status'];
 
@@ -213,7 +226,7 @@ class Auth extends Common{
 		}
 	}
 
-	#添加角色信息#
+	#编辑角色信息#
 	public function roleedit(){
 
 		if($this->request->isGet()){
@@ -622,7 +635,6 @@ class Auth extends Common{
 			}*/
 		
 	
-		
 			$this->assign('list',$auth);
 
 			return $this->fetch();

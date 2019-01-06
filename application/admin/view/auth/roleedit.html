@@ -36,7 +36,7 @@
           </label>
           <div class="layui-input-block">
             {foreach $v['list'] as $vo}
-            <input type="checkbox" name="auth[{$v['controller']}][]" title="{$vo['name']}" lay-skin="primary" lay-filter="ceshi"  <?php if(stripos($info['auth'],'"'.$vo['action'].'"'))  echo "checked" ; ?> value="{$vo['action']}">
+            <input type="checkbox" name="auth[{$v['controller']}][{$vo['actionid']}]" title="{$vo['name']}" lay-skin="primary" lay-filter="ceshi"  <?php if(stripos($info['auth'],'"'.$vo['actionid'].'"'))  echo "checked" ; ?> value="{$vo['action']}">
             {/foreach}
           </div>
         </div>

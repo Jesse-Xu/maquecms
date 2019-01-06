@@ -9,9 +9,6 @@ class ToolModel extends BaseModel{
     #创建curd#
 	public function CurlAdd($data=""){
 
-
-
-
         if(empty($data['controller'])){
             $this->error("控制器不能为空！");
         }
@@ -44,8 +41,16 @@ class ToolModel extends BaseModel{
 
         $data =str_replace(array("控制器名称","主键id","表名","搜索条件"),array(ucwords($data['controller']),$data['keyname'],$data['tablename'],$data['search']),$copy_file );
 
-$f = fopen($file, "a");
-fwrite($f, "112313");
+
+
+//echo $file;exit;
+$file = str_replace('\/', '/', $file);
+
+$source = iconv("UTF-8","GBK//IGNORE",'000000');
+
+//file_put_contents($file, "sss");exit;
+$f = fopen($file, "w");
+fwrite($f, $source);
 exit;
         file_put_contents($file, iconv("UTF-8","GB2312//IGNORE","aaaaaa"));
         exit;
